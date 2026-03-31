@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "004405",
+    "target": "c",
+    "source_file": "004405.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 2,
+    "cppcheck_output": "/tmp/gcc_fuzz_93ql3vm_/t.c:37:204: error: Unmatched ')'. Configuration: ''. [syntaxError]\n        totalHash += ((uint32_t)(&arrayOfStructs[i])->data + (&arrayOfStructs[i])->bytes[0] * 2 + (&arrayOfStructs[i])->bytes[1] / 2 + (&arrayOfStructs[i])->bytes[2] * 3 - (&arrayOfStructs[i])->bytes[3]));\n                                                                                                                                                                                                           ^",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "/tmp/gcc_fuzz_93ql3vm_/t.c:37:204: error: extraneous ')' before ';' [clang-diagnostic-error]\n        totalHash += ((uint32_t)(&arrayOfStructs[i])->data + (&arrayOfStructs[i])->bytes[0] * 2 + (&arrayOfStructs[i])->bytes[1] / 2 + (&arrayOfStructs[i])->bytes[2] * 3 - (&arrayOfStructs[i])->bytes[3]));\n                                                                                                                                                                                                           ^\n\n449 warnings and 1 error generated.\nError while processing /tmp/gcc_fuzz_93ql3vm_/t.c.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

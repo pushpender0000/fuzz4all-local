@@ -1,0 +1,13 @@
+rc=1 ok=False timeout=False crash_like=False
+
+==== STDOUT ====
+
+==== STDERR ====
+/usr/bin/ld: /tmp/ccknM9Me.o: in function `initializeArray':
+t.c:(.text+0xc8): undefined reference to `createStruct'
+/usr/bin/ld: /tmp/ccknM9Me.o: in function `complexFunction':
+t.c:(.text+0x27c): undefined reference to `createStruct'
+/usr/bin/ld: /tmp/ccknM9Me.o: in function `testFunction':
+t.c:(.text+0x2cf): undefined reference to `createStruct'
+collect2: error: ld returned 1 exit status
+

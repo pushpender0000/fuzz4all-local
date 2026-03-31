@@ -1,0 +1,347 @@
+
+;; Function testFunction (testFunction, funcdef_no=42, decl_uid=3234, cgraph_uid=43, symbol_order=42)
+
+__attribute__((access ("^1[ ]", )))
+void testFunction (int32_t x, uint8_t * y)
+{
+  struct MyStruct D.3352;
+  struct MyStruct s;
+  int i;
+  const int s$data;
+  uint32_t h;
+  int i;
+  struct MyStruct s;
+  unsigned char _7;
+  unsigned int _8;
+  sizetype _18;
+  const uint8_t * _19;
+  unsigned char _20;
+
+  <bb 2> [local count: 214748368]:
+  MEM <char[4]> [(struct  *)&s + 4B] = {};
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 858993457]:
+  _18 = (sizetype) i_17;
+  _19 = &y + _18;
+  _20 = *_19;
+  s.buffer[i_17] = _20;
+  i_21 = i_17 + 1;
+
+  <bb 4> [local count: 1073741824]:
+  # i_17 = PHI <0(2), i_21(3)>
+  if (i_17 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 5>; [20.00%]
+
+  <bb 5> [local count: 214748368]:
+  s.data = x_2(D);
+  D.3352 = s;
+  s ={v} {CLOBBER};
+  s = D.3352;
+  s$data_12 = s.data;
+  __printf_chk (1, "%d\n", s$data_12);
+  h_5 = (uint32_t) s$data_12;
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 858993457]:
+  _7 = s.buffer[i_6];
+  _8 = (unsigned int) _7;
+  h_10 = _8 + h_9;
+  i_11 = i_6 + 1;
+
+  <bb 7> [local count: 1073741824]:
+  # h_9 = PHI <h_5(5), h_10(6)>
+  # i_6 = PHI <0(5), i_11(6)>
+  if (i_6 != 4)
+    goto <bb 6>; [80.00%]
+  else
+    goto <bb 8>; [20.00%]
+
+  <bb 8> [local count: 214748368]:
+  # h_13 = PHI <h_9(7)>
+  __printf_chk (1, "%u\n", h_13);
+  s ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function createStruct (createStruct, funcdef_no=39, decl_uid=3212, cgraph_uid=40, symbol_order=39)
+
+__attribute__((access ("^1[ ]", )))
+struct MyStruct createStruct (int32_t val, const uint8_t * arr)
+{
+  int i;
+  struct MyStruct s;
+  struct MyStruct D.3281;
+  sizetype _1;
+  const uint8_t * _2;
+  unsigned char _3;
+
+  <bb 2> [local count: 214748368]:
+  MEM <char[4]> [(struct  *)&s + 4B] = {};
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 858993457]:
+  _1 = (sizetype) i_4;
+  _2 = arr_11(D) + _1;
+  _3 = *_2;
+  s.buffer[i_4] = _3;
+  i_13 = i_4 + 1;
+
+  <bb 4> [local count: 1073741824]:
+  # i_4 = PHI <0(2), i_13(3)>
+  if (i_4 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 5>; [20.00%]
+
+  <bb 5> [local count: 214748368]:
+  s.data = val_8(D);
+  D.3281 = s;
+  s ={v} {CLOBBER};
+  return D.3281;
+
+}
+
+
+
+;; Function printStruct (printStruct, funcdef_no=40, decl_uid=3221, cgraph_uid=41, symbol_order=40)
+
+void printStruct (const struct MyStruct * s)
+{
+  int _1;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = s_3(D)->data;
+  __printf_chk (1, "%d\n", _1);
+  return;
+
+}
+
+
+
+;; Function hashStruct (hashStruct, funcdef_no=41, decl_uid=3224, cgraph_uid=42, symbol_order=41)
+
+uint32_t hashStruct (const struct MyStruct * s)
+{
+  int i;
+  uint32_t h;
+  int _1;
+  unsigned char _2;
+  unsigned int _3;
+
+  <bb 2> [local count: 214748368]:
+  _1 = s_7(D)->data;
+  h_8 = (uint32_t) _1;
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 858993457]:
+  _2 = s_7(D)->buffer[i_5];
+  _3 = (unsigned int) _2;
+  h_10 = _3 + h_4;
+  i_11 = i_5 + 1;
+
+  <bb 4> [local count: 1073741824]:
+  # h_4 = PHI <h_8(2), h_10(3)>
+  # i_5 = PHI <0(2), i_11(3)>
+  if (i_5 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 5>; [20.00%]
+
+  <bb 5> [local count: 214748368]:
+  # h_9 = PHI <h_4(4)>
+  return h_9;
+
+}
+
+
+
+;; Function runTests (runTests, funcdef_no=43, decl_uid=3238, cgraph_uid=44, symbol_order=43)
+
+void runTests (void (*TestFunc) (int32_t, uint8_t *) func)
+{
+  int i;
+  uint8_t arr[4][4];
+  int32_t vals[4];
+  uint8_t[4] * _1;
+  int _2;
+  unsigned int i.0_3;
+
+  <bb 2> [local count: 214748368]:
+  vals[0] = 10;
+  vals[1] = -10;
+  vals[2] = -2147483648;
+  vals[3] = 2147483647;
+  arr[0] = "\x00";
+  arr[1] = "\x01\x02\x03\x04";
+  arr[2] = "\x05\x06\x07\b";
+  arr[3] = "\t\n\v\f";
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 858993457]:
+  _1 = &arr[i_4];
+  _2 = vals[i_4];
+  func_17(D) (_2, _1);
+  i_19 = i_4 + 1;
+
+  <bb 4> [local count: 1073741824]:
+  # i_4 = PHI <0(2), i_19(3)>
+  i.0_3 = (unsigned int) i_4;
+  if (i.0_3 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 5>; [20.00%]
+
+  <bb 5> [local count: 214748368]:
+  vals ={v} {CLOBBER};
+  arr ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function complexFunction (complexFunction, funcdef_no=44, decl_uid=3247, cgraph_uid=45, symbol_order=44)
+
+void complexFunction ()
+{
+  int i;
+  struct MyStruct s;
+  struct MyStruct D.3417;
+  const int s$data;
+  uint32_t h;
+  int i;
+  struct MyStruct s;
+  int i;
+  uint8_t arr[4][4];
+  int32_t vals[4];
+  uint8_t[4] * _1;
+  int _2;
+  unsigned int i.1_3;
+  unsigned char _23;
+  unsigned int _24;
+  sizetype _33;
+  const uint8_t * _34;
+  unsigned char _35;
+
+  <bb 2> [local count: 53687093]:
+  vals[0] = 10;
+  vals[1] = -10;
+  vals[2] = -2147483648;
+  vals[3] = 2147483647;
+  arr[0] = "\x00";
+  arr[1] = "\x01\x02\x03\x04";
+  arr[2] = "\x05\x06\x07\b";
+  arr[3] = "\t\n\v\f";
+  goto <bb 10>; [100.00%]
+
+  <bb 3> [local count: 214748368]:
+  _1 = &arr[i_4];
+  _2 = vals[i_4];
+  MEM <char[4]> [(struct  *)&s + 4B] = {};
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 858993457]:
+  _33 = (sizetype) i_32;
+  _34 = _1 + _33;
+  _35 = *_34;
+  s.buffer[i_32] = _35;
+  i_36 = i_32 + 1;
+
+  <bb 5> [local count: 1073741824]:
+  # i_32 = PHI <0(3), i_36(4)>
+  if (i_32 != 4)
+    goto <bb 4>; [80.00%]
+  else
+    goto <bb 6>; [20.00%]
+
+  <bb 6> [local count: 214748368]:
+  s.data = _2;
+  D.3417 = s;
+  s ={v} {CLOBBER};
+  s = D.3417;
+  s$data_15 = s.data;
+  __printf_chk (1, "%d\n", s$data_15);
+  h_21 = (uint32_t) s$data_15;
+  goto <bb 8>; [100.00%]
+
+  <bb 7> [local count: 858993457]:
+  _23 = s.buffer[i_22];
+  _24 = (unsigned int) _23;
+  h_26 = _24 + h_25;
+  i_27 = i_22 + 1;
+
+  <bb 8> [local count: 1073741824]:
+  # h_25 = PHI <h_21(6), h_26(7)>
+  # i_22 = PHI <0(6), i_27(7)>
+  if (i_22 != 4)
+    goto <bb 7>; [80.00%]
+  else
+    goto <bb 9>; [20.00%]
+
+  <bb 9> [local count: 214748368]:
+  # h_29 = PHI <h_25(8)>
+  __printf_chk (1, "%u\n", h_29);
+  s ={v} {CLOBBER};
+  i_20 = i_4 + 1;
+
+  <bb 10> [local count: 268435461]:
+  # i_4 = PHI <0(2), i_20(9)>
+  i.1_3 = (unsigned int) i_4;
+  if (i.1_3 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 11>; [20.00%]
+
+  <bb 11> [local count: 53687093]:
+  vals ={v} {CLOBBER};
+  arr ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function complexMacroTest (complexMacroTest, funcdef_no=49, decl_uid=3257, cgraph_uid=46, symbol_order=45)
+
+void complexMacroTest ()
+{
+  <bb 2> [local count: 53687093]:
+  complexFunction (); [tail call]
+  return;
+
+}
+
+
+
+;; Function runComplexTests (runComplexTests, funcdef_no=51, decl_uid=3268, cgraph_uid=47, symbol_order=46)
+
+void runComplexTests ()
+{
+  <bb 2> [local count: 53687093]:
+  complexFunction (); [tail call]
+  return;
+
+}
+
+
+
+;; Function main (main, funcdef_no=47, decl_uid=3278, cgraph_uid=48, symbol_order=47) (executed once)
+
+int main ()
+{
+  <bb 2> [local count: 1073741824]:
+  runTests (testFunction);
+  complexFunction ();
+  complexFunction ();
+  complexFunction ();
+  return 0;
+
+}
+
+

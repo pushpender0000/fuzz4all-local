@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "004300",
+    "target": "c",
+    "source_file": "004300.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": true,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 0,
+    "clang_tidy_output": "/tmp/gcc_fuzz_2pgbg1c1/t.c:15:50: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define CREATESTRUCT(val, arr) ((MyStruct){val, {arr[0], arr[1], arr[2], arr[3]}})\n                                                 ^\n                                                 (  )\n/tmp/gcc_fuzz_2pgbg1c1/t.c:15:58: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define CREATESTRUCT(val, arr) ((MyStruct){val, {arr[0], arr[1], arr[2], arr[3]}})\n                                                         ^\n                                                         (  )\n/tmp/gcc_fuzz_2pgbg1c1/t.c:15:66: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define CREATESTRUCT(val, arr) ((MyStruct){val, {arr[0], arr[1], arr[2], arr[3]}})\n                                                                 ^\n                                                                 (  )\n/tmp/gcc_fuzz_2pgbg1c1/t.c:15:74: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define CREATESTRUCT(val, arr) ((MyStruct){val, {arr[0], arr[1], arr[2], arr[3]}})\n                                                                         ^\n                                                                         (  )\n\n453 warnings generated.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "gcc /tmp/gcc_fuzz_2pgbg1c1/t.c -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -o /tmp/gcc_fuzz_2pgbg1c1/t.c.asan.out",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "10\n20\n30\n40\n50\n60\n80\n90\n100\n110\n120\n150\n160\n170\n180\n190\n200\n220\n230\n240\n250\n270\n290\n300\n310\n320\n330\n340\n360\n370\n380\n400\n410\n430\n440\n450\n460\n470\n480\n100\n144\n110\n154\n120\n164\n130\n174\n140\n184\n150\n194\n160\n204\n170\n214\n180\n224\n190\n234\n200\n244\n210\n254\n220\n264\n230\n274\n240\n284\n250\n294\n260\n304\n270\n314\n280\n324\n290\n334\n300\n344\n310\n354\n320\n364\n330\n374\n340\n384",
+    "sanitizer_passed": true,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "gcc /tmp/gcc_fuzz_2pgbg1c1/t.c -std=c11 -O0 -w -pipe -o /tmp/gcc_fuzz_2pgbg1c1/o0.out",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "gcc /tmp/gcc_fuzz_2pgbg1c1/t.c -std=c11 -O2 -w -pipe -o /tmp/gcc_fuzz_2pgbg1c1/o2.out",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "10\n20\n30\n40\n50\n60\n80\n90\n100\n110\n120\n150\n160\n170\n180\n190\n200\n220\n230\n240\n250\n270\n290\n300\n310\n320\n330\n340\n360\n370\n380\n400\n410\n430\n440\n450\n460\n470\n480\n100\n144\n110\n154\n120\n164\n130\n174\n140\n184\n150\n194\n160\n204\n170\n214\n180\n224\n190\n234\n200\n244\n210\n254\n220\n264\n230\n274\n240\n284\n250\n294\n260\n304\n270\n314\n280\n324\n290\n334\n300\n344\n310\n354\n320\n364\n330\n374\n340\n384",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "10\n20\n30\n40\n50\n60\n80\n90\n100\n110\n120\n150\n160\n170\n180\n190\n200\n220\n230\n240\n250\n270\n290\n300\n310\n320\n330\n340\n360\n370\n380\n400\n410\n430\n440\n450\n460\n470\n480\n100\n144\n110\n154\n120\n164\n130\n174\n140\n184\n150\n194\n160\n204\n170\n214\n180\n224\n190\n234\n200\n244\n210\n254\n220\n264\n230\n274\n240\n284\n250\n294\n260\n304\n270\n314\n280\n324\n290\n334\n300\n344\n310\n354\n320\n364\n330\n374\n340\n384",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": true
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "N/A",
+    "finding_details": ""
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

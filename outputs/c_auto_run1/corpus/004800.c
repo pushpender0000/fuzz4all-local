@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <stdint.h>
+
+#define ARRAY_SIZE 50
+
+// Macro to calculate a more complex hash for structs
+#define HASH(s) ((uint32_t)(s)->data + (s)->bytes[0] * 2 - (s)->bytes[1] / 3 + (s)->bytes[2] * 4 ^ (s)->bytes[3])
+
+typedef struct {
+    int32_t data;
+    uint8_t bytes[4];
+} MyStruct;
+
+// Macro to create a complex struct initialization
+#define CREATESTRUCT(val, arr) ((MyStruct){val, {arr[0] + 1, arr[1] * 2, arr[2] - 3, arr[3] ^ 4}})
+
+typedef void (*TestFunc)(int32_t, uint8_t[4]);
+
+// Function to run tests with a function pointer using complex parameters
+void runTests(TestFunc func) {
+    int32_t vals[] = {10, -10, 300, -300};
+    uint8_t arr[][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+    for (int i = 0; i < sizeof(vals) / sizeof(vals[0]); ++i) {
+        func(vals[i], arr[i]);
+    }
+}
+
+// Function to print the data part of a struct with complex formatting
+void printStruct(const MyStruct *s) {
+    printf("%d\n", s->data);
+}
+
+MyStruct arrayOfStructs[ARRAY_SIZE];
+
+// Function to initialize the array of structs with given values and complex conditions
+void initializeArray() {
+    uint8_t initialArray[] = {1, 2, 3, 4};
+    for (int i = 0; i < ARRAY_SIZE; ++i) {
+        if (i % 7 == 0 || i % 13 == 0) { // Avoid specific indices to avoid undefined behavior
+            continue;
+        }
+        arrayOfStructs[i] = CREATESTRUCT(10 * i, initialArray);
+    }
+}
+
+// Function to perform a complex operation with an offset and new bytes including undefined behavior (accessing out of bounds)
+void complexFunction(int32_t offset, uint8_t newBytes[4]) {
+    if (offset >= 0 && offset < ARRAY_SIZE) {
+        arrayOfStructs[offset] = CREATESTRUCT(100 + 10 * offset, newBytes);
+    } else {
+        printf("Offset out of bounds\n");
+    }
+}
+
+// Function to test the function pointer usage with complex parameters
+void testFunction(int32_t x, uint8_t y[4]) {
+    MyStruct s = CREATESTRUCT(x, y);
+    printStruct(&s);
+    printf("%u\n", HASH(&s));
+}
+
+typedef void (*TestFuncPtr)(int32_t, uint8_t[4]);
+
+void runTestsWithPointer(TestFuncPtr func) {
+    int32_t vals[] = {10, -10, 300, -300};
+    uint8_t arr[][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+    for (int i = 0; i < sizeof(vals) / sizeof(vals[0]); ++i) {
+        func(vals[i], arr[i]);
+    }
+}
+
+// Main function to initialize the array and run tests with a function pointer
+int main() {
+    initializeArray();
+    runTestsWithPointer(testFunction);
+    uint32_t totalHash = 0;
+    for (int i = 0; i < ARRAY_SIZE; ++i) {
+        if (i % 3 == 0) { // Skip every third element to avoid simple patterns and potential UB
+            continue;
+        }
+        totalHash += HASH(&arrayOfStructs[i]);
+    }
+    printf("Total Hash: %u\n", totalHash);
+
+    return 0;
+}

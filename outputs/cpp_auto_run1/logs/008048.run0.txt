@@ -1,0 +1,6 @@
+rc=2 ok=False timeout=False crash_like=False
+
+==== STDOUT ====
+
+==== STDERR ====
+Rejected by static UB scan

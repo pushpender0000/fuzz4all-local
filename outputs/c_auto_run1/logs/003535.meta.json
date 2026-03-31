@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "003535",
+    "target": "c",
+    "source_file": "003535.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": true,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 0,
+    "clang_tidy_output": "/tmp/gcc_fuzz_fjku6pk5/t.c:21:65: warning: incompatible pointer to integer conversion initializing 'uint8_t' (aka 'unsigned char') with an expression of type 'ByteArr' (aka 'unsigned char[4]') [clang-diagnostic-int-conversion]\n        arrayOfStructs[i] = (MyStruct){.data = 10 * i, .bytes = initialArray};\n                                                                ^~~~~~~~~~~~\n/tmp/gcc_fuzz_fjku6pk5/t.c:47:23: warning: incompatible pointer types passing 'ByteArr[4]' (aka 'unsigned char[4][4]') to parameter of type 'uint8_t *' (aka 'unsigned char *') [clang-diagnostic-incompatible-pointer-types]\n        func(vals[i], arr[i]);\n                      ^~~~~~\n/tmp/gcc_fuzz_fjku6pk5/t.c:52:39: warning: incompatible pointer to integer conversion initializing 'uint8_t' (aka 'unsigned char') with an expression of type 'uint8_t *' (aka 'unsigned char *'); dereference with * [clang-diagnostic-int-conversion]\n    MyStruct s = {.data = x, .bytes = y};\n                                      ^\n                                      *\n/tmp/gcc_fuzz_fjku6pk5/t.c:70:81: warning: incompatible pointer to integer conversion initializing 'uint8_t' (aka 'unsigned char') with an expression of type 'uint8_t *' (aka 'unsigned char *'); dereference with * [clang-diagnostic-int-conversion]\n        arrayOfStructs[offset] = (MyStruct){.data = 100 + 10 * offset, .bytes = newBytes};\n                                                                                ^~~~~~~~\n                                                                                *\n/tmp/gcc_fuzz_fjku6pk5/t.c:77:39: warning: incompatible pointer to integer conversion initializing 'uint8_t' (aka 'unsigned char') with an expression of type 'uint8_t *' (aka 'unsigned char *'); dereference with * [clang-diagnostic-int-conversion]\n    MyStruct s = {.data = x, .bytes = y};\n                                      ^\n                                      *\n/tmp/gcc_fuzz_fjku6pk5/t.c:88:23: warning: incompatible pointer types passing 'ByteArr[4]' (aka 'unsigned char[4][4]') to parameter of type 'uint8_t *' (aka 'unsigned char *') [clang-diagnostic-incompatible-pointer-types]\n        func(vals[i], arr[i]);\n                      ^~~~~~\n/tmp/gcc_fuzz_fjku6pk5/t.c:111:5: warning: implicit declaration of function 'printArray' is invalid in C99 [clang-diagnostic-implicit-function-declaration]\n    printArray();\n    ^\n\n456 warnings generated.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "gcc /tmp/gcc_fuzz_fjku6pk5/t.c -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -o /tmp/gcc_fuzz_fjku6pk5/t.c.asan.out",
+    "sanitizer_compile_rc": 1,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "/tmp/gcc_fuzz_fjku6pk5/t.c: In function \u2018initializeArray\u2019:\n/tmp/gcc_fuzz_fjku6pk5/t.c:21:65: warning: initialization of \u2018unsigned char\u2019 from \u2018uint8_t *\u2019 {aka \u2018unsigned char *\u2019} makes integer from pointer without a cast [-Wint-conversion]\n   21 |         arrayOfStructs[i] = (MyStruct){.data = 10 * i, .bytes = initialArray};\n      |                                                                 ^~~~~~~~~~~~\n/tmp/gcc_fuzz_fjku6pk5/t.c:21:65: note: (near initialization for \u2018(anonymous).bytes[0]\u2019)\n/tmp/gcc_fuzz_fjku6pk5/t.c: In function \u2018runTests\u2019:\n/tmp/gcc_fuzz_fjku6pk5/t.c:47:26: warning: passing argument 2 of \u2018func\u2019 from incompatible pointer type [-Wincompatible-pointer-types]\n   47 |         func(vals[i], arr[i]);\n      |                       ~~~^~~\n      |                          |\n      |                          uint8_t (*)[4] {aka unsigned char (*)[4]}\n/tmp/gcc_fuzz_fjku6pk5/t.c:47:26: note: expected \u2018uint8_t *\u2019 {aka \u2018unsigned char *\u2019} but argument is of type \u2018uint8_t (*)[4]\u2019 {aka \u2018unsigned char (*)[4]\u2019}\n/tmp/gcc_fuzz_fjku6pk5/t.c: In function \u2018testFunction\u2019:\n/tmp/gcc_fuzz_fjku6pk5/t.c:52:39: warning: initialization of \u2018unsigned char\u2019 from \u2018uint8_t *\u2019 {aka \u2018unsigned char *\u2019} makes integer from pointer without a cast [-Wint-conversion]\n   52 |     MyStruct s = {.data = x, .bytes = y};\n      |                                       ^\n/tmp/gcc_fuzz_fjku6pk5/t.c:52:39: note: (near initialization for \u2018s.bytes[0]\u2019)\n/tmp/gcc_fuzz_fjku6pk5/t.c: In function \u2018complexFunction\u2019:\n/tmp/gcc_fuzz_fjku6pk5/t.c:70:81: warning: initialization of \u2018unsigned char\u2019 from \u2018uint8_t *\u2019 {aka \u2018unsigned char *\u2019} makes integer from pointer without a cast [-Wint-conversion]\n   70 |         arrayOfStructs[offset] = (MyStruct){.data = 100 + 10 * offset, .bytes = newBytes};\n      |                                                                                 ^~~~~~~~\n/tmp/gcc_fuzz_fjku6pk5/t.c:70:81: note: (near initialization for \u2018(anonymous).bytes[0]\u2019)\n/tmp/gcc_fuzz_fjku6pk5/t.c: In function \u2018testFunctionWithPointer\u2019:\n/tmp/gcc_fuzz_fjku6pk5/t.c:77:39: warning: initialization of \u2018unsigned char\u2019 from \u2018uint8_t *\u2019 {aka \u2018unsigned char *\u2019} makes integer from pointer without a cast [-Wint-conversion]\n   77 |     MyStruct s = {.data = x, .bytes = y};\n      |                                       ^\n/tmp/gcc_fuzz_fjku6pk5/t.c:77:39: note: (near initialization for \u2018s.bytes[0]\u2019)\n/tmp/gcc_fuzz_fjku6pk5/t.c: In function \u2018runTestsWithPointer\u2019:\n/tmp/gcc_fuzz_fjku6pk5/t.c:88:26: warning: passing argument 2 of \u2018func\u2019 from incompatible pointer type [-Wincompatible-pointer-types]\n   88 |         func(vals[i], arr[i]);\n      |                       ~~~^~~\n      |                          |\n      |                          uint8_t (*)[4] {aka unsigned char (*)[4]}\n/tmp/gcc_fuzz_fjku6pk5/t.c:88:26: note: expected \u2018uint8_t *\u2019 {aka \u2018unsigned char *\u2019} but argument is of type \u2018uint8_t (*)[4]\u2019 {aka \u2018unsigned char (*)[4]\u2019}\n/tmp/gcc_fuzz_fjku6pk5/t.c: In function \u2018main\u2019:\n/tmp/gcc_fuzz_fjku6pk5/t.c:111:5: warning: implicit declaration of function \u2018printArray\u2019 [-Wimplicit-function-declaration]\n  111 |     printArray();\n      |     ^~~~~~~~~~\n/usr/bin/ld: /tmp/ccmRyPln.o: in function `main':\n/tmp/gcc_fuzz_fjku6pk5/t.c:111: undefined reference to `printArray'\ncollect2: error: ld returned 1 exit status",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "sanitizer",
+    "finding_details": "Rejected by ASan/UBSan gate (UB/crash/runtime error)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

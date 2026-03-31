@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "003435",
+    "target": "c",
+    "source_file": "003435.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": true,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 0,
+    "clang_tidy_output": "/tmp/gcc_fuzz_0ctgz9_5/t.c:49:48: warning: incompatible pointer to integer conversion initializing 'uint8_t' (aka 'unsigned char') with an expression of type 'uint8_t[4]' (aka 'unsigned char[4]') [clang-diagnostic-int-conversion]\n        arrayOfStructs[i] = (MyStruct){10 * i, initialArray};\n                                               ^~~~~~~~~~~~\n/tmp/gcc_fuzz_0ctgz9_5/t.c:75:64: warning: incompatible pointer to integer conversion initializing 'uint8_t' (aka 'unsigned char') with an expression of type 'uint8_t *' (aka 'unsigned char *'); dereference with * [clang-diagnostic-int-conversion]\n        arrayOfStructs[offset] = (MyStruct){100 + 10 * offset, newBytes};\n                                                               ^~~~~~~~\n                                                               *\n\n451 warnings generated.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "gcc /tmp/gcc_fuzz_0ctgz9_5/t.c -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -o /tmp/gcc_fuzz_0ctgz9_5/t.c.asan.out",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "21\n21\n351\n4294967067\nTotal Hash: 147384\nAfter complex function call:\nUpdated Total Hash: 147420\n21\n21\n351\n4294967067\nAfter second set of tests:\nUpdated Total Hash after second set: 147420",
+    "sanitizer_passed": true,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "gcc /tmp/gcc_fuzz_0ctgz9_5/t.c -std=c11 -O0 -w -pipe -o /tmp/gcc_fuzz_0ctgz9_5/o0.out",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "gcc /tmp/gcc_fuzz_0ctgz9_5/t.c -std=c11 -O2 -w -pipe -o /tmp/gcc_fuzz_0ctgz9_5/o2.out",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "21\n21\n351\n4294967067\nTotal Hash: 124488\nAfter complex function call:\nUpdated Total Hash: 124748\n21\n21\n351\n4294967067\nAfter second set of tests:\nUpdated Total Hash after second set: 124748",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "21\n21\n351\n4294967067\nTotal Hash: 141448\nAfter complex function call:\nUpdated Total Hash: 141676\n21\n21\n351\n4294967067\nAfter second set of tests:\nUpdated Total Hash after second set: 141676",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "DIFF",
+    "finding_stage": "execute",
+    "finding_details": "Potential miscompilation: -O0 vs -O2 execution outputs/rc differ."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

@@ -1,0 +1,663 @@
+
+;; Function printf (printf, funcdef_no=15, decl_uid=964, cgraph_uid=16, symbol_order=15)
+
+
+
+ local analysis of printf/15
+   scanning: _4 = __printf_chk (1, __fmt_2(D), __builtin_va_arg_pack ());
+  scanning: return _4;
+Function is locally looping.
+Function can locally free.
+__attribute__((artificial, gnu_inline, always_inline))
+__attribute__((nonnull (1), format (printf, 1, 2)))
+int printf (const char * restrict __fmt)
+{
+  int _4;
+
+  <bb 2> [local count: 1073741824]:
+  _4 = __printf_chk (1, __fmt_2(D), __builtin_va_arg_pack ());
+  return _4;
+
+}
+
+
+
+;; Function createStruct (createStruct, funcdef_no=39, decl_uid=3212, cgraph_uid=40, symbol_order=39)
+
+
+
+ local analysis of createStruct/39
+   scanning: MEM <char[4]> [(struct  *)&s + 4B] = {};
+    Indirect ref to local or readonly memory is OK
+  scanning: _1 = (sizetype) i_4;
+  scanning: _2 = arr_13(D) + _1;
+  scanning: _3 = *_2;
+    Indirect ref read is not const
+  scanning: s.buffer[i_4] = _3;
+  scanning: i_15 = i_4 + 1;
+  scanning: if (i_4 != 4)
+  scanning: s.data = val_8(D);
+  scanning: D.3281 = s;
+  scanning: s ={v} {CLOBBER};
+  scanning: return D.3281;
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5
+;;
+;; Loop 1
+;;  header 4, latch 3
+;;  depth 1, outer 0
+;;  nodes: 4 3
+;; 2 succs { 4 }
+;; 3 succs { 4 }
+;; 4 succs { 3 5 }
+;; 5 succs { 1 }
+Function is locally pure.
+Function found to be pure: createStruct
+Declaration updated to be pure: createStruct
+__attribute__((access ("^1[ ]", )))
+struct MyStruct createStruct (int32_t val, const uint8_t * arr)
+{
+  int s$data;
+  int i;
+  struct MyStruct s;
+  struct MyStruct D.3281;
+  sizetype _1;
+  const uint8_t * _2;
+  unsigned char _3;
+
+  <bb 2> [local count: 214748368]:
+  MEM <char[4]> [(struct  *)&s + 4B] = {};
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 858993457]:
+  _1 = (sizetype) i_4;
+  _2 = arr_13(D) + _1;
+  _3 = *_2;
+  s.buffer[i_4] = _3;
+  i_15 = i_4 + 1;
+
+  <bb 4> [local count: 1073741824]:
+  # i_4 = PHI <0(2), i_15(3)>
+  if (i_4 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 5>; [20.00%]
+
+  <bb 5> [local count: 214748368]:
+  s.data = val_8(D);
+  D.3281 = s;
+  s ={v} {CLOBBER};
+  return D.3281;
+
+}
+
+
+
+;; Function printStruct (printStruct, funcdef_no=40, decl_uid=3221, cgraph_uid=41, symbol_order=40)
+
+
+
+ local analysis of printStruct/40
+   scanning: _1 = s_3(D)->data;
+    Indirect ref read is not const
+  scanning: __printf_chk (1, "%d\n", _1);
+  scanning: return;
+Function is locally looping.
+Function can locally free.
+void printStruct (const struct MyStruct * s)
+{
+  int _1;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = s_3(D)->data;
+  __printf_chk (1, "%d\n", _1);
+  return;
+
+}
+
+
+
+;; Function hashStruct (hashStruct, funcdef_no=41, decl_uid=3224, cgraph_uid=42, symbol_order=41)
+
+
+
+ local analysis of hashStruct/41
+   scanning: _1 = s_7(D)->data;
+    Indirect ref read is not const
+  scanning: h_8 = (uint32_t) _1;
+  scanning: _2 = s_7(D)->buffer[i_5];
+    Indirect ref read is not const
+  scanning: _3 = (unsigned int) _2;
+  scanning: h_11 = _3 + h_4;
+  scanning: i_12 = i_5 + 1;
+  scanning: if (i_5 != 4)
+  scanning: return h_9;
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5
+;;
+;; Loop 1
+;;  header 4, latch 3
+;;  depth 1, outer 0
+;;  nodes: 4 3
+;; 2 succs { 4 }
+;; 3 succs { 4 }
+;; 4 succs { 3 5 }
+;; 5 succs { 1 }
+Function is locally pure.
+Function found to be pure: hashStruct
+Declaration updated to be pure: hashStruct
+uint32_t hashStruct (const struct MyStruct * s)
+{
+  int i;
+  uint32_t h;
+  int _1;
+  unsigned char _2;
+  unsigned int _3;
+
+  <bb 2> [local count: 214748368]:
+  _1 = s_7(D)->data;
+  h_8 = (uint32_t) _1;
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 858993457]:
+  _2 = s_7(D)->buffer[i_5];
+  _3 = (unsigned int) _2;
+  h_11 = _3 + h_4;
+  i_12 = i_5 + 1;
+
+  <bb 4> [local count: 1073741824]:
+  # h_4 = PHI <h_8(2), h_11(3)>
+  # i_5 = PHI <0(2), i_12(3)>
+  if (i_5 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 5>; [20.00%]
+
+  <bb 5> [local count: 214748368]:
+  # h_9 = PHI <h_4(4)>
+  return h_9;
+
+}
+
+
+
+;; Function testFunction (testFunction, funcdef_no=42, decl_uid=3234, cgraph_uid=43, symbol_order=42)
+
+
+
+ local analysis of testFunction/42
+   scanning: s = createStruct (x_3(D), &y);
+  scanning: s$data_17 = s.data;
+  scanning: __printf_chk (1, "%d\n", s$data_17);
+  scanning: h_10 = (uint32_t) s$data_17;
+  scanning: _12 = s.buffer[i_11];
+  scanning: _13 = (unsigned int) _12;
+  scanning: h_15 = _13 + h_14;
+  scanning: i_16 = i_11 + 1;
+  scanning: if (i_11 != 4)
+  scanning: __printf_chk (1, "%u\n", h_18);
+  scanning: s ={v} {CLOBBER};
+  scanning: return;
+Function is locally looping.
+Function can locally free.
+__attribute__((access ("^1[ ]", )))
+void testFunction (int32_t x, uint8_t * y)
+{
+  const int s$data;
+  uint32_t h;
+  int i;
+  uint32_t D.3313;
+  struct MyStruct s;
+  unsigned char _12;
+  unsigned int _13;
+
+  <bb 2> [local count: 214748368]:
+  s = createStruct (x_3(D), &y);
+  s$data_17 = s.data;
+  __printf_chk (1, "%d\n", s$data_17);
+  h_10 = (uint32_t) s$data_17;
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 858993457]:
+  _12 = s.buffer[i_11];
+  _13 = (unsigned int) _12;
+  h_15 = _13 + h_14;
+  i_16 = i_11 + 1;
+
+  <bb 4> [local count: 1073741824]:
+  # h_14 = PHI <h_10(2), h_15(3)>
+  # i_11 = PHI <0(2), i_16(3)>
+  if (i_11 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 5>; [20.00%]
+
+  <bb 5> [local count: 214748368]:
+  # h_18 = PHI <h_14(4)>
+  __printf_chk (1, "%u\n", h_18);
+  s ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function runTests (runTests, funcdef_no=43, decl_uid=3238, cgraph_uid=44, symbol_order=43)
+
+
+
+ local analysis of runTests/43
+   scanning: vals[0] = 10;
+  scanning: vals[1] = -10;
+  scanning: vals[2] = -2147483648;
+  scanning: vals[3] = 2147483647;
+  scanning: arr[0] = "\x00";
+  scanning: arr[1] = "\x01\x02\x03\x04";
+  scanning: arr[2] = "\x05\x06\x07\b";
+  scanning: arr[3] = "\t\n\v\f";
+  scanning: _1 = &arr[i_4];
+  scanning: _2 = vals[i_4];
+  scanning: func_18(D) (_2, _1);
+  scanning: i_20 = i_4 + 1;
+  scanning: i.0_3 = (unsigned int) i_4;
+  scanning: if (i.0_3 != 4)
+  scanning: vals ={v} {CLOBBER};
+  scanning: arr ={v} {CLOBBER};
+  scanning: return;
+Function is locally looping.
+void runTests (void (*TestFunc) (int32_t, uint8_t *) func)
+{
+  int i;
+  uint8_t arr[4][4];
+  int32_t vals[4];
+  uint8_t[4] * _1;
+  int _2;
+  unsigned int i.0_3;
+
+  <bb 2> [local count: 214748368]:
+  vals[0] = 10;
+  vals[1] = -10;
+  vals[2] = -2147483648;
+  vals[3] = 2147483647;
+  arr[0] = "\x00";
+  arr[1] = "\x01\x02\x03\x04";
+  arr[2] = "\x05\x06\x07\b";
+  arr[3] = "\t\n\v\f";
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 858993457]:
+  _1 = &arr[i_4];
+  _2 = vals[i_4];
+  func_18(D) (_2, _1);
+  i_20 = i_4 + 1;
+
+  <bb 4> [local count: 1073741824]:
+  # i_4 = PHI <0(2), i_20(3)>
+  i.0_3 = (unsigned int) i_4;
+  if (i.0_3 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 5>; [20.00%]
+
+  <bb 5> [local count: 214748368]:
+  vals ={v} {CLOBBER};
+  arr ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function complexFunction (complexFunction, funcdef_no=44, decl_uid=3247, cgraph_uid=45, symbol_order=44)
+
+
+
+ local analysis of complexFunction/44
+   scanning: vals[0] = 10;
+  scanning: vals[1] = -10;
+  scanning: vals[2] = -2147483648;
+  scanning: vals[3] = 2147483647;
+  scanning: arr[0] = "\x00";
+  scanning: arr[1] = "\x01\x02\x03\x04";
+  scanning: arr[2] = "\x05\x06\x07\b";
+  scanning: arr[3] = "\t\n\v\f";
+  scanning: _1 = &arr[i_5];
+  scanning: _2 = vals[i_5];
+  scanning: s = createStruct (_2, _1);
+  scanning: s$data_16 = s.data;
+  scanning: __printf_chk (1, "%d\n", s$data_16);
+  scanning: h_26 = (uint32_t) s$data_16;
+  scanning: _28 = s.buffer[i_27];
+  scanning: _29 = (unsigned int) _28;
+  scanning: h_31 = _29 + h_30;
+  scanning: i_32 = i_27 + 1;
+  scanning: if (i_27 != 4)
+  scanning: __printf_chk (1, "%u\n", h_34);
+  scanning: s ={v} {CLOBBER};
+  scanning: i_24 = i_5 + 1;
+  scanning: i.1_4 = (unsigned int) i_5;
+  scanning: if (i.1_4 != 4)
+  scanning: vals ={v} {CLOBBER};
+  scanning: arr ={v} {CLOBBER};
+  scanning: return;
+Function is locally looping.
+Function can locally free.
+void complexFunction ()
+{
+  const int s$data;
+  uint32_t h;
+  int i;
+  uint32_t D.3323;
+  struct MyStruct s;
+  int i;
+  uint8_t arr[4][4];
+  int32_t vals[4];
+  uint8_t[4] * _1;
+  int _2;
+  unsigned int i.1_4;
+  unsigned char _28;
+  unsigned int _29;
+
+  <bb 2> [local count: 53687093]:
+  vals[0] = 10;
+  vals[1] = -10;
+  vals[2] = -2147483648;
+  vals[3] = 2147483647;
+  arr[0] = "\x00";
+  arr[1] = "\x01\x02\x03\x04";
+  arr[2] = "\x05\x06\x07\b";
+  arr[3] = "\t\n\v\f";
+  goto <bb 7>; [100.00%]
+
+  <bb 3> [local count: 214748368]:
+  _1 = &arr[i_5];
+  _2 = vals[i_5];
+  s = createStruct (_2, _1);
+  s$data_16 = s.data;
+  __printf_chk (1, "%d\n", s$data_16);
+  h_26 = (uint32_t) s$data_16;
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 858993457]:
+  _28 = s.buffer[i_27];
+  _29 = (unsigned int) _28;
+  h_31 = _29 + h_30;
+  i_32 = i_27 + 1;
+
+  <bb 5> [local count: 1073741824]:
+  # h_30 = PHI <h_26(3), h_31(4)>
+  # i_27 = PHI <0(3), i_32(4)>
+  if (i_27 != 4)
+    goto <bb 4>; [80.00%]
+  else
+    goto <bb 6>; [20.00%]
+
+  <bb 6> [local count: 214748368]:
+  # h_34 = PHI <h_30(5)>
+  __printf_chk (1, "%u\n", h_34);
+  s ={v} {CLOBBER};
+  i_24 = i_5 + 1;
+
+  <bb 7> [local count: 268435461]:
+  # i_5 = PHI <0(2), i_24(6)>
+  i.1_4 = (unsigned int) i_5;
+  if (i.1_4 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 8>; [20.00%]
+
+  <bb 8> [local count: 53687093]:
+  vals ={v} {CLOBBER};
+  arr ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function complexMacroTest (complexMacroTest, funcdef_no=45, decl_uid=3257, cgraph_uid=46, symbol_order=45)
+
+
+
+ local analysis of complexMacroTest/45
+   scanning: vals[0] = 10;
+  scanning: vals[1] = -10;
+  scanning: vals[2] = -2147483648;
+  scanning: vals[3] = 2147483647;
+  scanning: arr[0] = "\x00";
+  scanning: arr[1] = "\x01\x02\x03\x04";
+  scanning: arr[2] = "\x05\x06\x07\b";
+  scanning: arr[3] = "\t\n\v\f";
+  scanning: _1 = &arr[i_5];
+  scanning: _2 = vals[i_5];
+  scanning: s = createStruct (_2, _1);
+  scanning: s$data_16 = s.data;
+  scanning: __printf_chk (1, "%d\n", s$data_16);
+  scanning: h_27 = (uint32_t) s$data_16;
+  scanning: _29 = s.buffer[i_28];
+  scanning: _30 = (unsigned int) _29;
+  scanning: h_32 = _30 + h_31;
+  scanning: i_33 = i_28 + 1;
+  scanning: if (i_28 != 4)
+  scanning: __printf_chk (1, "%u\n", h_35);
+  scanning: s ={v} {CLOBBER};
+  scanning: i_25 = i_5 + 1;
+  scanning: i.2_4 = (unsigned int) i_5;
+  scanning: if (i.2_4 != 4)
+  scanning: vals ={v} {CLOBBER};
+  scanning: arr ={v} {CLOBBER};
+  scanning: return;
+Function is locally looping.
+Function can locally free.
+void complexMacroTest ()
+{
+  const int s$data;
+  uint32_t h;
+  int i;
+  uint32_t D.3332;
+  int D.3328;
+  struct MyStruct s;
+  int i;
+  uint8_t arr[4][4];
+  int32_t vals[4];
+  uint8_t[4] * _1;
+  int _2;
+  unsigned int i.2_4;
+  unsigned char _29;
+  unsigned int _30;
+
+  <bb 2> [local count: 53687093]:
+  vals[0] = 10;
+  vals[1] = -10;
+  vals[2] = -2147483648;
+  vals[3] = 2147483647;
+  arr[0] = "\x00";
+  arr[1] = "\x01\x02\x03\x04";
+  arr[2] = "\x05\x06\x07\b";
+  arr[3] = "\t\n\v\f";
+  goto <bb 7>; [100.00%]
+
+  <bb 3> [local count: 214748368]:
+  _1 = &arr[i_5];
+  _2 = vals[i_5];
+  s = createStruct (_2, _1);
+  s$data_16 = s.data;
+  __printf_chk (1, "%d\n", s$data_16);
+  h_27 = (uint32_t) s$data_16;
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 858993457]:
+  _29 = s.buffer[i_28];
+  _30 = (unsigned int) _29;
+  h_32 = _30 + h_31;
+  i_33 = i_28 + 1;
+
+  <bb 5> [local count: 1073741824]:
+  # h_31 = PHI <h_27(3), h_32(4)>
+  # i_28 = PHI <0(3), i_33(4)>
+  if (i_28 != 4)
+    goto <bb 4>; [80.00%]
+  else
+    goto <bb 6>; [20.00%]
+
+  <bb 6> [local count: 214748368]:
+  # h_35 = PHI <h_31(5)>
+  __printf_chk (1, "%u\n", h_35);
+  s ={v} {CLOBBER};
+  i_25 = i_5 + 1;
+
+  <bb 7> [local count: 268435461]:
+  # i_5 = PHI <0(2), i_25(6)>
+  i.2_4 = (unsigned int) i_5;
+  if (i.2_4 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 8>; [20.00%]
+
+  <bb 8> [local count: 53687093]:
+  vals ={v} {CLOBBER};
+  arr ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function runComplexTests (runComplexTests, funcdef_no=46, decl_uid=3268, cgraph_uid=47, symbol_order=46)
+
+
+
+ local analysis of runComplexTests/46
+   scanning: vals[0] = 10;
+  scanning: vals[1] = -10;
+  scanning: vals[2] = -2147483648;
+  scanning: vals[3] = 2147483647;
+  scanning: arr[0] = "\x00";
+  scanning: arr[1] = "\x01\x02\x03\x04";
+  scanning: arr[2] = "\x05\x06\x07\b";
+  scanning: arr[3] = "\t\n\v\f";
+  scanning: _1 = &arr[i_5];
+  scanning: _2 = vals[i_5];
+  scanning: s = createStruct (_2, _1);
+  scanning: s$data_16 = s.data;
+  scanning: __printf_chk (1, "%d\n", s$data_16);
+  scanning: h_26 = (uint32_t) s$data_16;
+  scanning: _28 = s.buffer[i_27];
+  scanning: _29 = (unsigned int) _28;
+  scanning: h_31 = _29 + h_30;
+  scanning: i_32 = i_27 + 1;
+  scanning: if (i_27 != 4)
+  scanning: __printf_chk (1, "%u\n", h_34);
+  scanning: s ={v} {CLOBBER};
+  scanning: i_24 = i_5 + 1;
+  scanning: i.3_4 = (unsigned int) i_5;
+  scanning: if (i.3_4 != 4)
+  scanning: vals ={v} {CLOBBER};
+  scanning: arr ={v} {CLOBBER};
+  scanning: return;
+Function is locally looping.
+Function can locally free.
+void runComplexTests ()
+{
+  const int s$data;
+  uint32_t h;
+  int i;
+  uint32_t D.3341;
+  struct MyStruct s;
+  int i;
+  uint8_t arr[4][4];
+  int32_t vals[4];
+  uint8_t[4] * _1;
+  int _2;
+  unsigned int i.3_4;
+  unsigned char _28;
+  unsigned int _29;
+
+  <bb 2> [local count: 53687093]:
+  vals[0] = 10;
+  vals[1] = -10;
+  vals[2] = -2147483648;
+  vals[3] = 2147483647;
+  arr[0] = "\x00";
+  arr[1] = "\x01\x02\x03\x04";
+  arr[2] = "\x05\x06\x07\b";
+  arr[3] = "\t\n\v\f";
+  goto <bb 7>; [100.00%]
+
+  <bb 3> [local count: 214748368]:
+  _1 = &arr[i_5];
+  _2 = vals[i_5];
+  s = createStruct (_2, _1);
+  s$data_16 = s.data;
+  __printf_chk (1, "%d\n", s$data_16);
+  h_26 = (uint32_t) s$data_16;
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 858993457]:
+  _28 = s.buffer[i_27];
+  _29 = (unsigned int) _28;
+  h_31 = _29 + h_30;
+  i_32 = i_27 + 1;
+
+  <bb 5> [local count: 1073741824]:
+  # h_30 = PHI <h_26(3), h_31(4)>
+  # i_27 = PHI <0(3), i_32(4)>
+  if (i_27 != 4)
+    goto <bb 4>; [80.00%]
+  else
+    goto <bb 6>; [20.00%]
+
+  <bb 6> [local count: 214748368]:
+  # h_34 = PHI <h_30(5)>
+  __printf_chk (1, "%u\n", h_34);
+  s ={v} {CLOBBER};
+  i_24 = i_5 + 1;
+
+  <bb 7> [local count: 268435461]:
+  # i_5 = PHI <0(2), i_24(6)>
+  i.3_4 = (unsigned int) i_5;
+  if (i.3_4 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 8>; [20.00%]
+
+  <bb 8> [local count: 53687093]:
+  vals ={v} {CLOBBER};
+  arr ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function main (main, funcdef_no=47, decl_uid=3278, cgraph_uid=48, symbol_order=47) (executed once)
+
+
+
+ local analysis of main/47
+   scanning: runTests (testFunction);
+  scanning: complexFunction ();
+  scanning: complexMacroTest ();
+  scanning: runComplexTests ();
+  scanning: return 0;
+Function is locally looping.
+int main ()
+{
+  <bb 2> [local count: 1073741824]:
+  runTests (testFunction);
+  complexFunction ();
+  complexMacroTest ();
+  runComplexTests ();
+  return 0;
+
+}
+
+

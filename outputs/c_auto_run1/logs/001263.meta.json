@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "001263",
+    "target": "c",
+    "source_file": "001263.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 2,
+    "cppcheck_output": "/tmp/gcc_fuzz_auggcz8_/t.c:63:13: style: The scope of the variable 'newBytes' can be reduced. [variableScope]\n    uint8_t newBytes[] = {9, 10, 11, 12};\n            ^",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "error: too many errors emitted, stopping now [clang-diagnostic-error]\n/tmp/gcc_fuzz_auggcz8_/t.c:22:28: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n    uint32_t h = (uint32_t)s->data; \\\n                           ^\n                           ()\n/tmp/gcc_fuzz_auggcz8_/t.c:25:18: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n            h += s->bytes[i] * 2; \\\n                 ^\n                 ()\n/tmp/gcc_fuzz_auggcz8_/t.c:27:18: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n            h += s->bytes[i] / 2; \\\n                 ^\n                 ()\n/tmp/gcc_fuzz_auggcz8_/t.c:44:20: warning: if with identical then and else branches [bugprone-branch-clone]\n    printf(\"%u\\n\", HASH_STRUCT(&s));\n                   ^\n/tmp/gcc_fuzz_auggcz8_/t.c:24:9: note: expanded from macro 'HASH_STRUCT'\n        if (i % 2 == 0) { \\\n        ^\n/tmp/gcc_fuzz_auggcz8_/t.c:44:20: note: else branch starts here\n    printf(\"%u\\n\", HASH_STRUCT(&s));\n                   ^\n/tmp/gcc_fuzz_auggcz8_/t.c:26:11: note: expanded from macro 'HASH_STRUCT'\n        } else { \\\n          ^\n/tmp/gcc_fuzz_auggcz8_/t.c:44:20: error: invalid operands to binary expression ('uint8_t *' (aka 'unsigned char *') and 'int') [clang-diagnostic-error]\n    printf(\"%u\\n\", HASH_STRUCT(&s));\n                   ^\n/tmp/gcc_fuzz_auggcz8_/t.c:25:30: note: expanded from macro 'HASH_STRUCT'\n            h += s->bytes[i] * 2; \\\n                 ~~~~~~~~~~~ ^ ~\n/tmp/gcc_fuzz_auggcz8_/t.c:44:20: error: member reference type 'MyStruct' is not a pointer; did you mean to use '.'? [clang-diagnostic-error]\n    printf(\"%u\\n\", HASH_STRUCT(&s));\n                   ^\n/tmp/gcc_fuzz_auggcz8_/t.c:22:29: note: expanded from macro 'HASH_STRUCT'\n    uint32_t h = (uint32_t)s->data; \\\n                           ~^\n/tmp/gcc_fuzz_auggcz8_/t.c:44:32: error: cannot take the address of an rvalue of type 'int32_t' (aka 'int') [clang-diagnostic-error]\n    printf(\"%u\\n\", HASH_STRUCT(&s));\n                               ^\n/tmp/gcc_fuzz_auggcz8_/t.c:22:28: note: expanded from macro 'HASH_STRUCT'\n    uint32_t h = (uint32_t)s->data; \\\n                           ^~~~~~~\n/tmp/gcc_fuzz_auggcz8_/t.c:58:26: warning: if with identical then and else branches [bugprone-branch-clone]\n            totalHash += HASH_STRUCT(&arrayOfStructs[i]);\n                         ^\n/tmp/gcc_fuzz_auggcz8_/t.c:24:9: note: expanded from macro 'HASH_STRUCT'\n        if (i % 2 == 0) { \\\n        ^\n/tmp/gcc_fuzz_auggcz8_/t.c:58:26: note: else branch starts here\n            totalHash += HASH_STRUCT(&arrayOfStructs[i]);\n                         ^\n/tmp/gcc_fuzz_auggcz8_/t.c:26:11: note: expanded from macro 'HASH_STRUCT'\n        } else { \\\n          ^\n/tmp/gcc_fuzz_auggcz8_/t.c:58:26: error: invalid operands to binary expression ('uint8_t *' (aka 'unsigned char *') and 'int') [clang-diagnostic-error]\n            totalHash += HASH_STRUCT(&arrayOfStructs[i]);\n                         ^\n/tmp/gcc_fuzz_auggcz8_/t.c:25:30: note: expanded from macro 'HASH_STRUCT'\n            h += s->bytes[i] * 2; \\\n                 ~~~~~~~~~~~ ^ ~\n/tmp/gcc_fuzz_auggcz8_/t.c:58:26: error: member reference type 'MyStruct' is not a pointer; did you mean to use '.'? [clang-diagnostic-error]\n            totalHash += HASH_STRUCT(&arrayOfStructs[i]);\n                         ^\n/tmp/gcc_fuzz_auggcz8_/t.c:22:29: note: expanded from macro 'HASH_STRUCT'\n    uint32_t h = (uint32_t)s->data; \\\n                           ~^\n/tmp/gcc_fuzz_auggcz8_/t.c:58:38: error: cannot take the address of an rvalue of type 'int32_t' (aka 'int') [clang-diagnostic-error]\n            totalHash += HASH_STRUCT(&arrayOfStructs[i]);\n                                     ^\n/tmp/gcc_fuzz_auggcz8_/t.c:22:28: note: expanded from macro 'HASH_STRUCT'\n    uint32_t h = (uint32_t)s->data; \\\n                           ^~~~~~~\n/tmp/gcc_fuzz_auggcz8_/t.c:64:10: error: use of undeclared identifier 'ARRAY_SIZE' [clang-diagnostic-error]\n    if ((ARRAY_SIZE / 2) >= 0 && (ARRAY_SIZE / 2) < ARRAY_SIZE) {\n         ^\n/tmp/gcc_fuzz_auggcz8_/t.c:64:35: error: use of undeclared identifier 'ARRAY_SIZE' [clang-diagnostic-error]\n    if ((ARRAY_SIZE / 2) >= 0 && (ARRAY_SIZE / 2) < ARRAY_SIZE) {\n                                  ^\n/tmp/gcc_fuzz_auggcz8_/t.c:64:53: error: use of undeclared identifier 'ARRAY_SIZE' [clang-diagnostic-error]\n    if ((ARRAY_SIZE / 2) >= 0 && (ARRAY_SIZE / 2) < ARRAY_SIZE) {\n                                                    ^\n/tmp/gcc_fuzz_auggcz8_/t.c:65:24: error: use of undeclared identifier 'ARRAY_SIZE' [clang-diagnostic-error]\n        arrayOfStructs[ARRAY_SIZE / 2] = (MyStruct){.data = 100 + 10 * (ARRAY_SIZE / 2), .bytes = {newBytes[0], newBytes[1], newBytes[2], newBytes[3]}};\n                       ^\n/tmp/gcc_fuzz_auggcz8_/t.c:65:73: error: use of undeclared identifier 'ARRAY_SIZE' [clang-diagnostic-error]\n        arrayOfStructs[ARRAY_SIZE / 2] = (MyStruct){.data = 100 + 10 * (ARRAY_SIZE / 2), .bytes = {newBytes[0], newBytes[1], newBytes[2], newBytes[3]}};\n                                                                        ^\n/tmp/gcc_fuzz_auggcz8_/t.c:71:25: error: use of undeclared identifier 'ARRAY_SIZE' [clang-diagnostic-error]\n    for (int i = 0; i < ARRAY_SIZE; ++i) {\n                        ^\n/tmp/gcc_fuzz_auggcz8_/t.c:73:26: warning: if with identical then and else branches [bugprone-branch-clone]\n            totalHash += HASH_STRUCT(&arrayOfStructs[i]);\n                         ^\n/tmp/gcc_fuzz_auggcz8_/t.c:24:9: note: expanded from macro 'HASH_STRUCT'\n        if (i % 2 == 0) { \\\n        ^\n/tmp/gcc_fuzz_auggcz8_/t.c:73:26: note: else branch starts here\n            totalHash += HASH_STRUCT(&arrayOfStructs[i]);\n                         ^\n/tmp/gcc_fuzz_auggcz8_/t.c:26:11: note: expanded from macro 'HASH_STRUCT'\n        } else { \\\n          ^\n/tmp/gcc_fuzz_auggcz8_/t.c:73:26: error: member reference type 'MyStruct' is not a pointer; did you mean to use '.'? [clang-diagnostic-error]\n            totalHash += HASH_STRUCT(&arrayOfStructs[i]);\n                         ^\n/tmp/gcc_fuzz_auggcz8_/t.c:22:29: note: expanded from macro 'HASH_STRUCT'\n    uint32_t h = (uint32_t)s->data; \\\n                           ~^\n\n455 warnings and 20 errors generated.\nError while processing /tmp/gcc_fuzz_auggcz8_/t.c.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

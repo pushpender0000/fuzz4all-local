@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "003046",
+    "target": "c",
+    "source_file": "003046.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": true,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 0,
+    "clang_tidy_output": "449 warnings generated.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "gcc /tmp/gcc_fuzz_1422a15o/t.c -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -o /tmp/gcc_fuzz_1422a15o/t.c.asan.out",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "10\n-10\n300\n-300\n10\n30\n20\n48\n30\n66\n50\n102\n60\n120\n70\n138\n90\n174\n100\n192\n110\n210\n130\n246\n140\n264\n150\n282\n170\n318\n180\n336\n190\n354\n210\n390\n220\n408\n230\n426\n250\n462\n260\n480\n270\n498\n290\n534\n300\n552\n310\n570\n330\n606\n340\n624\n350\n642\n370\n678\n380\n696\n390\n714\n410\n750\n420\n768\n430\n786\n450\n822\n460\n840\n470\n858\n490\n894\n500\n912\n510\n930\n530\n966\n540\n984\n550\n1002\n570\n1038\n580\n1056\n590\n1074\n610\n1110\n620\n1128\n630\n1146\n650\n1182\n660\n1200\n670\n1218\n690\n1254\n700\n1272\n710\n1290\n730\n1326\n740\n1344\n750\n1362\n770\n1398\n780\n1416\n790\n1434\n810\n1470\n820\n1488\n830\n1506\n850\n1542\n860\n1560\n870\n1578\n890\n1614\n900\n1632\n910\n1650\n930\n1686\n940\n1704\n950\n1722\n970\n1758\n980\n1776\n990\n1794",
+    "sanitizer_passed": true,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "gcc /tmp/gcc_fuzz_1422a15o/t.c -std=c11 -O0 -w -pipe -o /tmp/gcc_fuzz_1422a15o/o0.out",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "gcc /tmp/gcc_fuzz_1422a15o/t.c -std=c11 -O2 -w -pipe -o /tmp/gcc_fuzz_1422a15o/o2.out",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "10\n-10\n300\n-300\n10\n30\n20\n48\n30\n66\n50\n102\n60\n120\n70\n138\n90\n174\n100\n192\n110\n210\n130\n246\n140\n264\n150\n282\n170\n318\n180\n336\n190\n354\n210\n390\n220\n408\n230\n426\n250\n462\n260\n480\n270\n498\n290\n534\n300\n552\n310\n570\n330\n606\n340\n624\n350\n642\n370\n678\n380\n696\n390\n714\n410\n750\n420\n768\n430\n786\n450\n822\n460\n840\n470\n858\n490\n894\n500\n912\n510\n930\n530\n966\n540\n984\n550\n1002\n570\n1038\n580\n1056\n590\n1074\n610\n1110\n620\n1128\n630\n1146\n650\n1182\n660\n1200\n670\n1218\n690\n1254\n700\n1272\n710\n1290\n730\n1326\n740\n1344\n750\n1362\n770\n1398\n780\n1416\n790\n1434\n810\n1470\n820\n1488\n830\n1506\n850\n1542\n860\n1560\n870\n1578\n890\n1614\n900\n1632\n910\n1650\n930\n1686\n940\n1704\n950\n1722\n970\n1758\n980\n1776\n990\n1794",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "10\n-10\n300\n-300\n10\n30\n20\n48\n30\n66\n50\n102\n60\n120\n70\n138\n90\n174\n100\n192\n110\n210\n130\n246\n140\n264\n150\n282\n170\n318\n180\n336\n190\n354\n210\n390\n220\n408\n230\n426\n250\n462\n260\n480\n270\n498\n290\n534\n300\n552\n310\n570\n330\n606\n340\n624\n350\n642\n370\n678\n380\n696\n390\n714\n410\n750\n420\n768\n430\n786\n450\n822\n460\n840\n470\n858\n490\n894\n500\n912\n510\n930\n530\n966\n540\n984\n550\n1002\n570\n1038\n580\n1056\n590\n1074\n610\n1110\n620\n1128\n630\n1146\n650\n1182\n660\n1200\n670\n1218\n690\n1254\n700\n1272\n710\n1290\n730\n1326\n740\n1344\n750\n1362\n770\n1398\n780\n1416\n790\n1434\n810\n1470\n820\n1488\n830\n1506\n850\n1542\n860\n1560\n870\n1578\n890\n1614\n900\n1632\n910\n1650\n930\n1686\n940\n1704\n950\n1722\n970\n1758\n980\n1776\n990\n1794",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": true
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "N/A",
+    "finding_details": ""
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

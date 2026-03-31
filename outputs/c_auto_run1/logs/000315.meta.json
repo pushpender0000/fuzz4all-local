@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "000315",
+    "target": "c",
+    "source_file": "000315.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 2,
+    "cppcheck_output": "/tmp/gcc_fuzz_1x775jgk/t.c:26:0: error: failed to expand 'CREATE_STRUCT', Wrong number of parameters for macro 'CREATE_STRUCT'. [preprocessorErrorDirective]\n    ComplexStruct arr[4] = {CREATE_STRUCT(1, {1, 2, 3, 4}), CREATE_STRUCT(2, {5, 6, 7, 8}), CREATE_STRUCT(3, {9, 10, 11, 12}), CREATE_STRUCT(4, {13, 14, 15, 16})};\n^",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "/tmp/gcc_fuzz_1x775jgk/t.c:11:75: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define CREATE_STRUCT(val, arr) ((ComplexStruct){.data = (val), .bytes = {arr[0], arr[1], arr[2], arr[3]}})\n                                                                          ^\n                                                                          (  )\n/tmp/gcc_fuzz_1x775jgk/t.c:11:83: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define CREATE_STRUCT(val, arr) ((ComplexStruct){.data = (val), .bytes = {arr[0], arr[1], arr[2], arr[3]}})\n                                                                                  ^\n                                                                                  (  )\n/tmp/gcc_fuzz_1x775jgk/t.c:11:91: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define CREATE_STRUCT(val, arr) ((ComplexStruct){.data = (val), .bytes = {arr[0], arr[1], arr[2], arr[3]}})\n                                                                                          ^\n                                                                                          (  )\n/tmp/gcc_fuzz_1x775jgk/t.c:11:99: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define CREATE_STRUCT(val, arr) ((ComplexStruct){.data = (val), .bytes = {arr[0], arr[1], arr[2], arr[3]}})\n                                                                                                  ^\n                                                                                                  (  )\n/tmp/gcc_fuzz_1x775jgk/t.c:17:36: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define HASH_STRUCT(s) ((uint32_t)(s->data + s->bytes[0] * 2 + s->bytes[1] * 3 + s->bytes[2] * 4 + s->bytes[3] * 5))\n                                   ^\n                                   ()\n/tmp/gcc_fuzz_1x775jgk/t.c:17:46: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define HASH_STRUCT(s) ((uint32_t)(s->data + s->bytes[0] * 2 + s->bytes[1] * 3 + s->bytes[2] * 4 + s->bytes[3] * 5))\n                                             ^\n                                             ()\n/tmp/gcc_fuzz_1x775jgk/t.c:17:64: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define HASH_STRUCT(s) ((uint32_t)(s->data + s->bytes[0] * 2 + s->bytes[1] * 3 + s->bytes[2] * 4 + s->bytes[3] * 5))\n                                                               ^\n                                                               ()\n/tmp/gcc_fuzz_1x775jgk/t.c:17:82: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define HASH_STRUCT(s) ((uint32_t)(s->data + s->bytes[0] * 2 + s->bytes[1] * 3 + s->bytes[2] * 4 + s->bytes[3] * 5))\n                                                                                 ^\n                                                                                 ()\n/tmp/gcc_fuzz_1x775jgk/t.c:17:100: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define HASH_STRUCT(s) ((uint32_t)(s->data + s->bytes[0] * 2 + s->bytes[1] * 3 + s->bytes[2] * 4 + s->bytes[3] * 5))\n                                                                                                   ^\n                                                                                                   ()\n/tmp/gcc_fuzz_1x775jgk/t.c:26:29: error: use of undeclared identifier 'CREATE_STRUCT' [clang-diagnostic-error]\n    ComplexStruct arr[4] = {CREATE_STRUCT(1, {1, 2, 3, 4}), CREATE_STRUCT(2, {5, 6, 7, 8}), CREATE_STRUCT(3, {9, 10, 11, 12}), CREATE_STRUCT(4, {13, 14, 15, 16})};\n                            ^\n/tmp/gcc_fuzz_1x775jgk/t.c:26:50: error: too many arguments provided to function-like macro invocation [clang-diagnostic-error]\n    ComplexStruct arr[4] = {CREATE_STRUCT(1, {1, 2, 3, 4}), CREATE_STRUCT(2, {5, 6, 7, 8}), CREATE_STRUCT(3, {9, 10, 11, 12}), CREATE_STRUCT(4, {13, 14, 15, 16})};\n                                                 ^\n/tmp/gcc_fuzz_1x775jgk/t.c:11:9: note: macro 'CREATE_STRUCT' defined here\n#define CREATE_STRUCT(val, arr) ((ComplexStruct){.data = (val), .bytes = {arr[0], arr[1], arr[2], arr[3]}})\n        ^\n/tmp/gcc_fuzz_1x775jgk/t.c:26:29: note: cannot use initializer list at the beginning of a macro argument\n    ComplexStruct arr[4] = {CREATE_STRUCT(1, {1, 2, 3, 4}), CREATE_STRUCT(2, {5, 6, 7, 8}), CREATE_STRUCT(3, {9, 10, 11, 12}), CREATE_STRUCT(4, {13, 14, 15, 16})};\n                            ^                ~~~~~~~~~~~~~\n/tmp/gcc_fuzz_1x775jgk/t.c:26:61: error: use of undeclared identifier 'CREATE_STRUCT' [clang-diagnostic-error]\n    ComplexStruct arr[4] = \n...\n                                   ^                ~~~~~~~~~~~~~\n/tmp/gcc_fuzz_1x775jgk/t.c:26:93: error: use of undeclared identifier 'CREATE_STRUCT' [clang-diagnostic-error]\n    ComplexStruct arr[4] = {CREATE_STRUCT(1, {1, 2, 3, 4}), CREATE_STRUCT(2, {5, 6, 7, 8}), CREATE_STRUCT(3, {9, 10, 11, 12}), CREATE_STRUCT(4, {13, 14, 15, 16})};\n                                                                                            ^\n/tmp/gcc_fuzz_1x775jgk/t.c:26:114: error: too many arguments provided to function-like macro invocation [clang-diagnostic-error]\n    ComplexStruct arr[4] = {CREATE_STRUCT(1, {1, 2, 3, 4}), CREATE_STRUCT(2, {5, 6, 7, 8}), CREATE_STRUCT(3, {9, 10, 11, 12}), CREATE_STRUCT(4, {13, 14, 15, 16})};\n                                                                                                                 ^\n/tmp/gcc_fuzz_1x775jgk/t.c:11:9: note: macro 'CREATE_STRUCT' defined here\n#define CREATE_STRUCT(val, arr) ((ComplexStruct){.data = (val), .bytes = {arr[0], arr[1], arr[2], arr[3]}})\n        ^\n/tmp/gcc_fuzz_1x775jgk/t.c:26:93: note: cannot use initializer list at the beginning of a macro argument\n    ComplexStruct arr[4] = {CREATE_STRUCT(1, {1, 2, 3, 4}), CREATE_STRUCT(2, {5, 6, 7, 8}), CREATE_STRUCT(3, {9, 10, 11, 12}), CREATE_STRUCT(4, {13, 14, 15, 16})};\n                                                                                            ^                ~~~~~~~~~~~~~~~~\n/tmp/gcc_fuzz_1x775jgk/t.c:26:128: error: use of undeclared identifier 'CREATE_STRUCT' [clang-diagnostic-error]\n    ComplexStruct arr[4] = {CREATE_STRUCT(1, {1, 2, 3, 4}), CREATE_STRUCT(2, {5, 6, 7, 8}), CREATE_STRUCT(3, {9, 10, 11, 12}), CREATE_STRUCT(4, {13, 14, 15, 16})};\n                                                                                                                               ^\n/tmp/gcc_fuzz_1x775jgk/t.c:26:150: error: too many arguments provided to function-like macro invocation [clang-diagnostic-error]\n    ComplexStruct arr[4] = {CREATE_STRUCT(1, {1, 2, 3, 4}), CREATE_STRUCT(2, {5, 6, 7, 8}), CREATE_STRUCT(3, {9, 10, 11, 12}), CREATE_STRUCT(4, {13, 14, 15, 16})};\n                                                                                                                                                     ^\n/tmp/gcc_fuzz_1x775jgk/t.c:11:9: note: macro 'CREATE_STRUCT' defined here\n#define CREATE_STRUCT(val, arr) ((ComplexStruct){.data = (val), .bytes = {arr[0], arr[1], arr[2], arr[3]}})\n        ^\n/tmp/gcc_fuzz_1x775jgk/t.c:26:128: note: cannot use initializer list at the beginning of a macro argument\n    ComplexStruct arr[4] = {CREATE_STRUCT(1, {1, 2, 3, 4}), CREATE_STRUCT(2, {5, 6, 7, 8}), CREATE_STRUCT(3, {9, 10, 11, 12}), CREATE_STRUCT(4, {13, 14, 15, 16})};\n                                                                                                                               ^                ~~~~~~~~~~~~~~~~~\n\n458 warnings and 8 errors generated.\nError while processing /tmp/gcc_fuzz_1x775jgk/t.c.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

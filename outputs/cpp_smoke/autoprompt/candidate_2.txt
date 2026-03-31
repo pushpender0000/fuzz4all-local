@@ -1,0 +1,31 @@
+The primary focus of the C++ template feature is to enable generic programming by allowing functions, classes, and variables to operate with arbitrary types, which are specified at compile time. This capability is integral for creating libraries that can be used flexibly across various applications without sacrificing performance or type safety.
+
+### Core Concept
+- **Generic Programming**: Templates allow you to write code that works with any data type, abstracting away the specific types involved.
+- **Compile-Time Polymorphism**: Unlike run-time polymorphism (using virtual functions), templates provide compile-time polymorphism by generating multiple versions of a function or class from a template for different types.
+- **Types and Constraints**: Templates can take type parameters, which allows them to enforce type constraints at compile time. For example, you might write a template that only works with types having certain properties (like supporting arithmetic operations).
+
+### Types/Constraints
+- **Type Parameters**: Defined using `typename` or `class` keywords, these allow templates to be customized for any data type.
+- **Concepts (C++20)**: Introduced in C++20, concepts enforce additional constraints on template parameters, ensuring that the types used with a template meet specific requirements (e.g., having a certain method or operator).
+  ```cpp
+  template <typename T> concept Hashable = requires(T x) { std::hash<T>{}(x); };
+  template <Hashable T> void f(T t) {} // This function only accepts types that are hashable.
+  ```
+- **Template Specialization**: Allows for different implementations of a template to be used based on the type parameters.
+
+### Key APIs
+- **Function Templates**: Define functions that can operate with any data type.
+  ```cpp
+  template <typename T> T add(T a, T b) { return a + b; }
+  ```
+- **Class Templates**: Define classes that can be instantiated for any type.
+  ```cpp
+  template <typename T> class Box { T value; public: void set(T v) { value = v; } };
+  ```
+- **Alias Templates**: Provide a way to create aliases for types, which can also use template parameters.
+  ```cpp
+  template <typename T> using Vec = std::vector<T>;
+  ```
+
+### Trick

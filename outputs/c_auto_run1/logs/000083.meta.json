@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "000083",
+    "target": "c",
+    "source_file": "000083.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "/tmp/gcc_fuzz_rv_py6hg/t.c:15:13: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n            arr.data[i] = (start + i); \\\n            ^\n            (  )\n/tmp/gcc_fuzz_rv_py6hg/t.c:15:28: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n            arr.data[i] = (start + i); \\\n                           ^\n                           (    )\n/tmp/gcc_fuzz_rv_py6hg/t.c:23:17: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n            if (op == '+') { \\\n                ^\n                ( )\n/tmp/gcc_fuzz_rv_py6hg/t.c:24:24: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n                sum += arr.data[i]; \\\n                       ^\n                       (  )\n/tmp/gcc_fuzz_rv_py6hg/t.c:25:24: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n            } else if (op == '*') { \\\n                       ^\n                       ( )\n/tmp/gcc_fuzz_rv_py6hg/t.c:26:24: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n                sum *= arr.data[i]; \\\n                       ^\n                       (  )\n/tmp/gcc_fuzz_rv_py6hg/t.c:57:12: error: Function taking 2 arguments is called with fewer (1) [clang-analyzer-core.CallAndMessage,-warnings-as-errors]\n    return func(arr) * 2;\n           ^\n/tmp/gcc_fuzz_rv_py6hg/t.c:64:20: note: Calling 'doubleSum'\n    printf(\"%u\\n\", doubleSum(&myArray)); // Print the result of doubleSum function\n                   ^~~~~~~~~~~~~~~~~~~\n/tmp/gcc_fuzz_rv_py6hg/t.c:57:12: note: Function taking 2 arguments is called with fewer (1)\n    return func(arr) * 2;\n           ^~~~~~~~~\n\n504 warnings generated.\nSuppressed 497 warnings (497 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\n1 warning treated as error"
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

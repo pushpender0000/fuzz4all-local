@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "000066",
+    "target": "c",
+    "source_file": "000066.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 2,
+    "cppcheck_output": "/tmp/gcc_fuzz_lxhgylom/t.c:35:26: error: Array 'ls->c[10]' accessed at index 19, which is out of bounds. [arrayIndexOutOfBounds]\n            hash += ls->c[i].a[j].x + ls->c[i].a[j].y;\n                         ^\n/tmp/gcc_fuzz_lxhgylom/t.c:33:23: note: Assuming that condition 'i<20' is not redundant\n    for (int i = 0; i < ARRAY_SIZE; ++i) {\n                      ^\n/tmp/gcc_fuzz_lxhgylom/t.c:35:26: note: Array index out of bounds\n            hash += ls->c[i].a[j].x + ls->c[i].a[j].y;\n                         ^\n/tmp/gcc_fuzz_lxhgylom/t.c:45:13: warning: %llu in format string (no. 1) requires 'unsigned long long' but the argument type is 'unsigned long'. [invalidPrintfArgType_uint]\n            printf(\"%llu\\n\", totalHash);\n            ^\n/tmp/gcc_fuzz_lxhgylom/t.c:25:32: warning: Either the condition 'index>=20' is redundant or there is possible null pointer dereference: a. [nullPointerRedundantCheck]\n        largeArray[index].c[i].a[0] = (SmallStruct){xVal + i, yVal + i};\n                               ^\n/tmp/gcc_fuzz_lxhgylom/t.c:23:15: note: Assuming condition 'index>=20' is false\n    if (index >= ARRAY_SIZE) return; // Ensure no out-of-bounds write\n              ^\n/tmp/gcc_fuzz_lxhgylom/t.c:25:32: note: Null pointer dereference\n        largeArray[index].c[i].a[0] = (SmallStruct){xVal + i, yVal + i};\n                               ^\n/tmp/gcc_fuzz_lxhgylom/t.c:11:11: style: struct member 'MediumStruct::b' is never used. [unusedStructMember]\n    float b;\n          ^",
+    "clang_tidy_rc": 0,
+    "clang_tidy_output": "/tmp/gcc_fuzz_lxhgylom/t.c:45:30: warning: format specifies type 'unsigned long long' but the argument has type 'uint64_t' (aka 'unsigned long') [clang-diagnostic-format]\n            printf(\"%llu\\n\", totalHash);\n                    ~~~~     ^~~~~~~~~\n                    %lu\n\n450 warnings generated.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "002841",
+    "target": "c",
+    "source_file": "002841.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "error: brackets are not allowed here; to declare an array, place the brackets after the identifier [clang-diagnostic-error]\n/tmp/gcc_fuzz_1j79osw4/t.c:24:1: warning: 2 adjacent parameters of 'initializeComplex' of similar type are easily swapped by mistake [bugprone-easily-swappable-parameters]\nDEFINE_STRUCT(Complex, int32_t, data, uint8_t[4], bytes)\n^\n/tmp/gcc_fuzz_1j79osw4/t.c:11:23: note: expanded from macro 'DEFINE_STRUCT'\nvoid initialize##name(int index, type1 val1, type2 val2) { \\\n                      ^~~~~~~~~~~~~~~~~~~~~\n/tmp/gcc_fuzz_1j79osw4/t.c:24:1: note: the first parameter in the range is 'index'\nDEFINE_STRUCT(Complex, int32_t, data, uint8_t[4], bytes)\n^\n/tmp/gcc_fuzz_1j79osw4/t.c:11:27: note: expanded from macro 'DEFINE_STRUCT'\nvoid initialize##name(int index, type1 val1, type2 val2) { \\\n                          ^~~~~\n/tmp/gcc_fuzz_1j79osw4/t.c:24:1: note: the last parameter in the range is 'val1'\nDEFINE_STRUCT(Complex, int32_t, data, uint8_t[4], bytes)\n^\n/tmp/gcc_fuzz_1j79osw4/t.c:11:40: note: expanded from macro 'DEFINE_STRUCT'\nvoid initialize##name(int index, type1 val1, type2 val2) { \\\n                                       ^~~~\n/tmp/gcc_fuzz_1j79osw4/t.c:24:1: note: after resolving type aliases, 'int' and 'int32_t' are the same\nDEFINE_STRUCT(Complex, int32_t, data, uint8_t[4], bytes)\n^\n/tmp/gcc_fuzz_1j79osw4/t.c:11:23: note: expanded from macro 'DEFINE_STRUCT'\nvoid initialize##name(int index, type1 val1, type2 val2) { \\\n                      ^\n/tmp/gcc_fuzz_1j79osw4/t.c:24:1: error: expected ')' [clang-diagnostic-error]\nDEFINE_STRUCT(Complex, int32_t, data, uint8_t[4], bytes)\n^\n/tmp/gcc_fuzz_1j79osw4/t.c:11:52: note: expanded from macro 'DEFINE_STRUCT'\nvoid initialize##name(int index, type1 val1, type2 val2) { \\\n                                                   ^\n/tmp/gcc_fuzz_1j79osw4/t.c:24:1: note: to match this '('\nDEFINE_STRUCT(Complex, int32_t, data, uint8_t[4], bytes)\n^\n/tmp/gcc_fuzz_1j79osw4/t.c:11:22: note: expanded from macro 'DEFINE_STRUCT'\nvoid initialize##name(int index, type1 val1, type2 val2) { \\\n                     ^\n/tmp/gcc_fuzz_1j79osw4/t.c:24:1: error: use of undeclared identifier 'ARRAY_SIZE' [clang-diagnostic-error]\nDEFINE_STRUCT(Complex, int32_t, data, uint8_t[4], bytes)\n^\n/tmp/gcc_fuzz_1j79osw4/t.c:12:31: note: expanded from macro 'DEFINE_STRUCT'\n    if (index >= 0 && index < ARRAY_SIZE) { \\\n                              ^\n/tmp/gcc_fuzz_1j79osw4/t.c:24:1: error: use of undeclared identifier 'arrayOfStructs' [clang-diagnostic-error]\nDEFINE_STRUCT(Complex, int32_t, data, uint8_t[4], bytes)\n^\n/tmp/gcc_fuzz_1j79osw4/t.c:13:9: note: expanded from macro 'DEFINE_STRUCT'\n        arrayOfStructs[index] = (name##Struct){val1, val2}; \\\n        ^\n/tmp/gcc_fuzz_1j79osw4/t.c:24:1: error: use of undeclared identifier 'val2'; did you mean 'val1'? [clang-diagnostic-error]\nDEFINE_STRUCT(Complex, int32_t, data, uint8_t[4], bytes)\n^\n/tmp/gcc_fuzz_1j79osw4/t.c:13:54: note: expanded from macro 'DEFINE_STRUCT'\n        arrayOfStructs[index] = (name##Struct){val1, val2}; \\\n                                                     ^\n/tmp/gcc_fuzz_1j79osw4/t.c:24:1: note: 'val1' declared here\nDEFINE_STRUCT(Complex, int32_t, data, uint8_t[4], bytes)\n^\n/tmp/gcc_fuzz_1j79osw4/t.c:11:40: note: expanded from macro 'DEFINE_STRUCT'\nvoid initialize##name(int index, type1 val1, type2 val2) { \\\n                                       ^\n/tmp/gcc_fuzz_1j79osw4/t.c:24:46: warning: omitting the parameter name in a function definition is a C2x extension [clang-diagnostic-c2x-extensions]\nDEFINE_STRUCT(Complex, int32_t, data, uint8_t[4], bytes)\n                                             ^\n/tmp/gcc_fuzz_1j79osw4/t.c:39:27: warning: incompatible pointer to integer conversion initializing 'uint8_t' (aka 'unsigned char') with an expression of type 'uint8_t *' (aka 'unsigned char *'); dereference with * [clang-diagnostic-int-conversion]\n    ComplexStruct s = {x, y};\n                          ^\n                          *\n/tmp/gcc_fuzz_1j79osw4/t.c:41:20: warning: implicit declaration of function 'hashStruct' is invalid in C99 [clang-diagnostic-implicit-function-declaration]\n    printf(\"%u\\n\", hashStruct(&s));\n                   ^\n/tmp/gcc_fuzz_1j79osw4/t.c:81:22: warning: implicit declaration of function 'hashStruct' is invalid in C99 [clang-diagnostic-implicit-function-declaration]\n        totalHash += hashStruct(&arrayOfStructs[i]);\n                     ^\n\n454 warnings and 5 errors generated.\nError while processing /tmp/gcc_fuzz_1j79osw4/t.c.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

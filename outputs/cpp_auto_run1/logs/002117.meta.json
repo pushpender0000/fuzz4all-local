@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "002117",
+    "target": "cpp",
+    "source_file": "002117.cpp"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 2,
+    "cppcheck_output": "/tmp/gpp_fuzz_nbr_w0_l/t.cpp:47:97: error: Internal error. AST cyclic dependency. [cppcheckError]\n                if constexpr(std::is_same_v<int, decltype(val1)> && std::is_same_v<int, decltype(val2>)) {\n                                                                                                ^",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "/tmp/gpp_fuzz_nbr_w0_l/t.cpp:47:103: error: expected expression [clang-diagnostic-error]\n                if constexpr(std::is_same_v<int, decltype(val1)> && std::is_same_v<int, decltype(val2>)) {\n                                                                                                      ^\n/tmp/gpp_fuzz_nbr_w0_l/t.cpp:52:18: error: expected '>' [clang-diagnostic-error]\n                }\n                 ^\n/tmp/gpp_fuzz_nbr_w0_l/t.cpp:47:83: note: to match this '<'\n                if constexpr(std::is_same_v<int, decltype(val1)> && std::is_same_v<int, decltype(val2>)) {\n                                                                                  ^\n/tmp/gpp_fuzz_nbr_w0_l/t.cpp:56:7: error: expected expression [clang-diagnostic-error]\n    } else {\n      ^\n/tmp/gpp_fuzz_nbr_w0_l/t.cpp:61:12: error: function definition is not allowed here [clang-diagnostic-error]\nint main() {\n           ^\n/tmp/gpp_fuzz_nbr_w0_l/t.cpp:71:2: error: expected '}' [clang-diagnostic-error]\n}\n ^\n/tmp/gpp_fuzz_nbr_w0_l/t.cpp:42:62: note: to match this '{'\nauto nestedMultiplySum(const T& vec1, const U& vec2) -> void {\n                                                             ^\n\n14468 warnings and 5 errors generated.\nError while processing /tmp/gpp_fuzz_nbr_w0_l/t.cpp.\nSuppressed 14468 warnings (14468 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/g++",
+    "compiler_version": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c++20",
+    "timeout_sec": 15
+  }
+}

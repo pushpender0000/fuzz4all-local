@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "005099",
+    "target": "c",
+    "source_file": "005099.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 2,
+    "cppcheck_output": "/tmp/gcc_fuzz_p70la74x/t.c:15:25: warning: Possible null pointer dereference: arr [nullPointer]\n    MyStruct s = {val, {arr[0], arr[1], arr[2], arr[3]}};\n                        ^\n/tmp/gcc_fuzz_p70la74x/t.c:24:83: note: Calling function 'createComplexStruct', 2nd argument 'NULL' value is 0\n    array[offset] = createComplexStruct(INITIAL_VALUE + offset * HASH_MULTIPLIER, NULL); // Ensure no undefined behavior with NULL pointer\n                                                                                  ^\n/tmp/gcc_fuzz_p70la74x/t.c:15:25: note: Null pointer dereference\n    MyStruct s = {val, {arr[0], arr[1], arr[2], arr[3]}};\n                        ^",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "/tmp/gcc_fuzz_p70la74x/t.c:15:25: error: Array access (from variable 'arr') results in a null pointer dereference [clang-analyzer-core.NullDereference,-warnings-as-errors]\n    MyStruct s = {val, {arr[0], arr[1], arr[2], arr[3]}};\n                        ^\n/tmp/gcc_fuzz_p70la74x/t.c:20:9: note: Assuming 'offset' is >= 0\n    if (offset < 0 || offset >= ARRAY_SIZE) {\n        ^~~~~~~~~~\n/tmp/gcc_fuzz_p70la74x/t.c:20:9: note: Left side of '||' is false\n/tmp/gcc_fuzz_p70la74x/t.c:20:23: note: Assuming 'offset' is < ARRAY_SIZE\n    if (offset < 0 || offset >= ARRAY_SIZE) {\n                      ^~~~~~~~~~~~~~~~~~~~\n/tmp/gcc_fuzz_p70la74x/t.c:20:5: note: Taking false branch\n    if (offset < 0 || offset >= ARRAY_SIZE) {\n    ^\n/tmp/gcc_fuzz_p70la74x/t.c:24:83: note: Passing null pointer value via 2nd parameter 'arr'\n    array[offset] = createComplexStruct(INITIAL_VALUE + offset * HASH_MULTIPLIER, NULL); // Ensure no undefined behavior with NULL pointer\n                                                                                  ^\n/usr/lib/llvm-14/lib/clang/14.0.0/include/stddef.h:89:16: note: expanded from macro 'NULL'\n#  define NULL ((void*)0)\n               ^~~~~~~~~~\n/tmp/gcc_fuzz_p70la74x/t.c:24:21: note: Calling 'createComplexStruct'\n    array[offset] = createComplexStruct(INITIAL_VALUE + offset * HASH_MULTIPLIER, NULL); // Ensure no undefined behavior with NULL pointer\n                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n/tmp/gcc_fuzz_p70la74x/t.c:15:25: note: Array access (from variable 'arr') results in a null pointer dereference\n    MyStruct s = {val, {arr[0], arr[1], arr[2], arr[3]}};\n                        ^~~\n/tmp/gcc_fuzz_p70la74x/t.c:31:46: warning: performing an implicit widening conversion to type 'unsigned long' of a multiplication performed in type 'int' [bugprone-implicit-widening-of-multiplication-result]\n        hash += ((uint64_t)(array[i].data) + array[i].bytes[0] * 2 + array[i].bytes[1] / 2 + array[i].bytes[2] * 3 - array[i].bytes[3]);\n                                             ^\n/tmp/gcc_fuzz_p70la74x/t.c:31:46: note: make conversion explicit to silence this warning\n        hash += ((uint64_t)(array[i].data) + array[i].bytes[0] * 2 + array[i].bytes[1] / 2 + array[i].bytes[2] * 3 - array[i].bytes[3]);\n                                             ^~~~~~~~~~~~~~~~~~~~~\n                                             (unsigned long)(    )\n/tmp/gcc_fuzz_p70la74x/t.c:31:46: note: perform multiplication in a wider type\n        hash += ((uint64_t)(array[i].data) + array[i].bytes[0] * 2 + array[i].bytes[1] / 2 + array[i].bytes[2] * 3 - array[i].bytes[3]);\n                                             ^~~~~~~~~~~~~~~~~\n                                             (long)\n/tmp/gcc_fuzz_p70la74x/t.c:31:94: warning: performing an implicit widening conversion to type 'unsigned long' of a multiplication performed in type 'int' [bugprone-implicit-widening-of-multiplication-result]\n        hash += ((uint64_t)(array[i].data) + array[i].bytes[0] * 2 + array[i].bytes[1] / 2 + array[i].bytes[2] * 3 - array[i].bytes[3]);\n                                                                                             ^\n/tmp/gcc_fuzz_p70la74x/t.c:31:94: note: make conversion explicit to silence this warning\n        hash += ((uint64_t)(array[i].data) + array[i].bytes[0] * 2 + array[i].bytes[1] / 2 + array[i].bytes[2] * 3 - array[i].bytes[3]);\n                                                                                             ^~~~~~~~~~~~~~~~~~~~~\n                                                                                             (unsigned long)(    )\n/tmp/gcc_fuzz_p70la74x/t.c:31:94: note: perform multiplication in a wider type\n        hash += ((uint64_t)(array[i].data) + array[i].bytes[0] * 2 + array[i].bytes[1] / 2 + array[i].bytes[2] * 3 - array[i].bytes[3]);\n                                                                                             ^~~~~~~~~~~~~~~~~\n                                                                                             (long)\n/tmp/gcc_fuzz_p70la74x/t.c:38:43: warning: performing an implicit widening conversion to type 'unsigned long' of a multiplication performed in type 'int' [bugprone-implicit-widening-of-multiplication-result]\n    printf(\"%lu\\n\", ((uint64_t)(s.data) + s.bytes[0] * 2 + s.bytes[1] / 2 + s.bytes[2] * 3 - s.bytes[3]));\n                                          ^\n/tmp/gcc_fuzz_p70la74x/t.c:38:43: note: make conversion explicit to silence this warning\n    printf(\"%lu\\n\", ((uint64_t)(s.data) + s.bytes[0] * 2 + s.bytes[1] / 2 + s.bytes[2] * 3 - s.bytes[3]));\n                                          ^~~~~~~~~~~~~~\n                                          (unsigned long)( )\n/tmp/gcc_fuzz_p70la74x/t.c:38:43: note: perform multiplication in a wider type\n    printf(\"%lu\\n\", ((uint64_t)(s.data) + s.bytes[0] * 2 + s.bytes[1] / 2 + s.bytes[2] * 3 - s.bytes[3]));\n                                          ^~~~~~~~~~\n                                          (long)\n/tmp/gcc_fuzz_p70la74x/t.c:38:77: warning: performing an implicit widening conversion to type 'unsigned long' of a multiplication performed in type 'int' [bugprone-implicit-widening-of-multiplication-result]\n    printf(\"%lu\\n\", ((uint64_t)(s.data) + s.bytes[0] * 2 + s.bytes[1] / 2 + s.bytes[2] * 3 - s.bytes[3]));\n                                                                            ^\n/tmp/gcc_fuzz_p70la74x/t.c:38:77: note: make conversion explicit to silence this warning\n    printf(\"%lu\\n\", ((uint64_t)(s.data) + s.bytes[0] * 2 + s.bytes[1] / 2 + s.bytes[2] * 3 - s.bytes[3]));\n                                                                            ^~~~~~~~~~~~~~\n                                                                            (unsigned long)( )\n/tmp/gcc_fuzz_p70la74x/t.c:38:77: note: perform multiplication in a wider type\n    printf(\"%lu\\n\", ((uint64_t)(s.data) + s.bytes[0] * 2 + s.bytes[1] / 2 + s.bytes[2] * 3 - s.bytes[3]));\n                                                                            ^~~~~~~~~~\n                                                                            (long)\n\n520 warnings generated.\nSuppressed 515 warnings (515 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\n1 warning treated as error"
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

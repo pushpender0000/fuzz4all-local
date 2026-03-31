@@ -1,0 +1,9 @@
+rc=1 ok=False timeout=False crash_like=False
+
+==== STDOUT ====
+
+==== STDERR ====
+/usr/bin/ld: /tmp/ccPbonWy.o: in function `calculateHash':
+t.c:(.text+0xd9): undefined reference to `floor'
+collect2: error: ld returned 1 exit status
+

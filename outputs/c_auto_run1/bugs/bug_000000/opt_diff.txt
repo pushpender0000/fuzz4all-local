@@ -1,0 +1,254 @@
+7,14c7,14
+<   -falign-functions           		[disabled]
+<   -falign-functions=          		
+<   -falign-jumps               		[disabled]
+<   -falign-jumps=              		
+<   -falign-labels              		[disabled]
+<   -falign-labels=             		
+<   -falign-loops               		[disabled]
+<   -falign-loops=              		
+---
+>   -falign-functions           		[enabled]
+>   -falign-functions=          		16
+>   -falign-jumps               		[enabled]
+>   -falign-jumps=              		16:11:8
+>   -falign-labels              		[enabled]
+>   -falign-labels=             		0:0:8
+>   -falign-loops               		[enabled]
+>   -falign-loops=              		16:11:8
+22c22
+<   -fbranch-count-reg          		[disabled]
+---
+>   -fbranch-count-reg          		[enabled]
+24,27c24,27
+<   -fcaller-saves              		[disabled]
+<   -fcode-hoisting             		[disabled]
+<   -fcombine-stack-adjustments 		[disabled]
+<   -fcompare-elim              		[disabled]
+---
+>   -fcaller-saves              		[enabled]
+>   -fcode-hoisting             		[enabled]
+>   -fcombine-stack-adjustments 		[enabled]
+>   -fcompare-elim              		[enabled]
+29,31c29,31
+<   -fcprop-registers           		[disabled]
+<   -fcrossjumping              		[disabled]
+<   -fcse-follow-jumps          		[disabled]
+---
+>   -fcprop-registers           		[enabled]
+>   -fcrossjumping              		[enabled]
+>   -fcse-follow-jumps          		[enabled]
+35c35
+<   -fdefer-pop                 		[disabled]
+---
+>   -fdefer-pop                 		[enabled]
+39,41c39,41
+<   -fdevirtualize              		[disabled]
+<   -fdevirtualize-speculatively 		[disabled]
+<   -fdse                       		[disabled]
+---
+>   -fdevirtualize              		[enabled]
+>   -fdevirtualize-speculatively 		[enabled]
+>   -fdse                       		[enabled]
+45c45
+<   -fexpensive-optimizations   		[disabled]
+---
+>   -fexpensive-optimizations   		[enabled]
+50c50
+<   -fforward-propagate         		[disabled]
+---
+>   -fforward-propagate         		[enabled]
+54c54
+<   -fgcse                      		[disabled]
+---
+>   -fgcse                      		[enabled]
+61c61
+<   -fguess-branch-probability  		[disabled]
+---
+>   -fguess-branch-probability  		[enabled]
+63,67c63,67
+<   -fhoist-adjacent-loads      		[disabled]
+<   -fif-conversion             		[disabled]
+<   -fif-conversion2            		[disabled]
+<   -findirect-inlining         		[disabled]
+<   -finline                    		[disabled]
+---
+>   -fhoist-adjacent-loads      		[enabled]
+>   -fif-conversion             		[enabled]
+>   -fif-conversion2            		[enabled]
+>   -findirect-inlining         		[enabled]
+>   -finline                    		[enabled]
+69,73c69,73
+<   -finline-functions          		[disabled]
+<   -finline-functions-called-once 	[disabled]
+<   -finline-small-functions    		[disabled]
+<   -fipa-bit-cp                		[disabled]
+<   -fipa-cp                    		[disabled]
+---
+>   -finline-functions          		[enabled]
+>   -finline-functions-called-once 	[enabled]
+>   -finline-small-functions    		[enabled]
+>   -fipa-bit-cp                		[enabled]
+>   -fipa-cp                    		[enabled]
+75,79c75,79
+<   -fipa-icf                   		[disabled]
+<   -fipa-icf-functions         		[disabled]
+<   -fipa-icf-variables         		[disabled]
+<   -fipa-modref                		[disabled]
+<   -fipa-profile               		[disabled]
+---
+>   -fipa-icf                   		[enabled]
+>   -fipa-icf-functions         		[enabled]
+>   -fipa-icf-variables         		[enabled]
+>   -fipa-modref                		[enabled]
+>   -fipa-profile               		[enabled]
+81,85c81,85
+<   -fipa-pure-const            		[disabled]
+<   -fipa-ra                    		[disabled]
+<   -fipa-reference             		[disabled]
+<   -fipa-reference-addressable 		[disabled]
+<   -fipa-sra                   		[disabled]
+---
+>   -fipa-pure-const            		[enabled]
+>   -fipa-ra                    		[enabled]
+>   -fipa-reference             		[enabled]
+>   -fipa-reference-addressable 		[enabled]
+>   -fipa-sra                   		[enabled]
+87c87
+<   -fipa-vrp                   		[disabled]
+---
+>   -fipa-vrp                   		[enabled]
+95c95
+<   -fisolate-erroneous-paths-dereference 	[disabled]
+---
+>   -fisolate-erroneous-paths-dereference 	[enabled]
+109c109
+<   -flra-remat                 		[disabled]
+---
+>   -flra-remat                 		[enabled]
+113c113
+<   -fmove-loop-invariants      		[disabled]
+---
+>   -fmove-loop-invariants      		[enabled]
+116c116
+<   -fomit-frame-pointer        		[disabled]
+---
+>   -fomit-frame-pointer        		[enabled]
+118,119c118,119
+<   -foptimize-sibling-calls    		[disabled]
+<   -foptimize-strlen           		[disabled]
+---
+>   -foptimize-sibling-calls    		[enabled]
+>   -foptimize-strlen           		[enabled]
+122c122
+<   -fpartial-inlining          		[disabled]
+---
+>   -fpartial-inlining          		[enabled]
+126c126
+<   -fpeephole2                 		[disabled]
+---
+>   -fpeephole2                 		[enabled]
+134c134
+<   -free                       		[disabled]
+---
+>   -free                       		[enabled]
+137,141c137,141
+<   -freorder-blocks            		[disabled]
+<   -freorder-blocks-algorithm=[simple|stc] 	simple
+<   -freorder-blocks-and-partition 	[disabled]
+<   -freorder-functions         		[disabled]
+<   -frerun-cse-after-loop      		[disabled]
+---
+>   -freorder-blocks            		[enabled]
+>   -freorder-blocks-algorithm=[simple|stc] 	stc
+>   -freorder-blocks-and-partition 	[enabled]
+>   -freorder-functions         		[enabled]
+>   -frerun-cse-after-loop      		[enabled]
+164c164
+<   -fschedule-insns2           		[disabled]
+---
+>   -fschedule-insns2           		[enabled]
+173c173
+<   -fshrink-wrap               		[disabled]
+---
+>   -fshrink-wrap               		[enabled]
+182c182
+<   -fsplit-wide-types          		[disabled]
+---
+>   -fsplit-wide-types          		[enabled]
+185c185
+<   -fssa-phiopt                		[disabled]
+---
+>   -fssa-phiopt                		[enabled]
+194,195c194,195
+<   -fstore-merging             		[disabled]
+<   -fstrict-aliasing           		[disabled]
+---
+>   -fstore-merging             		[enabled]
+>   -fstrict-aliasing           		[enabled]
+198c198
+<   -fthread-jumps              		[disabled]
+---
+>   -fthread-jumps              		[enabled]
+200c200
+<   -ftoplevel-reorder          		[disabled]
+---
+>   -ftoplevel-reorder          		[enabled]
+204,209c204,209
+<   -ftree-bit-ccp              		[disabled]
+<   -ftree-builtin-call-dce     		[disabled]
+<   -ftree-ccp                  		[disabled]
+<   -ftree-ch                   		[disabled]
+<   -ftree-coalesce-vars        		[disabled]
+<   -ftree-copy-prop            		[disabled]
+---
+>   -ftree-bit-ccp              		[enabled]
+>   -ftree-builtin-call-dce     		[enabled]
+>   -ftree-ccp                  		[enabled]
+>   -ftree-ch                   		[enabled]
+>   -ftree-coalesce-vars        		[enabled]
+>   -ftree-copy-prop            		[enabled]
+211,213c211,213
+<   -ftree-dce                  		[disabled]
+<   -ftree-dominator-opts       		[disabled]
+<   -ftree-dse                  		[disabled]
+---
+>   -ftree-dce                  		[enabled]
+>   -ftree-dominator-opts       		[enabled]
+>   -ftree-dse                  		[enabled]
+215,216c215,216
+<   -ftree-fre                  		[disabled]
+<   -ftree-loop-distribute-patterns 	[disabled]
+---
+>   -ftree-fre                  		[enabled]
+>   -ftree-loop-distribute-patterns 	[enabled]
+227,228c227,228
+<   -ftree-pre                  		[disabled]
+<   -ftree-pta                  		[disabled]
+---
+>   -ftree-pre                  		[enabled]
+>   -ftree-pta                  		[enabled]
+231c231
+<   -ftree-sink                 		[disabled]
+---
+>   -ftree-sink                 		[enabled]
+233,237c233,237
+<   -ftree-slsr                 		[disabled]
+<   -ftree-sra                  		[disabled]
+<   -ftree-switch-conversion    		[disabled]
+<   -ftree-tail-merge           		[disabled]
+<   -ftree-ter                  		[disabled]
+---
+>   -ftree-slsr                 		[enabled]
+>   -ftree-sra                  		[enabled]
+>   -ftree-switch-conversion    		[enabled]
+>   -ftree-tail-merge           		[enabled]
+>   -ftree-ter                  		[enabled]
+239c239
+<   -ftree-vrp                  		[disabled]
+---
+>   -ftree-vrp                  		[enabled]
+252c252
+<   -fvect-cost-model=[unlimited|dynamic|cheap|very-cheap] 	[default]
+---
+>   -fvect-cost-model=[unlimited|dynamic|cheap|very-cheap] 	cheap

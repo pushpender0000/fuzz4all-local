@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdint.h>
+#define ARRAY_SIZE 50
+
+typedef struct {
+    int32_t data1;
+    uint8_t data2;
+    float data3;
+} ComplexType;
+
+ComplexType complexArray[ARRAY_SIZE];
+
+void initialize(uint8_t index, int32_t val1, uint8_t val2, float val3) {
+    if (index < ARRAY_SIZE) {
+        complexArray[index].data1 = val1;
+        complexArray[index].data2 = val2;
+        complexArray[index].data3 = val3;
+    }
+}
+
+uint32_t computeHash(ComplexType *item) {
+    return (uint32_t)(item->data1 + item->data2 + item->data3);
+}
+
+void printResult() {
+    uint32_t totalHash = 0;
+    for (uint8_t i = 0; i < ARRAY_SIZE; ++i) {
+        if ((i > 0) && (i % 5 == 0)) {
+            printf("%u\n", totalHash);
+            totalHash = 0;
+        }
+        totalHash += computeHash(&complexArray[i]);
+    }
+}
+
+void (*printFunction)(void) = printResult;
+
+int main() {
+    for (uint8_t i = 0; i < ARRAY_SIZE; ++i) {
+        initialize(i, i * 10, i * 2, i * 3.14f);
+    }
+    printFunction();
+    return 0;
+}

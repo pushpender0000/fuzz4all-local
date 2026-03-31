@@ -1,0 +1,570 @@
+
+;; Function testFunction (testFunction, funcdef_no=42, decl_uid=3234, cgraph_uid=43, symbol_order=42)
+
+modref analyzing 'testFunction' (ipa=0)
+Analyzing flags of ssa name: x_2(D)
+  Analyzing stmt: __printf_chk (1, "%d\n", x_2(D));
+  current flags of x_2(D)
+flags of ssa name x_2(D)
+Analyzing flags of ssa name: y_31(D)
+  Analyzing stmt: _21 = BIT_FIELD_REF <y_31(D), 8, 24>;
+    Analyzing flags of ssa name: _21
+      Analyzing stmt: _48 = (unsigned int) _21;
+        Analyzing flags of ssa name: _48
+          Analyzing stmt: _45 = _25 + _48;
+            Analyzing flags of ssa name: _45
+              Analyzing stmt: h_49 = h_5 + _45;
+                Analyzing flags of ssa name: h_49
+                  Analyzing stmt: __printf_chk (1, "%u\n", h_49); [tail call]
+                  current flags of h_49
+                flags of ssa name h_49
+              current flags of _45
+            flags of ssa name _45
+          current flags of _48
+        flags of ssa name _48
+      current flags of _21
+    flags of ssa name _21
+  current flags of y_31(D)
+flags of ssa name y_31(D)
+ - Function availability <= AVAIL_INTERPOSABLE.
+      Builtin with no fnspec: __printf_chk
+ - modref done with result: tracked.
+__attribute__((access ("^1[ ]", )))
+void testFunction (int32_t x, uint8_t * y)
+{
+  const unsigned char SR.29;
+  const unsigned char SR.28;
+  const unsigned char SR.27;
+  const unsigned char SR.26;
+  int SR.25;
+  int s$data;
+  const unsigned char s$buffer$3;
+  const unsigned char s$buffer$2;
+  const unsigned char s$buffer$1;
+  const unsigned char s$buffer$0;
+  struct MyStruct D.3352;
+  struct MyStruct s;
+  int i;
+  const int s$data;
+  uint32_t h;
+  int i;
+  struct MyStruct s;
+  unsigned int _17;
+  unsigned char _18;
+  unsigned char _20;
+  unsigned char _21;
+  unsigned int _25;
+  unsigned int _36;
+  unsigned int _40;
+  unsigned int _42;
+  unsigned int _44;
+  unsigned int _45;
+  unsigned int _48;
+
+  <bb 2> [local count: 214748368]:
+  _40 = BIT_FIELD_REF <y_31(D), 32, 0>;
+  _18 = BIT_FIELD_REF <y_31(D), 8, 8>;
+  _20 = BIT_FIELD_REF <y_31(D), 8, 16>;
+  _21 = BIT_FIELD_REF <y_31(D), 8, 24>;
+  s ={v} {CLOBBER};
+  __printf_chk (1, "%d\n", x_2(D));
+  h_5 = (uint32_t) x_2(D);
+  _44 = _40 & 255;
+  _36 = (unsigned int) _18;
+  _17 = _36 + _44;
+  _42 = (unsigned int) _20;
+  _25 = _17 + _42;
+  _48 = (unsigned int) _21;
+  _45 = _25 + _48;
+  h_49 = h_5 + _45;
+  __printf_chk (1, "%u\n", h_49); [tail call]
+  s ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function createStruct (createStruct, funcdef_no=39, decl_uid=3212, cgraph_uid=40, symbol_order=39)
+
+modref analyzing 'createStruct' (ipa=0) (pure)
+Analyzing flags of ssa name: val_8(D)
+  Analyzing stmt: s.data = val_8(D);
+  ssa name saved to memory
+  current flags of val_8(D)
+flags of ssa name val_8(D)
+Analyzing flags of ssa name: arr_11(D)
+  Analyzing stmt: _15 = MEM <unsigned int> [(char * {ref-all})arr_11(D)];
+    Analyzing flags of ssa name: _15
+      Analyzing stmt: MEM <unsigned int> [(char * {ref-all})&s + 4B] = _15;
+      ssa name saved to memory
+      current flags of _15
+    flags of ssa name _15
+  current flags of arr_11(D) nodirectescape
+flags of ssa name arr_11(D) nodirectescape
+ - Analyzing load: MEM <unsigned int> [(char * {ref-all})arr_11(D)]
+   - Recording base_set=0 ref_set=0 parm=1
+ - Analyzing store: MEM <unsigned int> [(char * {ref-all})&s + 4B]
+   - Read-only or local, ignoring.
+ - Analyzing store: s.data
+   - Read-only or local, ignoring.
+ - Analyzing store: D.3281
+   - Read-only or local, ignoring.
+ - Analyzing load: s
+   - Read-only or local, ignoring.
+ - Analyzing load: D.3281
+   - Read-only or local, ignoring.
+ - modref done with result: tracked.
+  loads:
+    Limits: 32 bases, 16 refs
+      Base 0: alias set 0
+        Ref 0: alias set 0
+          access: Parm 1 param offset:0 offset:0 size:32 max_size:32
+  stores:
+    Limits: 32 bases, 16 refs
+__attribute__((access ("^1[ ]", )))
+struct MyStruct createStruct (int32_t val, const uint8_t * arr)
+{
+  int s$data;
+  int i;
+  struct MyStruct s;
+  struct MyStruct D.3281;
+  unsigned int _15;
+
+  <bb 2> [local count: 214748368]:
+  _15 = MEM <unsigned int> [(char * {ref-all})arr_11(D)];
+  MEM <unsigned int> [(char * {ref-all})&s + 4B] = _15;
+  s.data = val_8(D);
+  D.3281 = s;
+  s ={v} {CLOBBER};
+  return D.3281;
+
+}
+
+
+
+;; Function printStruct (printStruct, funcdef_no=40, decl_uid=3221, cgraph_uid=41, symbol_order=40)
+
+modref analyzing 'printStruct' (ipa=0)
+Past summary:
+  loads:
+    Limits: 32 bases, 16 refs
+    Every base
+  stores:
+    Limits: 32 bases, 16 refs
+    Every base
+  parm 0 flags: nodirectescape
+Analyzing flags of ssa name: s_3(D)
+  Analyzing stmt: _1 = s_3(D)->data;
+    Analyzing flags of ssa name: _1
+      Analyzing stmt: __printf_chk (1, "%d\n", _1); [tail call]
+      current flags of _1
+    flags of ssa name _1
+  current flags of s_3(D) nodirectescape
+flags of ssa name s_3(D) nodirectescape
+ - Analyzing load: s_3(D)->data
+   - Recording base_set=1 ref_set=2 parm=0
+ - Function availability <= AVAIL_INTERPOSABLE.
+      Builtin with no fnspec: __printf_chk
+ - modref done with result: tracked.
+  loads:
+    Limits: 32 bases, 16 refs
+    Every base
+  stores:
+    Limits: 32 bases, 16 refs
+    Every base
+  parm 0 flags: nodirectescape
+void printStruct (const struct MyStruct * s)
+{
+  int _1;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = s_3(D)->data;
+  __printf_chk (1, "%d\n", _1); [tail call]
+  return;
+
+}
+
+
+
+;; Function hashStruct (hashStruct, funcdef_no=41, decl_uid=3224, cgraph_uid=42, symbol_order=41)
+
+modref analyzing 'hashStruct' (ipa=0) (pure)
+Past summary:
+  loads:
+    Limits: 32 bases, 16 refs
+      Base 0: alias set 1
+        Ref 0: alias set 2
+          access: Parm 0 param offset:0 offset:0 size:32 max_size:32
+        Ref 1: alias set 0
+          access: Parm 0 param offset:0 offset:32 size:8 max_size:-1
+  stores:
+    Limits: 32 bases, 16 refs
+Analyzing flags of ssa name: s_7(D)
+  Analyzing stmt: _13 = s_7(D)->buffer[0];
+    Analyzing flags of ssa name: _13
+      Analyzing stmt: _14 = (unsigned int) _13;
+        Analyzing flags of ssa name: _14
+          Analyzing stmt: h_15 = h_8 + _14;
+            Analyzing flags of ssa name: h_15
+              Analyzing stmt: h_21 = h_15 + _20;
+                Analyzing flags of ssa name: h_21
+                  Analyzing stmt: h_27 = h_21 + _26;
+                    Analyzing flags of ssa name: h_27
+                      Analyzing stmt: h_33 = h_27 + _32;
+                        Analyzing flags of ssa name: h_33
+                          Analyzing stmt: return h_33;
+                          current flags of h_33 direct noclobber noescape nodirectescape
+                        flags of ssa name h_33 direct noclobber noescape nodirectescape
+                      current flags of h_27 direct noclobber noescape nodirectescape
+                    flags of ssa name h_27 direct noclobber noescape nodirectescape
+                  current flags of h_21 direct noclobber noescape nodirectescape
+                flags of ssa name h_21 direct noclobber noescape nodirectescape
+              current flags of h_15 direct noclobber noescape nodirectescape
+            flags of ssa name h_15 direct noclobber noescape nodirectescape
+          current flags of _14 direct noclobber noescape nodirectescape
+        flags of ssa name _14 direct noclobber noescape nodirectescape
+      current flags of _13 direct noclobber noescape nodirectescape
+    flags of ssa name _13 direct noclobber noescape nodirectescape
+  current flags of s_7(D) noclobber noescape nodirectescape
+  Analyzing stmt: _19 = s_7(D)->buffer[1];
+    Analyzing flags of ssa name: _19
+      Analyzing stmt: _20 = (unsigned int) _19;
+        Analyzing flags of ssa name: _20
+          Analyzing stmt: h_21 = h_15 + _20;
+          current flags of _20 direct noclobber noescape nodirectescape
+        flags of ssa name _20 direct noclobber noescape nodirectescape
+      current flags of _19 direct noclobber noescape nodirectescape
+    flags of ssa name _19 direct noclobber noescape nodirectescape
+  current flags of s_7(D) noclobber noescape nodirectescape
+  Analyzing stmt: _25 = s_7(D)->buffer[2];
+    Analyzing flags of ssa name: _25
+      Analyzing stmt: _26 = (unsigned int) _25;
+        Analyzing flags of ssa name: _26
+          Analyzing stmt: h_27 = h_21 + _26;
+          current flags of _26 direct noclobber noescape nodirectescape
+        flags of ssa name _26 direct noclobber noescape nodirectescape
+      current flags of _25 direct noclobber noescape nodirectescape
+    flags of ssa name _25 direct noclobber noescape nodirectescape
+  current flags of s_7(D) noclobber noescape nodirectescape
+  Analyzing stmt: _31 = s_7(D)->buffer[3];
+    Analyzing flags of ssa name: _31
+      Analyzing stmt: _32 = (unsigned int) _31;
+        Analyzing flags of ssa name: _32
+          Analyzing stmt: h_33 = h_27 + _32;
+          current flags of _32 direct noclobber noescape nodirectescape
+        flags of ssa name _32 direct noclobber noescape nodirectescape
+      current flags of _31 direct noclobber noescape nodirectescape
+    flags of ssa name _31 direct noclobber noescape nodirectescape
+  current flags of s_7(D) noclobber noescape nodirectescape
+  Analyzing stmt: _1 = s_7(D)->data;
+    Analyzing flags of ssa name: _1
+      Analyzing stmt: h_8 = (uint32_t) _1;
+        Analyzing flags of ssa name: h_8
+          Analyzing stmt: h_15 = h_8 + _14;
+          current flags of h_8 direct noclobber noescape nodirectescape
+        flags of ssa name h_8 direct noclobber noescape nodirectescape
+      current flags of _1 direct noclobber noescape nodirectescape
+    flags of ssa name _1 direct noclobber noescape nodirectescape
+  current flags of s_7(D) noclobber noescape nodirectescape
+flags of ssa name s_7(D) noclobber noescape nodirectescape
+ - Analyzing load: s_7(D)->data
+   - Recording base_set=1 ref_set=2 parm=0
+ - Analyzing load: s_7(D)->buffer[0]
+   - Recording base_set=1 ref_set=0 parm=0
+ - Analyzing load: s_7(D)->buffer[1]
+   - Recording base_set=1 ref_set=0 parm=0
+ - Analyzing load: s_7(D)->buffer[2]
+   - Recording base_set=1 ref_set=0 parm=0
+ - Analyzing load: s_7(D)->buffer[3]
+   - Recording base_set=1 ref_set=0 parm=0
+ - modref done with result: tracked.
+  loads:
+    Limits: 32 bases, 16 refs
+      Base 0: alias set 1
+        Ref 0: alias set 2
+          access: Parm 0 param offset:0 offset:0 size:32 max_size:32
+        Ref 1: alias set 0
+          access: Parm 0 param offset:0 offset:32 size:8 max_size:8
+          access: Parm 0 param offset:0 offset:40 size:8 max_size:8
+          access: Parm 0 param offset:0 offset:48 size:8 max_size:8
+          access: Parm 0 param offset:0 offset:56 size:8 max_size:8
+  stores:
+    Limits: 32 bases, 16 refs
+uint32_t hashStruct (const struct MyStruct * s)
+{
+  int i;
+  uint32_t h;
+  int _1;
+  unsigned char _13;
+  unsigned int _14;
+  unsigned char _19;
+  unsigned int _20;
+  unsigned char _25;
+  unsigned int _26;
+  unsigned char _31;
+  unsigned int _32;
+
+  <bb 2> [local count: 214748368]:
+  _1 = s_7(D)->data;
+  h_8 = (uint32_t) _1;
+  _13 = s_7(D)->buffer[0];
+  _14 = (unsigned int) _13;
+  h_15 = h_8 + _14;
+  _19 = s_7(D)->buffer[1];
+  _20 = (unsigned int) _19;
+  h_21 = h_15 + _20;
+  _25 = s_7(D)->buffer[2];
+  _26 = (unsigned int) _25;
+  h_27 = h_21 + _26;
+  _31 = s_7(D)->buffer[3];
+  _32 = (unsigned int) _31;
+  h_33 = h_27 + _32;
+  return h_33;
+
+}
+
+
+
+;; Function runTests (runTests, funcdef_no=43, decl_uid=3238, cgraph_uid=44, symbol_order=43)
+
+modref analyzing 'runTests' (ipa=0)
+Past summary:
+  loads:
+    Limits: 32 bases, 16 refs
+    Every base
+  stores:
+    Limits: 32 bases, 16 refs
+    Every base
+  parm 0 flags: direct noescape nodirectescape
+Analyzing flags of ssa name: func_17(D)
+  Analyzing stmt: func_17(D) (prephitmp_24, _27);
+  current flags of func_17(D) direct noescape nodirectescape
+flags of ssa name func_17(D) direct noescape nodirectescape
+ - Analyzing store: vals[1]
+   - Read-only or local, ignoring.
+ - Analyzing store: MEM <unsigned long> [(int *)&vals + 8B]
+   - Read-only or local, ignoring.
+ - Analyzing store: MEM <unsigned long> [(uint8_t[4] *)&arr]
+   - Read-only or local, ignoring.
+ - Analyzing store: MEM <unsigned long> [(uint8_t[4] *)&arr + 8B]
+   - Read-only or local, ignoring.
+ - Indirect call.
+ - Analyzing load: MEM[(int *)&vals + ivtmp.63_2 * 1]
+   - Read-only or local, ignoring.
+ - modref done with result: tracked.
+  loads:
+    Limits: 32 bases, 16 refs
+    Every base
+  stores:
+    Limits: 32 bases, 16 refs
+    Every base
+  parm 0 flags: direct noescape nodirectescape
+void runTests (void (*TestFunc) (int32_t, uint8_t *) func)
+{
+  sizetype ivtmp.63;
+  int i;
+  uint8_t arr[4][4];
+  int32_t vals[4];
+  int pretmp_3;
+  int prephitmp_24;
+  unsigned long _25;
+  unsigned long _26;
+  uint8_t[4][4] * _27;
+
+  <bb 2> [local count: 214748368]:
+  vals[1] = -10;
+  MEM <unsigned long> [(int *)&vals + 8B] = 9223372034707292160;
+  MEM <unsigned long> [(uint8_t[4] *)&arr] = 289077004400066560;
+  MEM <unsigned long> [(uint8_t[4] *)&arr + 8B] = 867798387104613893;
+
+  <bb 3> [local count: 858993457]:
+  # prephitmp_24 = PHI <pretmp_3(4), 10(2)>
+  # ivtmp.63_4 = PHI <ivtmp.63_2(4), 0(2)>
+  _25 = (unsigned long) &arr;
+  _26 = ivtmp.63_4 + _25;
+  _27 = (uint8_t[4][4] *) _26;
+  func_17(D) (prephitmp_24, _27);
+  ivtmp.63_2 = ivtmp.63_4 + 4;
+  if (ivtmp.63_2 != 16)
+    goto <bb 4>; [80.00%]
+  else
+    goto <bb 5>; [20.00%]
+
+  <bb 4> [local count: 687194763]:
+  pretmp_3 = MEM[(int *)&vals + ivtmp.63_2 * 1];
+  goto <bb 3>; [100.00%]
+
+  <bb 5> [local count: 214748368]:
+  vals ={v} {CLOBBER};
+  arr ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function complexFunction (complexFunction, funcdef_no=44, decl_uid=3247, cgraph_uid=45, symbol_order=44)
+
+modref analyzing 'complexFunction' (ipa=0)
+ - Analyzing store: vals[1]
+   - Read-only or local, ignoring.
+ - Analyzing store: MEM <unsigned long> [(int *)&vals + 8B]
+   - Read-only or local, ignoring.
+ - Analyzing store: MEM <unsigned long> [(uint8_t[4] *)&arr]
+   - Read-only or local, ignoring.
+ - Analyzing store: MEM <unsigned long> [(uint8_t[4] *)&arr + 8B]
+   - Read-only or local, ignoring.
+ - Analyzing load: MEM[(const uint8_t *)_56 + 1B]
+   - Recording base_set=0 ref_set=0 parm=-1
+ - Analyzing load: MEM[(const uint8_t *)_56 + 2B]
+   - Recording base_set=0 ref_set=0 parm=-1
+ - Analyzing load: MEM[(const uint8_t *)_56 + 3B]
+   - Recording base_set=0 ref_set=0 parm=-1
+ - Function availability <= AVAIL_INTERPOSABLE.
+      Builtin with no fnspec: __printf_chk
+ - modref done with result: tracked.
+void complexFunction ()
+{
+  unsigned long ivtmp.100;
+  unsigned long ivtmp.96;
+  const unsigned char SR.79;
+  const unsigned char SR.78;
+  const unsigned char SR.77;
+  const unsigned char SR.76;
+  int SR.75;
+  int s$data;
+  const unsigned char s$buffer$3;
+  const unsigned char s$buffer$2;
+  const unsigned char s$buffer$1;
+  const unsigned char s$buffer$0;
+  int i;
+  struct MyStruct s;
+  struct MyStruct D.3417;
+  const int s$data;
+  uint32_t h;
+  int i;
+  struct MyStruct s;
+  int i;
+  uint8_t arr[4][4];
+  int32_t vals[4];
+  void * _2;
+  unsigned int _4;
+  unsigned int _32;
+  int pretmp_37;
+  unsigned int _40;
+  unsigned char pretmp_44;
+  unsigned int _45;
+  unsigned long _46;
+  unsigned char prephitmp_50;
+  unsigned int _51;
+  void * _53;
+  int prephitmp_54;
+  void * _56;
+  unsigned int _57;
+  unsigned int _63;
+  unsigned char pretmp_69;
+  unsigned char pretmp_79;
+  unsigned char pretmp_89;
+
+  <bb 2> [local count: 53687093]:
+  vals[1] = -10;
+  MEM <unsigned long> [(int *)&vals + 8B] = 9223372034707292160;
+  MEM <unsigned long> [(uint8_t[4] *)&arr] = 289077004400066560;
+  MEM <unsigned long> [(uint8_t[4] *)&arr + 8B] = 867798387104613893;
+  ivtmp.96_71 = (unsigned long) &arr;
+  ivtmp.100_90 = (unsigned long) &vals;
+  _46 = ivtmp.96_71 + 16;
+
+  <bb 3> [local count: 214748371]:
+  # prephitmp_54 = PHI <pretmp_37(4), 10(2)>
+  # prephitmp_50 = PHI <pretmp_44(4), 0(2)>
+  # ivtmp.96_27 = PHI <ivtmp.96_81(4), ivtmp.96_71(2)>
+  # ivtmp.100_52 = PHI <ivtmp.100_91(4), ivtmp.100_90(2)>
+  _56 = (void *) ivtmp.96_27;
+  pretmp_69 = MEM[(const uint8_t *)_56 + 1B];
+  pretmp_79 = MEM[(const uint8_t *)_56 + 2B];
+  pretmp_89 = MEM[(const uint8_t *)_56 + 3B];
+  s ={v} {CLOBBER};
+  __printf_chk (1, "%d\n", prephitmp_54);
+  h_21 = (uint32_t) prephitmp_54;
+  _45 = (unsigned int) prephitmp_50;
+  _51 = (unsigned int) pretmp_69;
+  _32 = h_21 + _45;
+  _57 = (unsigned int) pretmp_79;
+  _4 = _32 + _51;
+  _63 = (unsigned int) pretmp_89;
+  _40 = _4 + _57;
+  h_64 = _40 + _63;
+  __printf_chk (1, "%u\n", h_64);
+  s ={v} {CLOBBER};
+  ivtmp.96_81 = ivtmp.96_27 + 4;
+  ivtmp.100_91 = ivtmp.100_52 + 4;
+  if (_46 != ivtmp.96_81)
+    goto <bb 4>; [80.00%]
+  else
+    goto <bb 5>; [20.00%]
+
+  <bb 4> [local count: 171798694]:
+  _2 = (void *) ivtmp.100_91;
+  pretmp_37 = MEM[(int *)_2];
+  _53 = (void *) ivtmp.96_81;
+  pretmp_44 = MEM[(const uint8_t *)_53];
+  goto <bb 3>; [100.00%]
+
+  <bb 5> [local count: 53687093]:
+  vals ={v} {CLOBBER};
+  arr ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function complexMacroTest (complexMacroTest, funcdef_no=49, decl_uid=3257, cgraph_uid=46, symbol_order=45)
+
+modref analyzing 'complexMacroTest' (ipa=0)
+ - No modref summary available for callee.
+ - modref done with result: tracked.
+void complexMacroTest ()
+{
+  <bb 2> [local count: 53687093]:
+  complexFunction (); [tail call]
+  return;
+
+}
+
+
+
+;; Function runComplexTests (runComplexTests, funcdef_no=51, decl_uid=3268, cgraph_uid=47, symbol_order=46)
+
+modref analyzing 'runComplexTests' (ipa=0)
+ - No modref summary available for callee.
+ - modref done with result: tracked.
+void runComplexTests ()
+{
+  <bb 2> [local count: 53687093]:
+  complexFunction (); [tail call]
+  return;
+
+}
+
+
+
+;; Function main (main, funcdef_no=47, decl_uid=3278, cgraph_uid=48, symbol_order=47) (executed once)
+
+modref analyzing 'main' (ipa=0)
+ - Merging side effects of runTests/43 with parm map: -1
+ - modref done with result: tracked.
+int main ()
+{
+  <bb 2> [local count: 1073741824]:
+  runTests (testFunction);
+  complexFunction ();
+  complexFunction ();
+  complexFunction ();
+  return 0;
+
+}
+
+

@@ -1,0 +1,344 @@
+
+;; Function createStruct (createStruct, funcdef_no=39, decl_uid=3212, cgraph_uid=40, symbol_order=39)
+
+__attribute__((access ("^1[ ]", )))
+struct MyStruct createStruct (int32_t val, const uint8_t * arr)
+{
+  struct MyStruct D.3281;
+  struct MyStruct s;
+
+  try
+    {
+      s = {};
+      s.data = val;
+      {
+        int i;
+
+        i = 0;
+        goto <D.3219>;
+        <D.3218>:
+        _1 = (sizetype) i;
+        _2 = arr + _1;
+        _3 = *_2;
+        s.buffer[i] = _3;
+        i = i + 1;
+        <D.3219>:
+        if (i <= 3) goto <D.3218>; else goto <D.3216>;
+        <D.3216>:
+      }
+      D.3281 = s;
+      return D.3281;
+    }
+  finally
+    {
+      s = {CLOBBER};
+    }
+}
+
+
+
+;; Function printStruct (printStruct, funcdef_no=40, decl_uid=3221, cgraph_uid=41, symbol_order=40)
+
+void printStruct (const struct MyStruct * s)
+{
+  _1 = s->data;
+  printf ("%d\n", _1);
+}
+
+
+
+;; Function printf (<unset-asm-name>, funcdef_no=15, decl_uid=964, cgraph_uid=16, symbol_order=15)
+
+__attribute__((artificial, gnu_inline, always_inline))
+__attribute__((nonnull (1), format (printf, 1, 2)))
+int printf (const char * restrict __fmt)
+{
+  int D.3284;
+
+  D.3284 = __printf_chk (1, __fmt, __builtin_va_arg_pack ());
+  return D.3284;
+}
+
+
+
+;; Function hashStruct (hashStruct, funcdef_no=41, decl_uid=3224, cgraph_uid=42, symbol_order=41)
+
+uint32_t hashStruct (const struct MyStruct * s)
+{
+  uint32_t D.3286;
+  uint32_t h;
+
+  _1 = s->data;
+  h = (uint32_t) _1;
+  {
+    int i;
+
+    i = 0;
+    goto <D.3231>;
+    <D.3230>:
+    _2 = s->buffer[i];
+    _3 = (unsigned int) _2;
+    h = h + _3;
+    i = i + 1;
+    <D.3231>:
+    if (i <= 3) goto <D.3230>; else goto <D.3228>;
+    <D.3228>:
+  }
+  D.3286 = h;
+  return D.3286;
+}
+
+
+
+;; Function testFunction (testFunction, funcdef_no=42, decl_uid=3234, cgraph_uid=43, symbol_order=42)
+
+__attribute__((access ("^1[ ]", )))
+void testFunction (int32_t x, uint8_t * y)
+{
+  struct MyStruct s;
+
+  try
+    {
+      s = createStruct (x, &y);
+      printStruct (&s);
+      _1 = hashStruct (&s);
+      printf ("%u\n", _1);
+    }
+  finally
+    {
+      s = {CLOBBER};
+    }
+}
+
+
+
+;; Function runTests (runTests, funcdef_no=43, decl_uid=3238, cgraph_uid=44, symbol_order=43)
+
+void runTests (void (*TestFunc) (int32_t, uint8_t *) func)
+{
+  int32_t vals[4];
+  uint8_t arr[4][4];
+
+  try
+    {
+      vals[0] = 10;
+      vals[1] = -10;
+      vals[2] = -2147483648;
+      vals[3] = 2147483647;
+      arr[0] = "\x00";
+      arr[1] = "\x01\x02\x03\x04";
+      arr[2] = "\x05\x06\x07\b";
+      arr[3] = "\t\n\v\f";
+      {
+        int i;
+
+        i = 0;
+        goto <D.3246>;
+        <D.3245>:
+        _1 = &arr[i];
+        _2 = vals[i];
+        func (_2, _1);
+        i = i + 1;
+        <D.3246>:
+        i.0_3 = (unsigned int) i;
+        if (i.0_3 <= 3) goto <D.3245>; else goto <D.3243>;
+        <D.3243>:
+      }
+    }
+  finally
+    {
+      vals = {CLOBBER};
+      arr = {CLOBBER};
+    }
+}
+
+
+
+;; Function complexFunction (complexFunction, funcdef_no=44, decl_uid=3247, cgraph_uid=45, symbol_order=44)
+
+void complexFunction ()
+{
+  int32_t vals[4];
+  uint8_t arr[4][4];
+
+  try
+    {
+      vals[0] = 10;
+      vals[1] = -10;
+      vals[2] = -2147483648;
+      vals[3] = 2147483647;
+      arr[0] = "\x00";
+      arr[1] = "\x01\x02\x03\x04";
+      arr[2] = "\x05\x06\x07\b";
+      arr[3] = "\t\n\v\f";
+      {
+        int i;
+
+        i = 0;
+        goto <D.3256>;
+        <D.3255>:
+        {
+          struct MyStruct s;
+
+          try
+            {
+              _1 = &arr[i];
+              _2 = vals[i];
+              s = createStruct (_2, _1);
+              printStruct (&s);
+              _3 = hashStruct (&s);
+              printf ("%u\n", _3);
+            }
+          finally
+            {
+              s = {CLOBBER};
+            }
+        }
+        i = i + 1;
+        <D.3256>:
+        i.1_4 = (unsigned int) i;
+        if (i.1_4 <= 3) goto <D.3255>; else goto <D.3253>;
+        <D.3253>:
+      }
+    }
+  finally
+    {
+      vals = {CLOBBER};
+      arr = {CLOBBER};
+    }
+}
+
+
+
+;; Function complexMacroTest (complexMacroTest, funcdef_no=45, decl_uid=3257, cgraph_uid=46, symbol_order=45)
+
+void complexMacroTest ()
+{
+  int D.3263;
+  int32_t vals[4];
+  uint8_t arr[4][4];
+
+  try
+    {
+      vals[0] = 10;
+      vals[1] = -10;
+      vals[2] = -2147483648;
+      vals[3] = 2147483647;
+      arr[0] = "\x00";
+      arr[1] = "\x01\x02\x03\x04";
+      arr[2] = "\x05\x06\x07\b";
+      arr[3] = "\t\n\v\f";
+      {
+        int i;
+
+        i = 0;
+        goto <D.3267>;
+        <D.3266>:
+        {
+          struct MyStruct s;
+
+          try
+            {
+              _1 = &arr[i];
+              _2 = vals[i];
+              s = createStruct (_2, _1);
+              printStruct (&s);
+              _3 = hashStruct (&s);
+              D.3263 = printf ("%u\n", _3);
+            }
+          finally
+            {
+              s = {CLOBBER};
+            }
+        }
+        i = i + 1;
+        <D.3267>:
+        i.2_4 = (unsigned int) i;
+        if (i.2_4 <= 3) goto <D.3266>; else goto <D.3264>;
+        <D.3264>:
+      }
+    }
+  finally
+    {
+      vals = {CLOBBER};
+      arr = {CLOBBER};
+    }
+}
+
+
+
+;; Function runComplexTests (runComplexTests, funcdef_no=46, decl_uid=3268, cgraph_uid=47, symbol_order=46)
+
+void runComplexTests ()
+{
+  int32_t vals[4];
+  uint8_t arr[4][4];
+
+  try
+    {
+      vals[0] = 10;
+      vals[1] = -10;
+      vals[2] = -2147483648;
+      vals[3] = 2147483647;
+      arr[0] = "\x00";
+      arr[1] = "\x01\x02\x03\x04";
+      arr[2] = "\x05\x06\x07\b";
+      arr[3] = "\t\n\v\f";
+      {
+        int i;
+
+        i = 0;
+        goto <D.3277>;
+        <D.3276>:
+        {
+          struct MyStruct s;
+
+          try
+            {
+              _1 = &arr[i];
+              _2 = vals[i];
+              s = createStruct (_2, _1);
+              printStruct (&s);
+              _3 = hashStruct (&s);
+              printf ("%u\n", _3);
+            }
+          finally
+            {
+              s = {CLOBBER};
+            }
+        }
+        i = i + 1;
+        <D.3277>:
+        i.3_4 = (unsigned int) i;
+        if (i.3_4 <= 3) goto <D.3276>; else goto <D.3274>;
+        <D.3274>:
+      }
+    }
+  finally
+    {
+      vals = {CLOBBER};
+      arr = {CLOBBER};
+    }
+}
+
+
+
+;; Function main (main, funcdef_no=47, decl_uid=3278, cgraph_uid=48, symbol_order=47)
+
+int main ()
+{
+  int D.3288;
+
+  {
+    runTests (testFunction);
+    complexFunction ();
+    complexMacroTest ();
+    runComplexTests ();
+    D.3288 = 0;
+    return D.3288;
+  }
+  D.3288 = 0;
+  return D.3288;
+}
+
+

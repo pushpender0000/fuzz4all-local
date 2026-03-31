@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "000564",
+    "target": "c",
+    "source_file": "000564.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 2,
+    "cppcheck_output": "/tmp/gcc_fuzz_mbrnm2fc/t.c:73:15: style: Unsigned expression 'index' can't be negative so it is unnecessary to test it. [unsignedPositive]\n    if (index >= 0 && index < ARRAY_SIZE) {\n              ^",
+    "clang_tidy_rc": 0,
+    "clang_tidy_output": "/tmp/gcc_fuzz_mbrnm2fc/t.c:74:60: warning: narrowing conversion from 'double' to 'int16_t' (aka 'short') [bugprone-narrowing-conversions]\n        arrayOfSmallStructs[index] = (SmallStruct){.data = newVal->real, .bytes = {newVal->imag, 0}};\n                                                           ^\n/tmp/gcc_fuzz_mbrnm2fc/t.c:74:84: warning: narrowing conversion from 'double' to 'uint8_t' (aka 'unsigned char') [bugprone-narrowing-conversions]\n        arrayOfSmallStructs[index] = (SmallStruct){.data = newVal->real, .bytes = {newVal->imag, 0}};\n                                                                                   ^\n/tmp/gcc_fuzz_mbrnm2fc/t.c:84:51: warning: narrowing conversion from 'size_t' (aka 'unsigned long') to 'double' [bugprone-narrowing-conversions]\n        complexArray[i] = (ComplexNumber){.real = i * 1.1, .imag = i * 1.2};\n                                                  ^\n/tmp/gcc_fuzz_mbrnm2fc/t.c:84:68: warning: narrowing conversion from 'size_t' (aka 'unsigned long') to 'double' [bugprone-narrowing-conversions]\n        complexArray[i] = (ComplexNumber){.real = i * 1.1, .imag = i * 1.2};\n                                                                   ^\n/tmp/gcc_fuzz_mbrnm2fc/t.c:87:14: warning: incompatible function pointer types passing 'void (const ComplexNumber *, const ComplexNumber *)' to parameter of type 'ComplexFunc' (aka 'void (*)(const ComplexNumber *)') [clang-diagnostic-incompatible-function-pointer-types]\n    runTests(testFunction, complexArray, ARRAY_SIZE / 2);\n             ^~~~~~~~~~~~\n/tmp/gcc_fuzz_mbrnm2fc/t.c:41:27: note: passing argument to parameter 'func' here\nvoid runTests(ComplexFunc func, const ComplexNumber *arr, size_t arrSize) {\n                          ^\n\n460 warnings generated.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

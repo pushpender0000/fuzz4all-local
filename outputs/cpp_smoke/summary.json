@@ -1,0 +1,16 @@
+{
+  "elapsed_sec": 187,
+  "duration_sec": 180,
+  "total_inputs_generated": 17,
+  "valid_inputs_generated": 9,
+  "static_scan_passed": 9,
+  "sanitizer_gate_passed": 9,
+  "bugs_total": 0,
+  "bugs_miscompilation_DIFF": 0,
+  "bugs_crash_or_timeout": 0,
+  "percent_valid_inputs_generated": 52.94117647058823,
+  "percent_static_scan_passed": 52.94117647058823,
+  "percent_static_and_sanitizer_passed": 52.94117647058823,
+  "percent_bugs_out_of_valid_inputs": 0.0,
+  "output_folder": "outputs/cpp_smoke"
+}

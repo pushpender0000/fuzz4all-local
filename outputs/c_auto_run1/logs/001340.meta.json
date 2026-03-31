@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "001340",
+    "target": "c",
+    "source_file": "001340.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "/tmp/gcc_fuzz_zl3w7jwu/t.c:13:9: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n        arr[i] = (Complex){.real = i * 10, .imag = -(i * 5)}; \\\n        ^\n        (  )\n/tmp/gcc_fuzz_zl3w7jwu/t.c:18:47: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define PRINT_COMPLEX(c) printf(\"%d + %di\\n\", c.real, c.imag)\n                                              ^\n                                              ()\n/tmp/gcc_fuzz_zl3w7jwu/t.c:18:55: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define PRINT_COMPLEX(c) printf(\"%d + %di\\n\", c.real, c.imag)\n                                                      ^\n                                                      ()\n/tmp/gcc_fuzz_zl3w7jwu/t.c:26:22: error: use of undeclared identifier 'ARRAY_SIZE' [clang-diagnostic-error]\nComplex complexArray[ARRAY_SIZE];\n                     ^\n/tmp/gcc_fuzz_zl3w7jwu/t.c:30:25: error: use of undeclared identifier 'ARRAY_SIZE' [clang-diagnostic-error]\n    for (int i = 0; i < ARRAY_SIZE; ++i) {\n                        ^\n/tmp/gcc_fuzz_zl3w7jwu/t.c:37:5: error: member reference type 'const Complex *' is a pointer; did you mean to use '->'? [clang-diagnostic-error]\n    PRINT_COMPLEX(*c);\n    ^\n/tmp/gcc_fuzz_zl3w7jwu/t.c:18:48: note: expanded from macro 'PRINT_COMPLEX'\n#define PRINT_COMPLEX(c) printf(\"%d + %di\\n\", c.real, c.imag)\n                                              ~^\n/tmp/gcc_fuzz_zl3w7jwu/t.c:37:19: error: indirection requires pointer operand ('int32_t' (aka 'int') invalid) [clang-diagnostic-error]\n    PRINT_COMPLEX(*c);\n                  ^\n/tmp/gcc_fuzz_zl3w7jwu/t.c:18:47: note: expanded from macro 'PRINT_COMPLEX'\n#define PRINT_COMPLEX(c) printf(\"%d + %di\\n\", c.real, c.imag)\n                                              ^~~~~~\n/tmp/gcc_fuzz_zl3w7jwu/t.c:42:5: error: use of undeclared identifier 'ARRAY_SIZE' [clang-diagnostic-error]\n    INITIALIZE_COMPLEXES(complexArray);\n    ^\n/tmp/gcc_fuzz_zl3w7jwu/t.c:12:25: note: expanded from macro 'INITIALIZE_COMPLEXES'\n    for (int i = 0; i < ARRAY_SIZE; ++i) { \\\n                        ^\n/tmp/gcc_fuzz_zl3w7jwu/t.c:49:25: error: use of undeclared identifier 'ARRAY_SIZE' [clang-diagnostic-error]\n    for (int i = 0; i < ARRAY_SIZE; ++i) {\n                        ^\n\n452 warnings and 8 errors generated.\nError while processing /tmp/gcc_fuzz_zl3w7jwu/t.c.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

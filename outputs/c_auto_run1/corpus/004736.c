@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <stdint.h>
+
+#define ARRAY_SIZE 1024
+
+typedef void (*TestFunc)(uint32_t, uint8_t[4]);
+
+typedef struct {
+    int32_t data;
+    uint8_t bytes[4];
+} MyStruct;
+
+MyStruct createComplexStruct(uint32_t val, const uint8_t arr[]) {
+    MyStruct s = {val, {arr[0], arr[1], arr[2], arr[3]}};
+    return s;
+}
+
+void printStruct(const MyStruct *s) {
+    printf("%d\n", s->data);
+}
+
+#define HASH_CALCULATION(s) ((uint32_t)(s)->data + (s)->bytes[0] * 2 + (s)->bytes[1] / 2 + (s)->bytes[2] * 3 - (s)->bytes[3])
+
+static inline uint32_t hashStruct(const MyStruct *s) {
+    return HASH_CALCULATION(s);
+}
+
+MyStruct arrayOfStructs[ARRAY_SIZE];
+
+void initializeComplexArray() {
+    uint8_t initialArray[] = {1, 2, 3, 4};
+    for (int i = 0; i < ARRAY_SIZE; ++i) {
+        if (i % 7 == 0 || i % 13 == 0) { // Avoid specific indices to avoid undefined behavior
+            continue;
+        }
+        arrayOfStructs[i] = createComplexStruct(10 * i, initialArray);
+    }
+}
+
+void testFunctionWithPointer(uint32_t x, uint8_t y[4]) {
+    MyStruct s = createComplexStruct(x, y);
+    printStruct(&s);
+    printf("%u\n", hashStruct(&s));
+}
+
+typedef void (*TestFuncPtr)(uint32_t, uint8_t[4]);
+
+void runTestsWithPointer(TestFuncPtr func) {
+    uint32_t vals[] = {10, -10, 300, -300};
+    uint8_t arr[][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+    for (int i = 0; i < sizeof(vals) / sizeof(vals[0]); ++i) {
+        func(vals[i], arr[i]);
+    }
+}
+
+void stressTest() {
+    uint8_t newBytes[] = {9, 10, 11, 12};
+    for (int i = 0; i < ARRAY_SIZE; ++i) {
+        if (i % 7 == 0 || i % 13 == 0) { // Avoid specific indices to avoid undefined behavior
+            continue;
+        }
+        arrayOfStructs[i] = createComplexStruct(100 + 10 * i, newBytes);
+    }
+}
+
+int main() {
+    initializeComplexArray();
+    runTestsWithPointer(testFunctionWithPointer);
+
+    // Additional test with a function pointer and complex manipulation
+    stressTest();
+
+    uint32_t totalHash = 0;
+    for (int i = 0; i < ARRAY_SIZE; ++i) {
+        if (i % 3 == 0) { // Skip every third element to avoid simple patterns
+            continue;
+        }
+        totalHash += hashStruct(&arrayOfStructs[i]);
+    }
+    printf("Total Hash after stressTest: %u\n", totalHash);
+
+    return 0;
+}

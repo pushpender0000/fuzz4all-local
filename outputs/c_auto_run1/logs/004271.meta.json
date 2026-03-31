@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "004271",
+    "target": "c",
+    "source_file": "004271.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": true,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 0,
+    "clang_tidy_output": "/tmp/gcc_fuzz_ifpta47v/t.c:48:22: warning: implicit declaration of function 'HASH' is invalid in C99 [clang-diagnostic-implicit-function-declaration]\n        totalHash += HASH(&arrayOfStructs[i]);\n                     ^\n/tmp/gcc_fuzz_ifpta47v/t.c:56:20: warning: implicit declaration of function 'HASH' is invalid in C99 [clang-diagnostic-implicit-function-declaration]\n    printf(\"%u\\n\", HASH(&s));\n                   ^\n\n451 warnings generated.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "gcc /tmp/gcc_fuzz_ifpta47v/t.c -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -o /tmp/gcc_fuzz_ifpta47v/t.c.asan.out",
+    "sanitizer_compile_rc": 1,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "/tmp/gcc_fuzz_ifpta47v/t.c: In function \u2018calculateTotalHash\u2019:\n/tmp/gcc_fuzz_ifpta47v/t.c:48:22: warning: implicit declaration of function \u2018HASH\u2019 [-Wimplicit-function-declaration]\n   48 |         totalHash += HASH(&arrayOfStructs[i]);\n      |                      ^~~~\n/usr/bin/ld: /tmp/ccvh2Gia.o: in function `testFunctionWithPointer':\n/tmp/gcc_fuzz_ifpta47v/t.c:56: undefined reference to `HASH'\n/usr/bin/ld: /tmp/ccvh2Gia.o: in function `calculateTotalHash':\n/tmp/gcc_fuzz_ifpta47v/t.c:48: undefined reference to `HASH'\ncollect2: error: ld returned 1 exit status",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "sanitizer",
+    "finding_details": "Rejected by ASan/UBSan gate (UB/crash/runtime error)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

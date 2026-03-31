@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "004550",
+    "target": "c",
+    "source_file": "004550.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": true,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 0,
+    "clang_tidy_output": "/tmp/gcc_fuzz_t4w75pxs/t.c:40:49: warning: performing an implicit widening conversion to type 'int64_t' (aka 'long') of a multiplication performed in type 'int' [bugprone-implicit-widening-of-multiplication-result]\n        arrayOfStructs[i] = createComplexStruct(10 * i, initialArray);\n                                                ^\n/tmp/gcc_fuzz_t4w75pxs/t.c:40:49: note: make conversion explicit to silence this warning\n        arrayOfStructs[i] = createComplexStruct(10 * i, initialArray);\n                                                ^~~~~~\n                                                (int64_t)( )\n/tmp/gcc_fuzz_t4w75pxs/t.c:40:49: note: perform multiplication in a wider type\n        arrayOfStructs[i] = createComplexStruct(10 * i, initialArray);\n                                                ^~\n                                                (int64_t)\n\n450 warnings generated.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "gcc /tmp/gcc_fuzz_t4w75pxs/t.c -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -o /tmp/gcc_fuzz_t4w75pxs/t.c.asan.out",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 1,
+    "sanitizer_stderr": "=================================================================\n==64723==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffcc27b36d0 at pc 0x55e16bf1c6a0 bp 0x7ffcc27b3590 sp 0x7ffcc27b3580\nREAD of size 1 at 0x7ffcc27b36d0 thread T0\n    #0 0x55e16bf1c69f in createComplexStruct /tmp/gcc_fuzz_t4w75pxs/t.c:16\n    #1 0x55e16bf1c813 in testFunctionWithPointer /tmp/gcc_fuzz_t4w75pxs/t.c:56\n    #2 0x55e16bf1d4d3 in runTestsWithPointer /tmp/gcc_fuzz_t4w75pxs/t.c:67\n    #3 0x55e16bf1d647 in main /tmp/gcc_fuzz_t4w75pxs/t.c:82\n    #4 0x717a51629d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58\n    #5 0x717a51629e3f in __libc_start_main_impl ../csu/libc-start.c:392\n    #6 0x55e16bf1c2a4 in _start (/tmp/gcc_fuzz_t4w75pxs/t.c.asan.out+0x32a4)\n\nAddress 0x7ffcc27b36d0 is located in stack of thread T0 at offset 48 in frame\n    #0 0x55e16bf1d20a in runTestsWithPointer /tmp/gcc_fuzz_t4w75pxs/t.c:63\n\n  This frame has 2 object(s):\n    [32, 48) 'arr' (line 65) <== Memory access at offset 48 overflows this variable\n    [64, 96) 'vals' (line 64)\nHINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork\n      (longjmp and C++ exceptions *are* supported)\nSUMMARY: AddressSanitizer: stack-buffer-overflow /tmp/gcc_fuzz_t4w75pxs/t.c:16 in createComplexStruct\nShadow bytes around the buggy address:\n  0x1000184ee680: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n  0x1000184ee690: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n  0x1000184ee6a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n  0x1000184ee6b0: 00 00 00 00 00 00 00 00 00 00 00 00 f1 f1 f1 f1\n  0x1000184ee6c0: 00 00 f3 f3 00 00 00 00 00 00 00 00 00 00 00 00\n=>0x1000184ee6d0: 00 00 00 00 f1 f1 f1 f1 00 00[f2]f2 00 00 00 00\n  0x1000184ee6e0: f3 f3 f3 f3 00 00 00 00 00 00 00 00 00 00 00 00\n  0x1000184ee6f0: f1 f1 f1 f1 04 f3 f3 f3 00 00 00 00 00 00 00 00\n  0x1000184ee700: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n  0x1000184ee710: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n  0x1000184ee720: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\nShadow byte legend (one shadow byte represents 8 application bytes):\n  Addressable:           00\n  Partially addressable: 01 02 03 04 05 06 07 \n  Heap left redzone:       fa\n  Freed heap region:       fd\n  Stack left redzone:      f1\n  Stack mid redzone:       f2\n  Stack right redzone:     f3\n  Stack after return:      f5\n  Stack use after scope:   f8\n  Global redzone:          f9\n  Global init order:       f6\n  Poisoned by user:        f7\n  Container overflow:      fc\n  Array cookie:            ac\n  Intra object redzone:    bb\n  ASan internal:           fe\n  Left alloca redzone:     ca\n  Right alloca redzone:    cb\n  Shadow gap:              cc\n==64723==ABORTING",
+    "sanitizer_passed": false,
+    "ub_detected": true
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "sanitizer",
+    "finding_details": "Rejected by ASan/UBSan gate (UB/crash/runtime error)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

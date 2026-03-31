@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "000163",
+    "target": "c",
+    "source_file": "000163.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 2,
+    "cppcheck_output": "/tmp/gcc_fuzz_m2j2rthv/t.c:62:5: warning: %u in format string (no. 1) requires 'unsigned int' but the argument type is 'signed long'. [invalidPrintfArgType_uint]\n    COMPLEX_OPERATION(4294967295); // A large number to stress the loop and struct handling.\n    ^\n/tmp/gcc_fuzz_m2j2rthv/t.c:32:17: portability: Casting from const double * to unsigned int * is not portable due to different binary data representations on different platforms. [invalidPointerCast]\n    return h + *(uint32_t *)&(s->c); // Ensure double is hashed correctly, though this might be undefined behavior.\n                ^",
+    "clang_tidy_rc": 0,
+    "clang_tidy_output": "/tmp/gcc_fuzz_m2j2rthv/t.c:46:48: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n    printComplexStruct(&arrayOfComplexStructs[(n % MAX_ITER)]); \\\n                                               ^\n                                               ()\n/tmp/gcc_fuzz_m2j2rthv/t.c:47:33: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n    printf(\"%u\\n\", totalHash + (n * 100)); \\\n                                ^\n                                ()\n/tmp/gcc_fuzz_m2j2rthv/t.c:62:5: warning: format specifies type 'unsigned int' but the argument has type 'long' [clang-diagnostic-format]\n    COMPLEX_OPERATION(4294967295); // A large number to stress the loop and struct handling.\n    ^\n/tmp/gcc_fuzz_m2j2rthv/t.c:47:20: note: expanded from macro 'COMPLEX_OPERATION'\n    printf(\"%u\\n\", totalHash + (n * 100)); \\\n            ~~     ^~~~~~~~~~~~~~~~~~~~~\n\n452 warnings generated.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

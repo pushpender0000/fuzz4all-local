@@ -1,0 +1,276 @@
+
+;; Function testFunction (testFunction, funcdef_no=42, decl_uid=3234, cgraph_uid=43, symbol_order=42)
+
+__attribute__((access ("^1[ ]", )))
+void testFunction (int32_t x, uint8_t * y)
+{
+  uint32_t h;
+  unsigned int _17;
+  unsigned char _18;
+  unsigned char _20;
+  unsigned char _21;
+  unsigned int _25;
+  unsigned int _36;
+  unsigned int _40;
+  unsigned int _42;
+  unsigned int _44;
+  unsigned int _45;
+  unsigned int _48;
+
+  <bb 2> [local count: 214748368]:
+  _40 = BIT_FIELD_REF <y_31(D), 32, 0>;
+  _18 = BIT_FIELD_REF <y_31(D), 8, 8>;
+  _20 = BIT_FIELD_REF <y_31(D), 8, 16>;
+  _21 = BIT_FIELD_REF <y_31(D), 8, 24>;
+  __printf_chk (1, "%d\n", x_2(D));
+  h_5 = (uint32_t) x_2(D);
+  _44 = _40 & 255;
+  _36 = (unsigned int) _18;
+  _17 = _36 + _44;
+  _42 = (unsigned int) _20;
+  _25 = _17 + _42;
+  _48 = (unsigned int) _21;
+  _45 = _25 + _48;
+  h_49 = h_5 + _45;
+  __printf_chk (1, "%u\n", h_49); [tail call]
+  return;
+
+}
+
+
+
+;; Function createStruct (createStruct, funcdef_no=39, decl_uid=3212, cgraph_uid=40, symbol_order=39)
+
+__attribute__((access ("^1[ ]", )))
+struct MyStruct createStruct (int32_t val, const uint8_t * arr)
+{
+  struct MyStruct s;
+  struct MyStruct D.3281;
+  unsigned int _15;
+
+  <bb 2> [local count: 214748368]:
+  _15 = MEM <unsigned int> [(char * {ref-all})arr_11(D)];
+  MEM <unsigned int> [(char * {ref-all})&s + 4B] = _15;
+  s.data = val_8(D);
+  D.3281 = s;
+  s ={v} {CLOBBER};
+  return D.3281;
+
+}
+
+
+
+;; Function printStruct (printStruct, funcdef_no=40, decl_uid=3221, cgraph_uid=41, symbol_order=40)
+
+void printStruct (const struct MyStruct * s)
+{
+  int _1;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = s_3(D)->data;
+  __printf_chk (1, "%d\n", _1); [tail call]
+  return;
+
+}
+
+
+
+;; Function hashStruct (hashStruct, funcdef_no=41, decl_uid=3224, cgraph_uid=42, symbol_order=41)
+
+uint32_t hashStruct (const struct MyStruct * s)
+{
+  uint32_t h;
+  int _1;
+  unsigned char _13;
+  unsigned int _14;
+  unsigned char _19;
+  unsigned int _20;
+  unsigned char _25;
+  unsigned int _26;
+  unsigned char _31;
+  unsigned int _32;
+
+  <bb 2> [local count: 214748368]:
+  _1 = s_7(D)->data;
+  h_8 = (uint32_t) _1;
+  _13 = s_7(D)->buffer[0];
+  _14 = (unsigned int) _13;
+  h_15 = h_8 + _14;
+  _19 = s_7(D)->buffer[1];
+  _20 = (unsigned int) _19;
+  h_21 = h_15 + _20;
+  _25 = s_7(D)->buffer[2];
+  _26 = (unsigned int) _25;
+  h_27 = h_21 + _26;
+  _31 = s_7(D)->buffer[3];
+  _32 = (unsigned int) _31;
+  h_33 = h_27 + _32;
+  return h_33;
+
+}
+
+
+
+;; Function runTests (runTests, funcdef_no=43, decl_uid=3238, cgraph_uid=44, symbol_order=43)
+
+void runTests (void (*TestFunc) (int32_t, uint8_t *) func)
+{
+  sizetype ivtmp.63;
+  uint8_t arr[4][4];
+  int32_t vals[4];
+  int pretmp_3;
+  int prephitmp_24;
+  unsigned long _25;
+  unsigned long _26;
+  uint8_t[4][4] * _27;
+
+  <bb 2> [local count: 214748368]:
+  vals[1] = -10;
+  MEM <unsigned long> [(int *)&vals + 8B] = 9223372034707292160;
+  MEM <unsigned long> [(uint8_t[4] *)&arr] = 289077004400066560;
+  MEM <unsigned long> [(uint8_t[4] *)&arr + 8B] = 867798387104613893;
+
+  <bb 3> [local count: 858993457]:
+  # prephitmp_24 = PHI <pretmp_3(4), 10(2)>
+  # ivtmp.63_4 = PHI <ivtmp.63_2(4), 0(2)>
+  _25 = (unsigned long) &arr;
+  _26 = ivtmp.63_4 + _25;
+  _27 = (uint8_t[4][4] *) _26;
+  func_17(D) (prephitmp_24, _27);
+  ivtmp.63_2 = ivtmp.63_4 + 4;
+  if (ivtmp.63_2 != 16)
+    goto <bb 4>; [80.00%]
+  else
+    goto <bb 5>; [20.00%]
+
+  <bb 4> [local count: 687194763]:
+  pretmp_3 = MEM[(int *)&vals + ivtmp.63_2 * 1];
+  goto <bb 3>; [100.00%]
+
+  <bb 5> [local count: 214748368]:
+  vals ={v} {CLOBBER};
+  arr ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function complexFunction (complexFunction, funcdef_no=44, decl_uid=3247, cgraph_uid=45, symbol_order=44)
+
+void complexFunction ()
+{
+  unsigned long ivtmp.100;
+  unsigned long ivtmp.96;
+  uint32_t h;
+  uint8_t arr[4][4];
+  int32_t vals[4];
+  void * _2;
+  unsigned int _4;
+  unsigned int _32;
+  int pretmp_37;
+  unsigned int _40;
+  unsigned char pretmp_44;
+  unsigned int _45;
+  unsigned long _46;
+  unsigned char prephitmp_50;
+  unsigned int _51;
+  void * _53;
+  int prephitmp_54;
+  void * _56;
+  unsigned int _57;
+  unsigned int _63;
+  unsigned char pretmp_69;
+  unsigned char pretmp_79;
+  unsigned char pretmp_89;
+
+  <bb 2> [local count: 53687093]:
+  vals[1] = -10;
+  MEM <unsigned long> [(int *)&vals + 8B] = 9223372034707292160;
+  MEM <unsigned long> [(uint8_t[4] *)&arr] = 289077004400066560;
+  MEM <unsigned long> [(uint8_t[4] *)&arr + 8B] = 867798387104613893;
+  ivtmp.96_71 = (unsigned long) &arr;
+  ivtmp.100_90 = (unsigned long) &vals;
+  _46 = ivtmp.96_71 + 16;
+
+  <bb 3> [local count: 214748371]:
+  # prephitmp_54 = PHI <pretmp_37(4), 10(2)>
+  # prephitmp_50 = PHI <pretmp_44(4), 0(2)>
+  # ivtmp.96_27 = PHI <ivtmp.96_81(4), ivtmp.96_71(2)>
+  # ivtmp.100_52 = PHI <ivtmp.100_91(4), ivtmp.100_90(2)>
+  _56 = (void *) ivtmp.96_27;
+  pretmp_69 = MEM[(const uint8_t *)_56 + 1B];
+  pretmp_79 = MEM[(const uint8_t *)_56 + 2B];
+  pretmp_89 = MEM[(const uint8_t *)_56 + 3B];
+  __printf_chk (1, "%d\n", prephitmp_54);
+  h_21 = (uint32_t) prephitmp_54;
+  _45 = (unsigned int) prephitmp_50;
+  _51 = (unsigned int) pretmp_69;
+  _32 = h_21 + _45;
+  _57 = (unsigned int) pretmp_79;
+  _4 = _32 + _51;
+  _63 = (unsigned int) pretmp_89;
+  _40 = _4 + _57;
+  h_64 = _40 + _63;
+  __printf_chk (1, "%u\n", h_64);
+  ivtmp.96_81 = ivtmp.96_27 + 4;
+  ivtmp.100_91 = ivtmp.100_52 + 4;
+  if (_46 != ivtmp.96_81)
+    goto <bb 4>; [80.00%]
+  else
+    goto <bb 5>; [20.00%]
+
+  <bb 4> [local count: 171798694]:
+  _2 = (void *) ivtmp.100_91;
+  pretmp_37 = MEM[(int *)_2];
+  _53 = (void *) ivtmp.96_81;
+  pretmp_44 = MEM[(const uint8_t *)_53];
+  goto <bb 3>; [100.00%]
+
+  <bb 5> [local count: 53687093]:
+  vals ={v} {CLOBBER};
+  arr ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function complexMacroTest (complexMacroTest, funcdef_no=49, decl_uid=3257, cgraph_uid=46, symbol_order=45)
+
+void complexMacroTest ()
+{
+  <bb 2> [local count: 53687093]:
+  complexFunction (); [tail call]
+  return;
+
+}
+
+
+
+;; Function runComplexTests (runComplexTests, funcdef_no=51, decl_uid=3268, cgraph_uid=47, symbol_order=46)
+
+void runComplexTests ()
+{
+  <bb 2> [local count: 53687093]:
+  complexFunction (); [tail call]
+  return;
+
+}
+
+
+
+;; Function main (main, funcdef_no=47, decl_uid=3278, cgraph_uid=48, symbol_order=47) (executed once)
+
+int main ()
+{
+  <bb 2> [local count: 1073741824]:
+  runTests (testFunction);
+  complexFunction ();
+  complexFunction ();
+  complexFunction ();
+  return 0;
+
+}
+
+

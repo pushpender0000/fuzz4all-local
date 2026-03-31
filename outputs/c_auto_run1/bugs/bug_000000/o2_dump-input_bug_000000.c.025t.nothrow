@@ -1,0 +1,362 @@
+
+;; Function printf (printf, funcdef_no=15, decl_uid=964, cgraph_uid=16, symbol_order=15)
+
+Function found to be nothrow: printf
+__attribute__((artificial, gnu_inline, always_inline))
+__attribute__((nonnull (1), format (printf, 1, 2)))
+int printf (const char * restrict __fmt)
+{
+  int _4;
+
+  <bb 2> :
+  _4 = __printf_chk (1, __fmt_2(D), __builtin_va_arg_pack ());
+  return _4;
+
+}
+
+
+
+;; Function createStruct (createStruct, funcdef_no=39, decl_uid=3212, cgraph_uid=40, symbol_order=39)
+
+Function found to be nothrow: createStruct
+__attribute__((access ("^1[ ]", )))
+struct MyStruct createStruct (int32_t val, const uint8_t * arr)
+{
+  int i;
+  struct MyStruct s;
+  struct MyStruct D.3281;
+  sizetype _1;
+  const uint8_t * _2;
+  unsigned char _3;
+
+  <bb 2> :
+  s = {};
+  s.data = val_8(D);
+  i_10 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (sizetype) i_4;
+  _2 = arr_13(D) + _1;
+  _3 = *_2;
+  s.buffer[i_4] = _3;
+  i_15 = i_4 + 1;
+
+  <bb 4> :
+  # i_4 = PHI <i_10(2), i_15(3)>
+  if (i_4 <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  D.3281 = s;
+  s ={v} {CLOBBER};
+  return D.3281;
+
+}
+
+
+
+;; Function printStruct (printStruct, funcdef_no=40, decl_uid=3221, cgraph_uid=41, symbol_order=40)
+
+Function found to be nothrow: printStruct
+void printStruct (const struct MyStruct * s)
+{
+  int _1;
+
+  <bb 2> :
+  _1 = s_3(D)->data;
+  printf ("%d\n", _1);
+  return;
+
+}
+
+
+
+;; Function hashStruct (hashStruct, funcdef_no=41, decl_uid=3224, cgraph_uid=42, symbol_order=41)
+
+Function found to be nothrow: hashStruct
+uint32_t hashStruct (const struct MyStruct * s)
+{
+  int i;
+  uint32_t h;
+  int _1;
+  unsigned char _2;
+  unsigned int _3;
+  uint32_t _10;
+
+  <bb 2> :
+  _1 = s_7(D)->data;
+  h_8 = (uint32_t) _1;
+  i_9 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _2 = s_7(D)->buffer[i_5];
+  _3 = (unsigned int) _2;
+  h_11 = h_4 + _3;
+  i_12 = i_5 + 1;
+
+  <bb 4> :
+  # h_4 = PHI <h_8(2), h_11(3)>
+  # i_5 = PHI <i_9(2), i_12(3)>
+  if (i_5 <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _10 = h_4;
+  return _10;
+
+}
+
+
+
+;; Function testFunction (testFunction, funcdef_no=42, decl_uid=3234, cgraph_uid=43, symbol_order=42)
+
+Function found to be nothrow: testFunction
+__attribute__((access ("^1[ ]", )))
+void testFunction (int32_t x, uint8_t * y)
+{
+  struct MyStruct s;
+  unsigned int _1;
+
+  <bb 2> :
+  s = createStruct (x_3(D), &y);
+  printStruct (&s);
+  _1 = hashStruct (&s);
+  printf ("%u\n", _1);
+  s ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function runTests (runTests, funcdef_no=43, decl_uid=3238, cgraph_uid=44, symbol_order=43)
+
+Function found to be nothrow: runTests
+void runTests (void (*TestFunc) (int32_t, uint8_t *) func)
+{
+  int i;
+  uint8_t arr[4][4];
+  int32_t vals[4];
+  uint8_t[4] * _1;
+  int _2;
+  unsigned int i.0_3;
+
+  <bb 2> :
+  vals[0] = 10;
+  vals[1] = -10;
+  vals[2] = -2147483648;
+  vals[3] = 2147483647;
+  arr[0] = "\x00";
+  arr[1] = "\x01\x02\x03\x04";
+  arr[2] = "\x05\x06\x07\b";
+  arr[3] = "\t\n\v\f";
+  i_15 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = &arr[i_4];
+  _2 = vals[i_4];
+  func_18(D) (_2, _1);
+  i_20 = i_4 + 1;
+
+  <bb 4> :
+  # i_4 = PHI <i_15(2), i_20(3)>
+  i.0_3 = (unsigned int) i_4;
+  if (i.0_3 <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  vals ={v} {CLOBBER};
+  arr ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function complexFunction (complexFunction, funcdef_no=44, decl_uid=3247, cgraph_uid=45, symbol_order=44)
+
+Function found to be nothrow: complexFunction
+void complexFunction ()
+{
+  struct MyStruct s;
+  int i;
+  uint8_t arr[4][4];
+  int32_t vals[4];
+  uint8_t[4] * _1;
+  int _2;
+  unsigned int _3;
+  unsigned int i.1_4;
+
+  <bb 2> :
+  vals[0] = 10;
+  vals[1] = -10;
+  vals[2] = -2147483648;
+  vals[3] = 2147483647;
+  arr[0] = "\x00";
+  arr[1] = "\x01\x02\x03\x04";
+  arr[2] = "\x05\x06\x07\b";
+  arr[3] = "\t\n\v\f";
+  i_16 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = &arr[i_5];
+  _2 = vals[i_5];
+  s = createStruct (_2, _1);
+  printStruct (&s);
+  _3 = hashStruct (&s);
+  printf ("%u\n", _3);
+  s ={v} {CLOBBER};
+  i_24 = i_5 + 1;
+
+  <bb 4> :
+  # i_5 = PHI <i_16(2), i_24(3)>
+  i.1_4 = (unsigned int) i_5;
+  if (i.1_4 <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  vals ={v} {CLOBBER};
+  arr ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function complexMacroTest (complexMacroTest, funcdef_no=45, decl_uid=3257, cgraph_uid=46, symbol_order=45)
+
+Function found to be nothrow: complexMacroTest
+void complexMacroTest ()
+{
+  struct MyStruct s;
+  int i;
+  uint8_t arr[4][4];
+  int32_t vals[4];
+  uint8_t[4] * _1;
+  int _2;
+  unsigned int _3;
+  unsigned int i.2_4;
+  int _23;
+
+  <bb 2> :
+  vals[0] = 10;
+  vals[1] = -10;
+  vals[2] = -2147483648;
+  vals[3] = 2147483647;
+  arr[0] = "\x00";
+  arr[1] = "\x01\x02\x03\x04";
+  arr[2] = "\x05\x06\x07\b";
+  arr[3] = "\t\n\v\f";
+  i_16 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = &arr[i_5];
+  _2 = vals[i_5];
+  s = createStruct (_2, _1);
+  printStruct (&s);
+  _3 = hashStruct (&s);
+  _23 = printf ("%u\n", _3);
+  s ={v} {CLOBBER};
+  i_25 = i_5 + 1;
+
+  <bb 4> :
+  # i_5 = PHI <i_16(2), i_25(3)>
+  i.2_4 = (unsigned int) i_5;
+  if (i.2_4 <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  vals ={v} {CLOBBER};
+  arr ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function runComplexTests (runComplexTests, funcdef_no=46, decl_uid=3268, cgraph_uid=47, symbol_order=46)
+
+Function found to be nothrow: runComplexTests
+void runComplexTests ()
+{
+  struct MyStruct s;
+  int i;
+  uint8_t arr[4][4];
+  int32_t vals[4];
+  uint8_t[4] * _1;
+  int _2;
+  unsigned int _3;
+  unsigned int i.3_4;
+
+  <bb 2> :
+  vals[0] = 10;
+  vals[1] = -10;
+  vals[2] = -2147483648;
+  vals[3] = 2147483647;
+  arr[0] = "\x00";
+  arr[1] = "\x01\x02\x03\x04";
+  arr[2] = "\x05\x06\x07\b";
+  arr[3] = "\t\n\v\f";
+  i_16 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = &arr[i_5];
+  _2 = vals[i_5];
+  s = createStruct (_2, _1);
+  printStruct (&s);
+  _3 = hashStruct (&s);
+  printf ("%u\n", _3);
+  s ={v} {CLOBBER};
+  i_24 = i_5 + 1;
+
+  <bb 4> :
+  # i_5 = PHI <i_16(2), i_24(3)>
+  i.3_4 = (unsigned int) i_5;
+  if (i.3_4 <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  vals ={v} {CLOBBER};
+  arr ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function main (main, funcdef_no=47, decl_uid=3278, cgraph_uid=48, symbol_order=47)
+
+Function found to be nothrow: main
+int main ()
+{
+  int _6;
+
+  <bb 2> :
+  runTests (testFunction);
+  complexFunction ();
+  complexMacroTest ();
+  runComplexTests ();
+  _6 = 0;
+  return _6;
+
+}
+
+

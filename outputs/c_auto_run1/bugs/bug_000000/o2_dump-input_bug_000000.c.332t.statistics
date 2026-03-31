@@ -1,0 +1,562 @@
+28 ssa "unused VAR_DECLs removed" "createStruct" 1
+28 ssa "unused VAR_DECLs removed" "testFunction" 1
+28 ssa "unused VAR_DECLs removed" "runComplexTests" 1
+42 fre "RPO blocks" "printf" 1
+42 fre "RPO iterations == 10" "printf" 1
+42 fre "RPO blocks visited" "printf" 1
+42 fre "RPO blocks executable" "printf" 1
+42 fre "RPO block visited times == 1" "printf" 1
+42 fre "RPO num avail == 1" "printf" 1
+42 fre "RPO num values == 3" "printf" 1
+42 fre "RPO num lattice == 3" "printf" 1
+37 ccp "Statements deleted" "createStruct" 1
+40 esra "Scalarized aggregates" "createStruct" 1
+40 esra "Modified expressions" "createStruct" 1
+40 esra "Separate LHS and RHS handling" "createStruct" 1
+40 esra "Subtree copy stmts" "createStruct" 1
+40 esra "Scalar replacements created" "createStruct" 1
+42 fre "RPO blocks" "createStruct" 4
+42 fre "RPO num lattice == 15" "createStruct" 1
+42 fre "RPO blocks visited" "createStruct" 6
+42 fre "RPO iterations == 15" "createStruct" 1
+42 fre "RPO num values == 15" "createStruct" 1
+42 fre "RPO blocks executable" "createStruct" 4
+42 fre "RPO block visited times == 1" "createStruct" 2
+42 fre "RPO block visited times == 2" "createStruct" 2
+42 fre "RPO num avail == 5" "createStruct" 1
+43 evrp "Statements folded" "createStruct" 1
+56 release_ssa "unused VAR_DECLs removed" "createStruct" 1
+56 release_ssa "SSA names released" "createStruct" 4
+56 release_ssa "SSA name holes removed" "createStruct" 4
+40 esra "Symbol to SSA rewrite" "printStruct" 1
+42 fre "RPO blocks" "printStruct" 1
+42 fre "RPO num values == 4" "printStruct" 1
+42 fre "RPO iterations == 10" "printStruct" 1
+42 fre "RPO blocks visited" "printStruct" 1
+42 fre "RPO num avail == 2" "printStruct" 1
+42 fre "RPO blocks executable" "printStruct" 1
+42 fre "RPO block visited times == 1" "printStruct" 1
+42 fre "RPO num lattice == 4" "printStruct" 1
+56 release_ssa "SSA names released" "printStruct" 2
+56 release_ssa "SSA name holes removed" "printStruct" 2
+34 einline "unused VAR_DECLs removed" "hashStruct" 2
+34 einline "Symbol to SSA rewrite" "hashStruct" 1
+37 ccp "Copies propagated" "hashStruct" 1
+37 ccp "Statements deleted" "hashStruct" 2
+42 fre "RPO num lattice == 9" "hashStruct" 1
+42 fre "RPO blocks" "hashStruct" 4
+42 fre "RPO num values == 9" "hashStruct" 1
+42 fre "RPO blocks visited" "hashStruct" 6
+42 fre "RPO iterations == 15" "hashStruct" 1
+42 fre "RPO blocks executable" "hashStruct" 4
+42 fre "RPO block visited times == 1" "hashStruct" 2
+42 fre "RPO block visited times == 2" "hashStruct" 2
+42 fre "RPO num avail == 8" "hashStruct" 1
+43 evrp "Incremental SSA update" "hashStruct" 1
+43 evrp "Statements folded" "hashStruct" 1
+56 release_ssa "SSA names released" "hashStruct" 1
+56 release_ssa "SSA name holes removed" "hashStruct" 1
+37 ccp "Copies propagated" "testFunction" 1
+37 ccp "Statements deleted" "testFunction" 3
+40 esra "Scalarized aggregates" "testFunction" 1
+40 esra "Modified expressions" "testFunction" 2
+40 esra "Separate LHS and RHS handling" "testFunction" 2
+40 esra "Subtree copy stmts" "testFunction" 1
+40 esra "Scalar replacements created" "testFunction" 1
+42 fre "RPO blocks" "testFunction" 4
+42 fre "RPO num lattice == 15" "testFunction" 1
+42 fre "RPO blocks visited" "testFunction" 6
+42 fre "RPO iterations == 15" "testFunction" 1
+42 fre "RPO num values == 15" "testFunction" 1
+42 fre "RPO num avail == 9" "testFunction" 1
+42 fre "RPO blocks executable" "testFunction" 4
+42 fre "RPO block visited times == 1" "testFunction" 2
+42 fre "RPO block visited times == 2" "testFunction" 2
+43 evrp "Incremental SSA update" "testFunction" 1
+56 release_ssa "unused VAR_DECLs removed" "testFunction" 1
+56 release_ssa "SSA names released" "testFunction" 5
+56 release_ssa "SSA name holes removed" "testFunction" 5
+34 einline "unused VAR_DECLs removed" "runTests" 4
+34 einline "Symbol to SSA rewrite" "runTests" 1
+37 ccp "Statements deleted" "runTests" 1
+40 esra "Symbol to SSA rewrite" "runTests" 1
+42 fre "RPO blocks" "runTests" 4
+42 fre "RPO blocks visited" "runTests" 6
+42 fre "RPO iterations == 15" "runTests" 1
+42 fre "RPO num lattice == 17" "runTests" 1
+42 fre "RPO num values == 17" "runTests" 1
+42 fre "RPO blocks executable" "runTests" 4
+42 fre "RPO block visited times == 1" "runTests" 2
+42 fre "RPO block visited times == 2" "runTests" 2
+42 fre "RPO num avail == 5" "runTests" 1
+43 evrp "Statements folded" "runTests" 1
+56 release_ssa "SSA names released" "runTests" 1
+56 release_ssa "SSA name holes removed" "runTests" 1
+37 ccp "Copies propagated" "complexFunction" 1
+37 ccp "Statements deleted" "complexFunction" 4
+40 esra "Scalarized aggregates" "complexFunction" 1
+40 esra "Modified expressions" "complexFunction" 2
+40 esra "Separate LHS and RHS handling" "complexFunction" 2
+40 esra "Subtree copy stmts" "complexFunction" 1
+40 esra "Scalar replacements created" "complexFunction" 1
+42 fre "RPO iterations == 20" "complexFunction" 1
+42 fre "RPO num avail == 14" "complexFunction" 1
+42 fre "RPO num lattice == 31" "complexFunction" 1
+42 fre "RPO num values == 31" "complexFunction" 1
+42 fre "RPO block visited times == 1" "complexFunction" 2
+42 fre "RPO block visited times == 3" "complexFunction" 2
+42 fre "RPO blocks visited" "complexFunction" 14
+42 fre "RPO blocks" "complexFunction" 7
+42 fre "RPO block visited times == 2" "complexFunction" 3
+42 fre "RPO blocks executable" "complexFunction" 7
+43 evrp "Incremental SSA update" "complexFunction" 1
+43 evrp "Statements folded" "complexFunction" 1
+56 release_ssa "unused VAR_DECLs removed" "complexFunction" 1
+56 release_ssa "SSA names released" "complexFunction" 6
+56 release_ssa "SSA name holes removed" "complexFunction" 6
+34 einline "unused VAR_DECLs removed" "complexMacroTest" 4
+34 einline "Symbol to SSA rewrite" "complexMacroTest" 1
+37 ccp "Copies propagated" "complexMacroTest" 1
+37 ccp "Statements deleted" "complexMacroTest" 6
+40 esra "Symbol to SSA rewrite" "complexMacroTest" 1
+40 esra "Scalarized aggregates" "complexMacroTest" 1
+40 esra "Modified expressions" "complexMacroTest" 2
+40 esra "Separate LHS and RHS handling" "complexMacroTest" 2
+40 esra "Subtree copy stmts" "complexMacroTest" 1
+40 esra "Scalar replacements created" "complexMacroTest" 1
+42 fre "RPO iterations == 20" "complexMacroTest" 1
+42 fre "RPO num avail == 14" "complexMacroTest" 1
+42 fre "RPO num lattice == 31" "complexMacroTest" 1
+42 fre "RPO num values == 31" "complexMacroTest" 1
+42 fre "RPO block visited times == 1" "complexMacroTest" 2
+42 fre "RPO block visited times == 3" "complexMacroTest" 2
+42 fre "RPO blocks visited" "complexMacroTest" 14
+42 fre "RPO blocks" "complexMacroTest" 7
+42 fre "RPO block visited times == 2" "complexMacroTest" 3
+42 fre "RPO blocks executable" "complexMacroTest" 7
+43 evrp "Incremental SSA update" "complexMacroTest" 1
+43 evrp "Statements folded" "complexMacroTest" 1
+56 release_ssa "unused VAR_DECLs removed" "complexMacroTest" 2
+56 release_ssa "SSA names released" "complexMacroTest" 8
+56 release_ssa "SSA name holes removed" "complexMacroTest" 8
+34 einline "unused VAR_DECLs removed" "runComplexTests" 3
+34 einline "Symbol to SSA rewrite" "runComplexTests" 1
+37 ccp "Copies propagated" "runComplexTests" 1
+37 ccp "Statements deleted" "runComplexTests" 4
+40 esra "Symbol to SSA rewrite" "runComplexTests" 1
+40 esra "Scalarized aggregates" "runComplexTests" 1
+40 esra "Modified expressions" "runComplexTests" 2
+40 esra "Separate LHS and RHS handling" "runComplexTests" 2
+40 esra "Subtree copy stmts" "runComplexTests" 1
+40 esra "Scalar replacements created" "runComplexTests" 1
+42 fre "RPO iterations == 20" "runComplexTests" 1
+42 fre "RPO num avail == 14" "runComplexTests" 1
+42 fre "RPO num lattice == 31" "runComplexTests" 1
+42 fre "RPO num values == 31" "runComplexTests" 1
+42 fre "RPO block visited times == 1" "runComplexTests" 2
+42 fre "RPO block visited times == 3" "runComplexTests" 2
+42 fre "RPO blocks visited" "runComplexTests" 14
+42 fre "RPO blocks" "runComplexTests" 7
+42 fre "RPO block visited times == 2" "runComplexTests" 3
+42 fre "RPO blocks executable" "runComplexTests" 7
+43 evrp "Incremental SSA update" "runComplexTests" 1
+43 evrp "Statements folded" "runComplexTests" 1
+56 release_ssa "unused VAR_DECLs removed" "runComplexTests" 1
+56 release_ssa "SSA names released" "runComplexTests" 6
+56 release_ssa "SSA name holes removed" "runComplexTests" 6
+34 einline "unused VAR_DECLs removed" "main" 4
+34 einline "Symbol to SSA rewrite" "main" 1
+37 ccp "Statements deleted" "main" 1
+37 ccp "Constants propagated" "main" 1
+40 esra "Symbol to SSA rewrite" "main" 1
+42 fre "RPO iterations == 10" "main" 1
+42 fre "RPO block visited times == 1" "main" 1
+42 fre "RPO num avail == 0" "main" 1
+42 fre "RPO blocks visited" "main" 1
+42 fre "RPO blocks" "main" 1
+42 fre "RPO num lattice == 4" "main" 1
+42 fre "RPO blocks executable" "main" 1
+42 fre "RPO num values == 4" "main" 1
+56 release_ssa "SSA names released" "main" 1
+56 release_ssa "SSA name holes removed" "main" 1
+82 icf "Symbol to SSA rewrite" "(nofn)" 2
+103 ccp "Copies propagated" "testFunction" 1
+103 ccp "Statements deleted" "testFunction" 1
+105 cunrolli "Incremental SSA update" "testFunction" 1
+112 fre "RPO blocks" "testFunction" 4
+112 fre "RPO num avail == 18" "testFunction" 1
+112 fre "RPO blocks visited" "testFunction" 6
+112 fre "RPO iterations == 15" "testFunction" 1
+112 fre "RPO num lattice == 30" "testFunction" 1
+112 fre "RPO blocks executable" "testFunction" 4
+112 fre "RPO block visited times == 1" "testFunction" 2
+112 fre "RPO block visited times == 2" "testFunction" 2
+112 fre "Eliminated" "testFunction" 1
+112 fre "RPO num values == 30" "testFunction" 1
+115 vrp "Incremental SSA update" "testFunction" 1
+115 vrp "Jumps threaded" "testFunction" 1
+115 vrp "Number of ASSERT_EXPR expressions inserted" "testFunction" 1
+127 sra "Scalarized aggregates" "testFunction" 3
+127 sra "Modified expressions" "testFunction" 5
+127 sra "Subreplacement stmts" "testFunction" 9
+127 sra "Separate LHS and RHS handling" "testFunction" 5
+127 sra "Subtree copy stmts" "testFunction" 6
+127 sra "Deleted stmts" "testFunction" 1
+127 sra "Scalar replacements created" "testFunction" 10
+129 dom "Copies propagated" "testFunction" 11
+130 copyprop "Statements deleted" "testFunction" 10
+143 pre "RPO blocks" "testFunction" 4
+143 pre "RPO num avail == 18" "testFunction" 1
+143 pre "compute_antic iterations == 3" "testFunction" 1
+143 pre "RPO blocks visited" "testFunction" 6
+143 pre "RPO iterations == 15" "testFunction" 1
+143 pre "RPO num lattice == 26" "testFunction" 1
+143 pre "RPO blocks executable" "testFunction" 4
+143 pre "RPO block visited times == 1" "testFunction" 2
+143 pre "RPO block visited times == 2" "testFunction" 2
+143 pre "RPO num values == 26" "testFunction" 1
+143 pre "insert iterations == 1" "testFunction" 1
+159 ldist "Symbol to SSA rewrite" "testFunction" 1
+192 fre "RPO blocks" "testFunction" 1
+192 fre "RPO iterations == 10" "testFunction" 1
+192 fre "RPO num avail == 14" "testFunction" 1
+192 fre "RPO blocks visited" "testFunction" 1
+192 fre "Insertions" "testFunction" 4
+192 fre "RPO blocks executable" "testFunction" 1
+192 fre "RPO block visited times == 1" "testFunction" 1
+192 fre "RPO num lattice == 30" "testFunction" 1
+192 fre "Eliminated" "testFunction" 5
+192 fre "RPO num values == 30" "testFunction" 1
+198 copyprop "Copies propagated" "testFunction" 1
+198 copyprop "Statements deleted" "testFunction" 1
+201 cddce "Statements deleted" "testFunction" 1
+282 combine "two-insn combine" "testFunction" 2
+88 inline "unused VAR_DECLs removed" "createStruct" 2
+88 inline "Symbol to SSA rewrite" "createStruct" 1
+88 inline "Symbol to SSA rewrite" "createStruct" 1
+112 fre "RPO blocks" "createStruct" 4
+112 fre "RPO num lattice == 13" "createStruct" 1
+112 fre "RPO blocks visited" "createStruct" 6
+112 fre "RPO iterations == 15" "createStruct" 1
+112 fre "RPO num values == 13" "createStruct" 1
+112 fre "RPO blocks executable" "createStruct" 4
+112 fre "RPO block visited times == 1" "createStruct" 2
+112 fre "RPO block visited times == 2" "createStruct" 2
+112 fre "RPO num avail == 5" "createStruct" 1
+115 vrp "Incremental SSA update" "createStruct" 1
+115 vrp "Incremental SSA update" "createStruct" 1
+115 vrp "Jumps threaded" "createStruct" 1
+115 vrp "Number of ASSERT_EXPR expressions inserted" "createStruct" 1
+127 sra "Symbol to SSA rewrite" "createStruct" 1
+127 sra "Scalarized aggregates" "createStruct" 1
+127 sra "Modified expressions" "createStruct" 1
+127 sra "Separate LHS and RHS handling" "createStruct" 1
+127 sra "Subtree copy stmts" "createStruct" 1
+127 sra "Scalar replacements created" "createStruct" 1
+129 dom "Copies propagated" "createStruct" 1
+130 copyprop "Statements deleted" "createStruct" 1
+143 pre "RPO blocks" "createStruct" 4
+143 pre "RPO num lattice == 13" "createStruct" 1
+143 pre "RPO blocks visited" "createStruct" 6
+143 pre "RPO iterations == 15" "createStruct" 1
+143 pre "RPO num values == 13" "createStruct" 1
+143 pre "RPO blocks executable" "createStruct" 4
+143 pre "RPO block visited times == 1" "createStruct" 2
+143 pre "RPO block visited times == 2" "createStruct" 2
+143 pre "insert iterations == 1" "createStruct" 1
+143 pre "RPO num avail == 5" "createStruct" 1
+143 pre "compute_antic iterations == 2" "createStruct" 1
+159 ldist "Symbol to SSA rewrite" "createStruct" 1
+192 fre "Symbol to SSA rewrite" "createStruct" 1
+192 fre "RPO num lattice == 9" "createStruct" 1
+192 fre "RPO blocks" "createStruct" 1
+192 fre "RPO iterations == 10" "createStruct" 1
+192 fre "RPO blocks visited" "createStruct" 1
+192 fre "RPO blocks executable" "createStruct" 1
+192 fre "RPO block visited times == 1" "createStruct" 1
+192 fre "RPO num avail == 1" "createStruct" 1
+192 fre "Eliminated" "createStruct" 1
+192 fre "RPO num values == 9" "createStruct" 1
+249 optimized "unused VAR_DECLs removed" "createStruct" 16
+282 combine "two-insn combine" "createStruct" 6
+112 fre "RPO blocks" "printStruct" 1
+112 fre "RPO blocks visited" "printStruct" 1
+112 fre "RPO num values == 3" "printStruct" 1
+112 fre "RPO blocks executable" "printStruct" 1
+112 fre "RPO block visited times == 1" "printStruct" 1
+112 fre "RPO num avail == 1" "printStruct" 1
+112 fre "RPO iterations == 10" "printStruct" 1
+112 fre "RPO num lattice == 3" "printStruct" 1
+115 vrp "Incremental SSA update" "printStruct" 1
+127 sra "Symbol to SSA rewrite" "printStruct" 1
+143 pre "RPO blocks" "printStruct" 1
+143 pre "RPO blocks visited" "printStruct" 1
+143 pre "RPO iterations == 10" "printStruct" 1
+143 pre "RPO blocks executable" "printStruct" 1
+143 pre "RPO block visited times == 1" "printStruct" 1
+143 pre "RPO num lattice == 3" "printStruct" 1
+143 pre "RPO num avail == 1" "printStruct" 1
+143 pre "RPO num values == 3" "printStruct" 1
+143 pre "insert iterations == 1" "printStruct" 1
+143 pre "compute_antic iterations == 2" "printStruct" 1
+192 fre "RPO blocks" "printStruct" 1
+192 fre "RPO iterations == 10" "printStruct" 1
+192 fre "RPO blocks visited" "printStruct" 1
+192 fre "RPO blocks executable" "printStruct" 1
+192 fre "RPO block visited times == 1" "printStruct" 1
+192 fre "RPO num avail == 1" "printStruct" 1
+192 fre "RPO num values == 3" "printStruct" 1
+192 fre "RPO num lattice == 3" "printStruct" 1
+249 optimized "unused VAR_DECLs removed" "printStruct" 2
+282 combine "two-insn combine" "printStruct" 1
+103 ccp "Copies propagated" "hashStruct" 1
+103 ccp "Statements deleted" "hashStruct" 1
+105 cunrolli "Incremental SSA update" "hashStruct" 1
+112 fre "RPO blocks" "hashStruct" 1
+112 fre "RPO num values == 15" "hashStruct" 1
+112 fre "RPO num lattice == 15" "hashStruct" 1
+112 fre "RPO blocks visited" "hashStruct" 1
+112 fre "RPO blocks executable" "hashStruct" 1
+112 fre "RPO block visited times == 1" "hashStruct" 1
+112 fre "RPO iterations == 10" "hashStruct" 1
+112 fre "RPO num avail == 14" "hashStruct" 1
+115 vrp "Incremental SSA update" "hashStruct" 1
+115 vrp "Number of ASSERT_EXPR expressions inserted" "hashStruct" 1
+143 pre "RPO num lattice == 15" "hashStruct" 1
+143 pre "RPO blocks" "hashStruct" 1
+143 pre "RPO blocks visited" "hashStruct" 1
+143 pre "RPO iterations == 10" "hashStruct" 1
+143 pre "RPO blocks executable" "hashStruct" 1
+143 pre "RPO block visited times == 1" "hashStruct" 1
+143 pre "insert iterations == 1" "hashStruct" 1
+143 pre "RPO num avail == 14" "hashStruct" 1
+143 pre "RPO num values == 15" "hashStruct" 1
+143 pre "compute_antic iterations == 2" "hashStruct" 1
+192 fre "RPO blocks" "hashStruct" 1
+192 fre "RPO iterations == 10" "hashStruct" 1
+192 fre "RPO num avail == 14" "hashStruct" 1
+192 fre "RPO num lattice == 15" "hashStruct" 1
+192 fre "RPO blocks visited" "hashStruct" 1
+192 fre "RPO num values == 15" "hashStruct" 1
+192 fre "RPO blocks executable" "hashStruct" 1
+192 fre "RPO block visited times == 1" "hashStruct" 1
+197 vrp "Incremental SSA update" "hashStruct" 1
+197 vrp "Number of ASSERT_EXPR expressions inserted" "hashStruct" 1
+282 combine "two-insn combine" "hashStruct" 1
+112 fre "RPO blocks" "runTests" 4
+112 fre "RPO blocks visited" "runTests" 6
+112 fre "RPO iterations == 15" "runTests" 1
+112 fre "RPO num values == 17" "runTests" 1
+112 fre "RPO blocks executable" "runTests" 4
+112 fre "RPO block visited times == 1" "runTests" 2
+112 fre "RPO block visited times == 2" "runTests" 2
+112 fre "RPO num avail == 5" "runTests" 1
+112 fre "RPO num lattice == 17" "runTests" 1
+115 vrp "Incremental SSA update" "runTests" 1
+115 vrp "Number of ASSERT_EXPR expressions inserted" "runTests" 1
+116 dce "Statements deleted" "runTests" 1
+125 ch "RPO num values == 2" "runTests" 1
+125 ch "RPO blocks" "runTests" 2
+125 ch "RPO iterations == 10" "runTests" 1
+125 ch "Incremental SSA update" "runTests" 1
+125 ch "RPO blocks visited" "runTests" 2
+125 ch "RPO blocks executable" "runTests" 2
+125 ch "RPO block visited times == 1" "runTests" 2
+125 ch "RPO num avail == 0" "runTests" 1
+125 ch "RPO num lattice == 2" "runTests" 1
+125 ch "Eliminated" "runTests" 1
+143 pre "Eliminated" "runTests" 1
+143 pre "RPO num values == 18" "runTests" 1
+143 pre "Insertions" "runTests" 1
+143 pre "insert iterations == 2" "runTests" 1
+143 pre "RPO block visited times == 1" "runTests" 2
+143 pre "RPO block visited times == 2" "runTests" 2
+143 pre "RPO num avail == 6" "runTests" 1
+143 pre "compute_antic iterations == 2" "runTests" 1
+143 pre "RPO blocks visited" "runTests" 6
+143 pre "New PHIs" "runTests" 1
+143 pre "RPO blocks" "runTests" 4
+143 pre "RPO blocks executable" "runTests" 4
+143 pre "RPO iterations == 15" "runTests" 1
+143 pre "RPO num lattice == 18" "runTests" 1
+148 dce "Statements deleted" "runTests" 1
+192 fre "RPO blocks" "runTests" 4
+192 fre "RPO iterations == 10" "runTests" 1
+192 fre "RPO blocks visited" "runTests" 4
+192 fre "RPO num lattice == 19" "runTests" 1
+192 fre "RPO num avail == 7" "runTests" 1
+192 fre "RPO num values == 19" "runTests" 1
+192 fre "RPO blocks executable" "runTests" 4
+192 fre "RPO block visited times == 1" "runTests" 4
+197 vrp "Incremental SSA update" "runTests" 1
+197 vrp "Number of ASSERT_EXPR expressions inserted" "runTests" 1
+249 optimized "unused VAR_DECLs removed" "runTests" 1
+282 combine "two-insn combine" "runTests" 3
+103 ccp "Copies propagated" "complexFunction" 1
+103 ccp "Statements deleted" "complexFunction" 1
+105 cunrolli "RPO blocks" "complexFunction" 15
+105 cunrolli "RPO iterations == 10" "complexFunction" 1
+105 cunrolli "Incremental SSA update" "complexFunction" 1
+105 cunrolli "RPO blocks visited" "complexFunction" 15
+105 cunrolli "RPO num lattice == 49" "complexFunction" 1
+105 cunrolli "RPO num avail == 23" "complexFunction" 1
+105 cunrolli "RPO num values == 49" "complexFunction" 1
+105 cunrolli "RPO blocks executable" "complexFunction" 15
+105 cunrolli "RPO block visited times == 1" "complexFunction" 15
+105 cunrolli "Eliminated" "complexFunction" 15
+112 fre "RPO iterations == 20" "complexFunction" 1
+112 fre "RPO num lattice == 44" "complexFunction" 1
+112 fre "RPO block visited times == 1" "complexFunction" 2
+112 fre "RPO block visited times == 2" "complexFunction" 3
+112 fre "RPO block visited times == 3" "complexFunction" 2
+112 fre "RPO blocks visited" "complexFunction" 14
+112 fre "RPO num values == 44" "complexFunction" 1
+112 fre "RPO blocks" "complexFunction" 7
+112 fre "RPO num avail == 23" "complexFunction" 1
+112 fre "RPO blocks executable" "complexFunction" 7
+115 vrp "Incremental SSA update" "complexFunction" 1
+115 vrp "Jumps threaded" "complexFunction" 1
+115 vrp "Number of ASSERT_EXPR expressions inserted" "complexFunction" 2
+116 dce "Statements deleted" "complexFunction" 1
+125 ch "RPO num values == 2" "complexFunction" 1
+125 ch "RPO blocks" "complexFunction" 2
+125 ch "RPO iterations == 10" "complexFunction" 1
+125 ch "Incremental SSA update" "complexFunction" 1
+125 ch "RPO blocks visited" "complexFunction" 2
+125 ch "RPO blocks executable" "complexFunction" 2
+125 ch "RPO block visited times == 1" "complexFunction" 2
+125 ch "RPO num avail == 0" "complexFunction" 1
+125 ch "RPO num lattice == 2" "complexFunction" 1
+125 ch "Eliminated" "complexFunction" 1
+127 sra "Scalarized aggregates" "complexFunction" 3
+127 sra "Modified expressions" "complexFunction" 5
+127 sra "Subreplacement stmts" "complexFunction" 9
+127 sra "Separate LHS and RHS handling" "complexFunction" 5
+127 sra "Subtree copy stmts" "complexFunction" 6
+127 sra "Deleted stmts" "complexFunction" 1
+127 sra "Scalar replacements created" "complexFunction" 10
+129 dom "Copies propagated" "complexFunction" 11
+130 copyprop "Statements deleted" "complexFunction" 10
+134 dce "Statements deleted" "complexFunction" 2
+143 pre "RPO iterations == 20" "complexFunction" 1
+143 pre "RPO num avail == 24" "complexFunction" 1
+143 pre "Eliminated" "complexFunction" 2
+143 pre "RPO num lattice == 42" "complexFunction" 1
+143 pre "Insertions" "complexFunction" 8
+143 pre "insert iterations == 2" "complexFunction" 1
+143 pre "RPO block visited times == 1" "complexFunction" 2
+143 pre "RPO block visited times == 2" "complexFunction" 3
+143 pre "compute_antic iterations == 3" "complexFunction" 1
+143 pre "RPO num values == 42" "complexFunction" 1
+143 pre "RPO blocks visited" "complexFunction" 14
+143 pre "New PHIs" "complexFunction" 3
+143 pre "RPO blocks" "complexFunction" 7
+143 pre "RPO blocks executable" "complexFunction" 7
+143 pre "RPO block visited times == 3" "complexFunction" 2
+148 dce "Statements deleted" "complexFunction" 1
+174 cunroll "RPO blocks" "complexFunction" 10
+174 cunroll "RPO iterations == 10" "complexFunction" 1
+174 cunroll "Incremental SSA update" "complexFunction" 2
+174 cunroll "RPO blocks visited" "complexFunction" 10
+174 cunroll "RPO num values == 70" "complexFunction" 1
+174 cunroll "RPO blocks executable" "complexFunction" 10
+174 cunroll "RPO block visited times == 1" "complexFunction" 10
+174 cunroll "Eliminated" "complexFunction" 27
+174 cunroll "RPO num avail == 29" "complexFunction" 1
+174 cunroll "RPO num lattice == 70" "complexFunction" 1
+192 fre "Eliminated" "complexFunction" 3
+192 fre "RPO iterations == 10" "complexFunction" 1
+192 fre "RPO block visited times == 1" "complexFunction" 4
+192 fre "RPO blocks visited" "complexFunction" 4
+192 fre "RPO num lattice == 48" "complexFunction" 1
+192 fre "RPO blocks" "complexFunction" 4
+192 fre "RPO num values == 48" "complexFunction" 1
+192 fre "RPO num avail == 26" "complexFunction" 1
+192 fre "RPO blocks executable" "complexFunction" 4
+197 vrp "Incremental SSA update" "complexFunction" 1
+197 vrp "Number of ASSERT_EXPR expressions inserted" "complexFunction" 2
+249 optimized "unused VAR_DECLs removed" "complexFunction" 1
+282 combine "two-insn combine" "complexFunction" 3
+88 inline "unused VAR_DECLs removed" "complexMacroTest" 2
+88 inline "Symbol to SSA rewrite" "complexMacroTest" 1
+112 fre "RPO block visited times == 1" "complexMacroTest" 1
+112 fre "RPO num avail == 0" "complexMacroTest" 1
+112 fre "RPO blocks visited" "complexMacroTest" 1
+112 fre "RPO blocks" "complexMacroTest" 1
+112 fre "RPO num lattice == 1" "complexMacroTest" 1
+112 fre "RPO iterations == 10" "complexMacroTest" 1
+112 fre "RPO blocks executable" "complexMacroTest" 1
+112 fre "RPO num values == 1" "complexMacroTest" 1
+115 vrp "Incremental SSA update" "complexMacroTest" 1
+127 sra "Symbol to SSA rewrite" "complexMacroTest" 1
+143 pre "insert iterations == 1" "complexMacroTest" 1
+143 pre "RPO num values == 1" "complexMacroTest" 1
+143 pre "RPO block visited times == 1" "complexMacroTest" 1
+143 pre "RPO num avail == 0" "complexMacroTest" 1
+143 pre "compute_antic iterations == 2" "complexMacroTest" 1
+143 pre "RPO blocks visited" "complexMacroTest" 1
+143 pre "RPO blocks" "complexMacroTest" 1
+143 pre "RPO num lattice == 1" "complexMacroTest" 1
+143 pre "RPO iterations == 10" "complexMacroTest" 1
+143 pre "RPO blocks executable" "complexMacroTest" 1
+192 fre "RPO iterations == 10" "complexMacroTest" 1
+192 fre "RPO block visited times == 1" "complexMacroTest" 1
+192 fre "RPO num avail == 0" "complexMacroTest" 1
+192 fre "RPO blocks visited" "complexMacroTest" 1
+192 fre "RPO blocks" "complexMacroTest" 1
+192 fre "RPO blocks executable" "complexMacroTest" 1
+192 fre "RPO num values == 1" "complexMacroTest" 1
+192 fre "RPO num lattice == 1" "complexMacroTest" 1
+249 optimized "unused VAR_DECLs removed" "complexMacroTest" 17
+112 fre "RPO block visited times == 1" "runComplexTests" 1
+112 fre "RPO num avail == 0" "runComplexTests" 1
+112 fre "RPO blocks visited" "runComplexTests" 1
+112 fre "RPO blocks" "runComplexTests" 1
+112 fre "RPO num lattice == 1" "runComplexTests" 1
+112 fre "RPO iterations == 10" "runComplexTests" 1
+112 fre "RPO blocks executable" "runComplexTests" 1
+112 fre "RPO num values == 1" "runComplexTests" 1
+143 pre "insert iterations == 1" "runComplexTests" 1
+143 pre "RPO num values == 1" "runComplexTests" 1
+143 pre "RPO block visited times == 1" "runComplexTests" 1
+143 pre "RPO num avail == 0" "runComplexTests" 1
+143 pre "compute_antic iterations == 2" "runComplexTests" 1
+143 pre "RPO blocks visited" "runComplexTests" 1
+143 pre "RPO blocks" "runComplexTests" 1
+143 pre "RPO num lattice == 1" "runComplexTests" 1
+143 pre "RPO iterations == 10" "runComplexTests" 1
+143 pre "RPO blocks executable" "runComplexTests" 1
+192 fre "RPO iterations == 10" "runComplexTests" 1
+192 fre "RPO block visited times == 1" "runComplexTests" 1
+192 fre "RPO num avail == 0" "runComplexTests" 1
+192 fre "RPO blocks visited" "runComplexTests" 1
+192 fre "RPO blocks" "runComplexTests" 1
+192 fre "RPO blocks executable" "runComplexTests" 1
+192 fre "RPO num values == 1" "runComplexTests" 1
+192 fre "RPO num lattice == 1" "runComplexTests" 1
+112 fre "RPO block visited times == 1" "main" 1
+112 fre "RPO num avail == 0" "main" 1
+112 fre "RPO blocks visited" "main" 1
+112 fre "RPO blocks" "main" 1
+112 fre "RPO num lattice == 4" "main" 1
+112 fre "RPO iterations == 10" "main" 1
+112 fre "RPO blocks executable" "main" 1
+112 fre "RPO num values == 4" "main" 1
+143 pre "insert iterations == 1" "main" 1
+143 pre "RPO block visited times == 1" "main" 1
+143 pre "RPO num avail == 0" "main" 1
+143 pre "compute_antic iterations == 2" "main" 1
+143 pre "RPO blocks visited" "main" 1
+143 pre "RPO blocks" "main" 1
+143 pre "RPO num lattice == 4" "main" 1
+143 pre "RPO iterations == 10" "main" 1
+143 pre "RPO blocks executable" "main" 1
+143 pre "RPO num values == 4" "main" 1
+192 fre "RPO iterations == 10" "main" 1
+192 fre "RPO block visited times == 1" "main" 1
+192 fre "RPO num avail == 0" "main" 1
+192 fre "RPO blocks visited" "main" 1
+192 fre "RPO num values == 4" "main" 1
+192 fre "RPO blocks" "main" 1
+192 fre "RPO num lattice == 4" "main" 1
+192 fre "RPO blocks executable" "main" 1

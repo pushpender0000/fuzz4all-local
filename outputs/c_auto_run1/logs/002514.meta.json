@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "002514",
+    "target": "c",
+    "source_file": "002514.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": true,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 0,
+    "clang_tidy_output": "449 warnings generated.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "gcc /tmp/gcc_fuzz_g1l9e0ya/t.c -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -o /tmp/gcc_fuzz_g1l9e0ya/t.c.asan.out",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 1,
+    "sanitizer_stderr": "=================================================================\n==4181081==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fff49e52154 at pc 0x5617757a4848 bp 0x7fff49e520e0 sp 0x7fff49e520d0\nREAD of size 1 at 0x7fff49e52154 thread T0\n    #0 0x5617757a4847 in createComplexStruct /tmp/gcc_fuzz_g1l9e0ya/t.c:22\n    #1 0x5617757a5391 in initializeArray /tmp/gcc_fuzz_g1l9e0ya/t.c:78\n    #2 0x5617757a5992 in main /tmp/gcc_fuzz_g1l9e0ya/t.c:114\n    #3 0x7ca8e5a29d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58\n    #4 0x7ca8e5a29e3f in __libc_start_main_impl ../csu/libc-start.c:392\n    #5 0x5617757a42c4 in _start (/tmp/gcc_fuzz_g1l9e0ya/t.c.asan.out+0x32c4)\n\nAddress 0x7fff49e52154 is located in stack of thread T0 at offset 36 in frame\n    #0 0x5617757a525f in initializeArray /tmp/gcc_fuzz_g1l9e0ya/t.c:72\n\n  This frame has 1 object(s):\n    [32, 36) 'initialArray' (line 73) <== Memory access at offset 36 overflows this variable\nHINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork\n      (longjmp and C++ exceptions *are* supported)\nSUMMARY: AddressSanitizer: stack-buffer-overflow /tmp/gcc_fuzz_g1l9e0ya/t.c:22 in createComplexStruct\nShadow bytes around the buggy address:\n  0x1000693c23d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n  0x1000693c23e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n  0x1000693c23f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n  0x1000693c2400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n  0x1000693c2410: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n=>0x1000693c2420: 00 00 00 00 00 00 f1 f1 f1 f1[04]f3 f3 f3 00 00\n  0x1000693c2430: 00 00 00 00 00 00 00 00 00 00 00 00 f1 f1 f1 f1\n  0x1000693c2440: 04 f3 f3 f3 00 00 00 00 00 00 00 00 00 00 00 00\n  0x1000693c2450: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n  0x1000693c2460: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n  0x1000693c2470: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\nShadow byte legend (one shadow byte represents 8 application bytes):\n  Addressable:           00\n  Partially addressable: 01 02 03 04 05 06 07 \n  Heap left redzone:       fa\n  Freed heap region:       fd\n  Stack left redzone:      f1\n  Stack mid redzone:       f2\n  Stack right redzone:     f3\n  Stack after return:      f5\n  Stack use after scope:   f8\n  Global redzone:          f9\n  Global init order:       f6\n  Poisoned by user:        f7\n  Container overflow:      fc\n  Array cookie:            ac\n  Intra object redzone:    bb\n  ASan internal:           fe\n  Left alloca redzone:     ca\n  Right alloca redzone:    cb\n  Shadow gap:              cc\n==4181081==ABORTING",
+    "sanitizer_passed": false,
+    "ub_detected": true
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "sanitizer",
+    "finding_details": "Rejected by ASan/UBSan gate (UB/crash/runtime error)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

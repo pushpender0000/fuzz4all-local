@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "010596",
+    "target": "cpp",
+    "source_file": "010596.cpp"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: error: recursive template instantiation exceeded maximum depth of 1024 [clang-diagnostic-error]\n    return fibonacci<T, N - 1>() + fibonacci<T, N - 2>();\n           ^\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: in instantiation of function template specialization 'fibonacci<int, 18446744073709550602UL>' requested here\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: in instantiation of function template specialization 'fibonacci<int, 18446744073709550603UL>' requested here\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: in instantiation of function template specialization 'fibonacci<int, 18446744073709550604UL>' requested here\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: in instantiation of function template specialization 'fibonacci<int, 18446744073709550605UL>' requested here\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: in instantiation of function template specialization 'fibonacci<int, 18446744073709550606UL>' requested here\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: (skipping 1015 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: in instantiation of function template specialization 'fibonacci<int, 6UL>' requested here\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: in instantiation of function template specialization 'fibonacci<int, 7UL>' requested here\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: in instantiation of function template specialization 'fibonacci<int, 8UL>' requested here\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: in instantiation of function template specialization 'fibonacci<int, 9UL>' requested here\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:32:23: note: in instantiation of function template specialization 'fibonacci<int, 10UL>' requested here\n    constexpr int a = fibonacci<int, 10>();\n                      ^\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: warning: stack nearly exhausted; compilation time may suffer, and crashes due to stack overflow are likely [clang-diagnostic-stack-exhausted]\n    return fibonacci<T, N - 1>() + fibonacci<T, N - 2>();\n           ^\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: in instantiation of function template specialization 'fibonacci<int, 18446744073709550908UL>' requested here\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: in instantiation of function template specialization 'fibonacci<int, 18446744073709550909UL>' requested here\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: in instantiation of function template specialization 'fibonacci<int, 18446744073709550910UL>' requested here\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: in instantiation of function template specialization 'fibonacci<int, 18446744073709550911UL>' requested here\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: in instantiation of function template specialization 'fibonacci<int, 18446744073709550912UL>' requested here\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: (skipping 709 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: in instantiation of function template specialization 'fibonacci<int, 6UL>' requested here\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: in instantiation of function template specialization 'fibonacci<int, 7UL>' requested here\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: in instantiation of function template specialization 'fibonacci<int, 8UL>' requested here\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:28:12: note: in instantiation of function template specialization 'fibonacci<int, 9UL>' requested here\n/tmp/gpp_fuzz_qpdd1z8r/t.cpp:32:23: note: in instantiation of function template specialization 'fibonacci<int, 10UL>' requested here\n    constexpr int a = fibonacci<int, 10>();\n                      ^\n\n16373 warnings and 1 error generated.\nError while processing /tmp/gpp_fuzz_qpdd1z8r/t.cpp.\nSuppressed 16372 warnings (16372 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/g++",
+    "compiler_version": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c++20",
+    "timeout_sec": 15
+  }
+}

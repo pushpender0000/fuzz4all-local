@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "008478",
+    "target": "cpp",
+    "source_file": "008478.cpp"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "/tmp/gpp_fuzz_pyc0cq9p/t.cpp:28:42: error: variable of non-literal type 'std::vector<std::vector<double>>' cannot be defined in a constexpr function [clang-diagnostic-error]\n        std::vector<std::vector<double>> nestedVector = {{1.1, 2.2, 3.3}, {4.4, 5.5, 6.6}};\n                                         ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:389:11: note: 'vector<std::vector<double>>' is not literal because it is not an aggregate and has no constexpr constructors other than copy or move constructors\n    class vector : protected _Vector_base<_Tp, _Alloc>\n          ^\n/tmp/gpp_fuzz_pyc0cq9p/t.cpp:49:16: error: no matching function for call to 'calculateResult' [clang-diagnostic-error]\n    auto sum = calculateResult(a, b);\n               ^~~~~~~~~~~~~~~\n/tmp/gpp_fuzz_pyc0cq9p/t.cpp:26:16: note: candidate template ignored: substitution failure [with T = int, U = int]\nconstexpr auto calculateResult(T x, U y) -> int {\n               ^\n\n14468 warnings and 2 errors generated.\nError while processing /tmp/gpp_fuzz_pyc0cq9p/t.cpp.\nSuppressed 14468 warnings (14468 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/g++",
+    "compiler_version": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c++20",
+    "timeout_sec": 15
+  }
+}

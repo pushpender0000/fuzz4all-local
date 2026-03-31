@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "004731",
+    "target": "c",
+    "source_file": "004731.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 2,
+    "cppcheck_output": "/tmp/gcc_fuzz_28iyifrj/t.c:57:5: warning: %lu in format string (no. 1) requires 'unsigned long' but the argument type is 'unsigned int'. [invalidPrintfArgType_uint]\n    printf(\"%lu\\n\", HASH(&s));\n    ^",
+    "clang_tidy_rc": 0,
+    "clang_tidy_output": "/tmp/gcc_fuzz_28iyifrj/t.c:39:49: warning: performing an implicit widening conversion to type 'int64_t' (aka 'long') of a multiplication performed in type 'int' [bugprone-implicit-widening-of-multiplication-result]\n        arrayOfStructs[i] = createComplexStruct(10 * i, initialArray);\n                                                ^\n/tmp/gcc_fuzz_28iyifrj/t.c:39:49: note: make conversion explicit to silence this warning\n        arrayOfStructs[i] = createComplexStruct(10 * i, initialArray);\n                                                ^~~~~~\n                                                (int64_t)( )\n/tmp/gcc_fuzz_28iyifrj/t.c:39:49: note: perform multiplication in a wider type\n        arrayOfStructs[i] = createComplexStruct(10 * i, initialArray);\n                                                ^~\n                                                (int64_t)\n/tmp/gcc_fuzz_28iyifrj/t.c:57:21: warning: format specifies type 'unsigned long' but the argument has type 'unsigned int' [clang-diagnostic-format]\n    printf(\"%lu\\n\", HASH(&s));\n            ~~~     ^\n            %u\n/tmp/gcc_fuzz_28iyifrj/t.c:5:17: note: expanded from macro 'HASH'\n#define HASH(s) ((HashType)(s)->data + (s)->bytes[0] * 2 + (s)->bytes[1] / 2 + (s)->bytes[2] * 3 - (s)->bytes[3])\n                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n/tmp/gcc_fuzz_28iyifrj/t.c:89:49: warning: performing an implicit widening conversion to type 'int64_t' (aka 'long') of a multiplication performed in type 'int' [bugprone-implicit-widening-of-multiplication-result]\n        arrayOfStructs[i] = createComplexStruct(10 * i, (uint8_t[]){i % 256, (i + 1) % 256, (i + 2) % 256, (i + 3) % 256});\n                                                ^\n/tmp/gcc_fuzz_28iyifrj/t.c:89:49: note: make conversion explicit to silence this warning\n        arrayOfStructs[i] = createComplexStruct(10 * i, (uint8_t[]){i % 256, (i + 1) % 256, (i + 2) % 256, (i + 3) % 256});\n                                                ^~~~~~\n                                                (int64_t)( )\n/tmp/gcc_fuzz_28iyifrj/t.c:89:49: note: perform multiplication in a wider type\n        arrayOfStructs[i] = createComplexStruct(10 * i, (uint8_t[]){i % 256, (i + 1) % 256, (i + 2) % 256, (i + 3) % 256});\n                                                ^~\n                                                (int64_t)\n\n452 warnings generated.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "005222",
+    "target": "c",
+    "source_file": "005222.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 2,
+    "cppcheck_output": "/tmp/gcc_fuzz_9jgtriz5/t.c:13:15: style: struct member 'MyArray::ptr' is never used. [unusedStructMember]\n    MyStruct *ptr;\n              ^\n/tmp/gcc_fuzz_9jgtriz5/t.c:14:12: style: struct member 'MyArray::length' is never used. [unusedStructMember]\n    size_t length;\n           ^",
+    "clang_tidy_rc": 0,
+    "clang_tidy_output": "/tmp/gcc_fuzz_9jgtriz5/t.c:42:49: warning: performing an implicit widening conversion to type 'int64_t' (aka 'long') of a multiplication performed in type 'int' [bugprone-implicit-widening-of-multiplication-result]\n        arrayOfStructs[i] = createComplexStruct(10 * i, initialArray);\n                                                ^\n/tmp/gcc_fuzz_9jgtriz5/t.c:42:49: note: make conversion explicit to silence this warning\n        arrayOfStructs[i] = createComplexStruct(10 * i, initialArray);\n                                                ^~~~~~\n                                                (int64_t)( )\n/tmp/gcc_fuzz_9jgtriz5/t.c:42:49: note: perform multiplication in a wider type\n        arrayOfStructs[i] = createComplexStruct(10 * i, initialArray);\n                                                ^~\n                                                (int64_t)\n/tmp/gcc_fuzz_9jgtriz5/t.c:52:60: warning: performing an implicit widening conversion to type 'unsigned long' of a multiplication performed in type 'int' [bugprone-implicit-widening-of-multiplication-result]\n        totalHash += ((uint64_t)(arrayOfStructs[i].data) + arrayOfStructs[i].bytes[0] * 2 + arrayOfStructs[i].bytes[1] / 2 + arrayOfStructs[i].bytes[2] * 3 - arrayOfStructs[i].bytes[3]);\n                                                           ^\n/tmp/gcc_fuzz_9jgtriz5/t.c:52:60: note: make conversion explicit to silence this warning\n        totalHash += ((uint64_t)(arrayOfStructs[i].data) + arrayOfStructs[i].bytes[0] * 2 + arrayOfStructs[i].bytes[1] / 2 + arrayOfStructs[i].bytes[2] * 3 - arrayOfStructs[i].bytes[3]);\n                                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n                                                           (unsigned long)(             )\n/tmp/gcc_fuzz_9jgtriz5/t.c:52:60: note: perform multiplication in a wider type\n        totalHash += ((uint64_t)(arrayOfStructs[i].data) + arrayOfStructs[i].bytes[0] * 2 + arrayOfStructs[i].bytes[1] / 2 + arrayOfStructs[i].bytes[2] * 3 - arrayOfStructs[i].bytes[3]);\n                                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~\n                                                           (long)\n/tmp/gcc_fuzz_9jgtriz5/t.c:52:126: warning: performing an implicit widening conversion to type 'unsigned long' of a multiplication performed in type 'int' [bugprone-implicit-widening-of-multiplication-result]\n        totalHash += ((uint64_t)(arrayOfStructs[i].data) + arrayOfStructs[i].bytes[0] * 2 + arrayOfStructs[i].bytes[1] / 2 + arrayOfStructs[i].bytes[2] * 3 - arrayOfStructs[i].bytes[3]);\n                                                                                                                             ^\n/tmp/gcc_fuzz_9jgtriz5/t.c:52:126: note: make conversion explicit to silence this warning\n        totalHash += ((uint64_t)(arrayOfStructs[i].data) + arrayOfStructs[i].bytes[0] * 2 + arrayOfStructs[i].bytes[1] / 2 + arrayOfStructs[i].bytes[2] * 3 - arrayOfStructs[i].bytes[3]);\n                                                                                                                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n                                                                                                                             (unsigned long)(             )\n/tmp/gcc_fuzz_9jgtriz5/t.c:52:126: note: perform multiplication in a wider type\n        totalHash += ((uint64_t)(arrayOfStructs[i].data) + arrayOfStructs[i].bytes[0] * 2 + arrayOfStructs[i].bytes[1] / 2 + arrayOfStructs[i].bytes[2] * 3 - arrayOfStructs[i].bytes[3]);\n                                                                                                                             ^~~~~~~~~~~~~~~~~~~~~~~~~~\n                                                                                                                             (long)\n/tmp/gcc_fuzz_9jgtriz5/t.c:60:43: warning: performing an implicit widening conversion to type 'unsigned long' of a multiplication performed in type 'int' [bugprone-implicit-widening-of-multiplication-result]\n    printf(\"%lu\\n\", ((uint64_t)(s.data) + s.bytes[0] * 2 + s.bytes[1] / 2 + s.bytes[2] * 3 - s.bytes[3]));\n                                          ^\n/tmp/gcc_fuzz_9jgtriz5/t.c:60:43: note: make conversion explicit to silence this warning\n    printf(\"%lu\\n\", ((uint64_t)(s.data) + s.bytes[0] * 2 + s.bytes[1] / 2 + s.bytes[2] * 3 - s.bytes[3]));\n                                          ^~~~~~~~~~~~~~\n                                          (unsigned long)( )\n/tmp/gcc_fuzz_9jgtriz5/t.c:60:43: note: perform multiplication in a wider type\n    printf(\"%lu\\n\", ((uint64_t)(s.data) + s.bytes[0] * 2 + s.bytes[1] / 2 + s.bytes[2] * 3 - s.bytes[3]));\n                                          ^~~~~~~~~~\n                                          (long)\n/tmp/gcc_fuzz_9jgtriz5/t.c:60:77: warning: performing an implicit widening conversion to type 'unsigned long' of a multiplication performed in type 'int' [bugprone-implicit-widening-of-multiplication-result]\n    printf(\"%lu\\n\", ((uint64_t)(s.data) + s.bytes[0] * 2 + s.bytes[1] / 2 + s.bytes[2] * 3 - s.bytes[3]));\n                                                                            ^\n/tmp/gcc_fuzz_9jgtriz5/t.c:60:77: note: make conversion explicit to silence this warning\n    printf(\"%lu\\n\", ((uint64_t)(s.data) + s.bytes[0] * 2 + s.bytes[1] / 2 + s.bytes[2] * 3 - s.bytes[3]));\n                                                                            ^~~~~~~~~~~~~~\n                                                                            (unsigned long)( )\n/tmp/gcc_fuzz_9jgtriz5/t.c:60:77: note: perform multiplication in a wider type\n    printf(\"%lu\\n\", ((uint64_t)(s.data) + s.bytes[0] * 2 + s.bytes[1] / 2 + s.bytes[2] * 3 - s.bytes[3]));\n                                                                            ^~~~~~~~~~\n                                                                            (long)\n\n454 warnings generated.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

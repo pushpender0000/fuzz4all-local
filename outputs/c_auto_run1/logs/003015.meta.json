@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "003015",
+    "target": "c",
+    "source_file": "003015.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": true,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 0,
+    "clang_tidy_output": "449 warnings generated.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "gcc /tmp/gcc_fuzz_4_mh9la6/t.c -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -o /tmp/gcc_fuzz_4_mh9la6/t.c.asan.out",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "10\n21\n-10\n21\n300\n351\n-300\n4294967067\nTotal Hash: 26432\nAfter complex function call:\n10\n20\n30\n40\n50\n60\n80\n90\n100\n110\n120\n150\n160\n170\n180\n190\n200\n220\n230\n240\n250\n270\n290\n300\n310\n320\n330\n340\n360\n370\n380\n400\n410\n430\n440\n450\n460\n470\n480\n600\n510\n530\n540\n550\n570\n580\n590\n600\n610\n620\n640\n660\n670\n680\n690\n710\n720\n730\n740\n750\n760\n790\n800\n810\n820\n830\n850\n860\n870\n880\n890\n900\n920\n930\n940\n950\n960\n970\n990\nUpdated Total Hash: 26572\n10\n21\n-10\n21\n300\n351\n-300\n4294967067\nAfter second set of tests:\n10\n20\n30\n40\n50\n60\n80\n90\n100\n110\n120\n150\n160\n170\n180\n190\n200\n220\n230\n240\n250\n270\n290\n300\n310\n320\n330\n340\n360\n370\n380\n400\n410\n430\n440\n450\n460\n470\n480\n600\n510\n530\n540\n550\n570\n580\n590\n600\n610\n620\n640\n660\n670\n680\n690\n710\n720\n730\n740\n750\n760\n790\n800\n810\n820\n830\n850\n860\n870\n880\n890\n900\n920\n930\n940\n950\n960\n970\n990\nUpdated Total Hash after second set: 26572",
+    "sanitizer_passed": true,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "gcc /tmp/gcc_fuzz_4_mh9la6/t.c -std=c11 -O0 -w -pipe -o /tmp/gcc_fuzz_4_mh9la6/o0.out",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "gcc /tmp/gcc_fuzz_4_mh9la6/t.c -std=c11 -O2 -w -pipe -o /tmp/gcc_fuzz_4_mh9la6/o2.out",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "10\n21\n-10\n21\n300\n351\n-300\n4294967067\nTotal Hash: 26432\nAfter complex function call:\n10\n20\n30\n40\n50\n60\n80\n90\n100\n110\n120\n150\n160\n170\n180\n190\n200\n220\n230\n240\n250\n270\n290\n300\n310\n320\n330\n340\n360\n370\n380\n400\n410\n430\n440\n450\n460\n470\n480\n600\n510\n530\n540\n550\n570\n580\n590\n600\n610\n620\n640\n660\n670\n680\n690\n710\n720\n730\n740\n750\n760\n790\n800\n810\n820\n830\n850\n860\n870\n880\n890\n900\n920\n930\n940\n950\n960\n970\n990\nUpdated Total Hash: 26572\n10\n21\n-10\n21\n300\n351\n-300\n4294967067\nAfter second set of tests:\n10\n20\n30\n40\n50\n60\n80\n90\n100\n110\n120\n150\n160\n170\n180\n190\n200\n220\n230\n240\n250\n270\n290\n300\n310\n320\n330\n340\n360\n370\n380\n400\n410\n430\n440\n450\n460\n470\n480\n600\n510\n530\n540\n550\n570\n580\n590\n600\n610\n620\n640\n660\n670\n680\n690\n710\n720\n730\n740\n750\n760\n790\n800\n810\n820\n830\n850\n860\n870\n880\n890\n900\n920\n930\n940\n950\n960\n970\n990\nUpdated Total Hash after second set: 26572",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "10\n21\n-10\n21\n300\n351\n-300\n4294967067\nTotal Hash: 26432\nAfter complex function call:\n10\n20\n30\n40\n50\n60\n80\n90\n100\n110\n120\n150\n160\n170\n180\n190\n200\n220\n230\n240\n250\n270\n290\n300\n310\n320\n330\n340\n360\n370\n380\n400\n410\n430\n440\n450\n460\n470\n480\n600\n510\n530\n540\n550\n570\n580\n590\n600\n610\n620\n640\n660\n670\n680\n690\n710\n720\n730\n740\n750\n760\n790\n800\n810\n820\n830\n850\n860\n870\n880\n890\n900\n920\n930\n940\n950\n960\n970\n990\nUpdated Total Hash: 26572\n10\n21\n-10\n21\n300\n351\n-300\n4294967067\nAfter second set of tests:\n10\n20\n30\n40\n50\n60\n80\n90\n100\n110\n120\n150\n160\n170\n180\n190\n200\n220\n230\n240\n250\n270\n290\n300\n310\n320\n330\n340\n360\n370\n380\n400\n410\n430\n440\n450\n460\n470\n480\n600\n510\n530\n540\n550\n570\n580\n590\n600\n610\n620\n640\n660\n670\n680\n690\n710\n720\n730\n740\n750\n760\n790\n800\n810\n820\n830\n850\n860\n870\n880\n890\n900\n920\n930\n940\n950\n960\n970\n990\nUpdated Total Hash after second set: 26572",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": true
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "N/A",
+    "finding_details": ""
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

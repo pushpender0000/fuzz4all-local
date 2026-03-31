@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "001040",
+    "target": "c",
+    "source_file": "001040.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "/tmp/gcc_fuzz_26v7fx0f/t.c:24:1: error: unknown type name 'uint32_t' [clang-diagnostic-error]\nuint32_t hashStruct(const MyStruct *s) {\n^\n/tmp/gcc_fuzz_26v7fx0f/t.c:25:5: error: use of undeclared identifier 'uint32_t' [clang-diagnostic-error]\n    uint32_t h = (uint32_t)s->data;\n    ^\n/tmp/gcc_fuzz_26v7fx0f/t.c:25:13: error: expected ';' after expression [clang-diagnostic-error]\n    uint32_t h = (uint32_t)s->data;\n            ^\n            ;\n/tmp/gcc_fuzz_26v7fx0f/t.c:25:14: error: use of undeclared identifier 'h' [clang-diagnostic-error]\n    uint32_t h = (uint32_t)s->data;\n             ^\n/tmp/gcc_fuzz_26v7fx0f/t.c:25:19: error: use of undeclared identifier 'uint32_t' [clang-diagnostic-error]\n    uint32_t h = (uint32_t)s->data;\n                  ^\n/tmp/gcc_fuzz_26v7fx0f/t.c:27:9: error: use of undeclared identifier 'h' [clang-diagnostic-error]\n        h += s->bytes[i];\n        ^\n/tmp/gcc_fuzz_26v7fx0f/t.c:29:12: error: use of undeclared identifier 'h' [clang-diagnostic-error]\n    return h;\n           ^\n/tmp/gcc_fuzz_26v7fx0f/t.c:49:1: error: unknown type name 'uint32_t' [clang-diagnostic-error]\nuint32_t calculateTotalHash() {\n^\n/tmp/gcc_fuzz_26v7fx0f/t.c:50:5: error: use of undeclared identifier 'uint32_t' [clang-diagnostic-error]\n    uint32_t totalHash = 0;\n    ^\n/tmp/gcc_fuzz_26v7fx0f/t.c:50:13: error: expected ';' after expression [clang-diagnostic-error]\n    uint32_t totalHash = 0;\n            ^\n            ;\n/tmp/gcc_fuzz_26v7fx0f/t.c:50:14: error: use of undeclared identifier 'totalHash' [clang-diagnostic-error]\n    uint32_t totalHash = 0;\n             ^\n/tmp/gcc_fuzz_26v7fx0f/t.c:52:9: error: use of undeclared identifier 'totalHash' [clang-diagnostic-error]\n        totalHash += hashStruct(&arrayOfStructs[i]);\n        ^\n/tmp/gcc_fuzz_26v7fx0f/t.c:54:12: error: use of undeclared identifier 'totalHash' [clang-diagnostic-error]\n    return totalHash;\n           ^\n/tmp/gcc_fuzz_26v7fx0f/t.c:83:5: error: use of undeclared identifier 'uint32_t' [clang-diagnostic-error]\n    uint32_t totalHash = calculateTotalHash();\n    ^\n/tmp/gcc_fuzz_26v7fx0f/t.c:83:13: error: expected ';' after expression [clang-diagnostic-error]\n    uint32_t totalHash = calculateTotalHash();\n            ^\n            ;\n/tmp/gcc_fuzz_26v7fx0f/t.c:83:14: error: use of undeclared identifier 'totalHash' [clang-diagnostic-error]\n    uint32_t totalHash = calculateTotalHash();\n             ^\n/tmp/gcc_fuzz_26v7fx0f/t.c:84:40: error: use of undeclared identifier 'totalHash' [clang-diagnostic-error]\n    printf(\"Initial Total Hash: %u\\n\", totalHash);\n                                       ^\n/tmp/gcc_fuzz_26v7fx0f/t.c:88:24: warning: implicit declaration of function 'rand' is invalid in C99 [clang-diagnostic-implicit-function-declaration]\n        MyInt offset = rand() % ARRAY_SIZE;\n                       ^\n/tmp/gcc_fuzz_26v7fx0f/t.c:93:5: error: use of undeclared identifier 'totalHash' [clang-diagnostic-error]\n    totalHash = calculateTotalHash();\n    ^\n/tmp/gcc_fuzz_26v7fx0f/t.c:94:38: error: use of undeclared identifier 'totalHash' [clang-diagnostic-error]\n    printf(\"Final Total Hash: %u\\n\", totalHash);\n                                     ^\n\n432 warnings and 19 errors generated.\nError while processing /tmp/gcc_fuzz_26v7fx0f/t.c.\nSuppressed 431 warnings (431 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

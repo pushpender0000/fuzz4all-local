@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "003574",
+    "target": "cpp",
+    "source_file": "003574.cpp"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 2,
+    "cppcheck_output": "/tmp/gpp_fuzz_f0gpoz8l/t.cpp:21:1: style: The class 'StaticVector < double , 3 >' does not declare a constructor although it has private member variables which likely require initialization. [noConstructor]\nclass StaticVector {\n^\n/tmp/gpp_fuzz_f0gpoz8l/t.cpp:24:25: error: Exception thrown in function declared not to throw exceptions. [throwInNoexceptFunction]\n        if (index >= N) throw std::out_of_range(\"Index out of range\");\n                        ^\n/tmp/gpp_fuzz_f0gpoz8l/t.cpp:29:25: error: Exception thrown in function declared not to throw exceptions. [throwInNoexceptFunction]\n        if (index >= N) throw std::out_of_range(\"Index out of range\");\n                        ^",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "/tmp/gpp_fuzz_f0gpoz8l/t.cpp:23:18: warning: an exception may be thrown in function 'operator[]' which should not throw exceptions [bugprone-exception-escape]\n    constexpr T& operator[](std::size_t index) noexcept {\n                 ^\n/tmp/gpp_fuzz_f0gpoz8l/t.cpp:28:24: warning: an exception may be thrown in function 'operator[]' which should not throw exceptions [bugprone-exception-escape]\n    constexpr const T& operator[](std::size_t index) const noexcept {\n                       ^\n/tmp/gpp_fuzz_f0gpoz8l/t.cpp:51:29: error: no matching constructor for initialization of 'StaticVector<double, 3>' [clang-diagnostic-error]\n    StaticVector<double, 3> vec{{1.1, 2.2, 3.3}};\n                            ^  ~~~~~~~~~~~~~~~~~\n/tmp/gpp_fuzz_f0gpoz8l/t.cpp:21:7: note: candidate constructor (the implicit copy constructor) not viable: cannot convert initializer list argument to 'const StaticVector<double, 3>'\nclass StaticVector {\n      ^\n/tmp/gpp_fuzz_f0gpoz8l/t.cpp:21:7: note: candidate constructor (the implicit move constructor) not viable: cannot convert initializer list argument to 'StaticVector<double, 3>'\nclass StaticVector {\n      ^\n/tmp/gpp_fuzz_f0gpoz8l/t.cpp:21:7: note: candidate constructor (the implicit default constructor) not viable: requires 0 arguments, but 1 was provided\n/tmp/gpp_fuzz_f0gpoz8l/t.cpp:52:71: error: variable 'sum' cannot be implicitly captured in a lambda with no capture-default specified [clang-diagnostic-error]\n    auto transformed = transform(vec, [](auto x) { return multiply(x, sum); });\n                                                                      ^\n/tmp/gpp_fuzz_f0gpoz8l/t.cpp:49:10: note: 'sum' declared here\n    auto sum = add(a, b);\n         ^\n/tmp/gpp_fuzz_f0gpoz8l/t.cpp:52:39: note: lambda expression begins here\n    auto transformed = transform(vec, [](auto x) { return multiply(x, sum); });\n                                      ^\n/tmp/gpp_fuzz_f0gpoz8l/t.cpp:52:40: note: capture 'sum' by value\n    auto transformed = transform(vec, [](auto x) { return multiply(x, sum); });\n                                       ^\n                                       sum\n/tmp/gpp_fuzz_f0gpoz8l/t.cpp:52:40: note: capture 'sum' by reference\n    auto transformed = transform(vec, [](auto x) { return multiply(x, sum); });\n                                       ^\n                                       &sum\n/tmp/gpp_fuzz_f0gpoz8l/t.cpp:52:40: note: default capture by value\n    auto transformed = transform(vec, [](auto x) { return multiply(x, sum); });\n                                       ^\n                                       =\n/tmp/gpp_fuzz_f0gpoz8l/t.cpp:52:40: note: default capture by reference\n    auto transformed = transform(vec, [](auto x) { return multiply(x, sum); });\n                                       ^\n                                       &\n\n14474 warnings and 3 errors generated.\nError while processing /tmp/gpp_fuzz_f0gpoz8l/t.cpp.\nSuppressed 14471 warnings (14471 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/g++",
+    "compiler_version": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c++20",
+    "timeout_sec": 15
+  }
+}

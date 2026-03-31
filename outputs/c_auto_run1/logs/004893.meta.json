@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "004893",
+    "target": "c",
+    "source_file": "004893.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": true,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 0,
+    "clang_tidy_output": "/tmp/gcc_fuzz_gh75q0x6/t.c:22:33: warning: performing an implicit widening conversion to type 'long' of a multiplication performed in type 'int' [bugprone-implicit-widening-of-multiplication-result]\n    return (uint64_t)(s->data + s->bytes[0] * 2 + s->bytes[1] / 2 - s->bytes[2] * 3 + s->bytes[3]);\n                                ^\n/tmp/gcc_fuzz_gh75q0x6/t.c:22:33: note: make conversion explicit to silence this warning\n    return (uint64_t)(s->data + s->bytes[0] * 2 + s->bytes[1] / 2 - s->bytes[2] * 3 + s->bytes[3]);\n                                ^~~~~~~~~~~~~~~\n                                (long)(       )\n/tmp/gcc_fuzz_gh75q0x6/t.c:22:33: note: perform multiplication in a wider type\n    return (uint64_t)(s->data + s->bytes[0] * 2 + s->bytes[1] / 2 - s->bytes[2] * 3 + s->bytes[3]);\n                                ^~~~~~~~~~~\n                                (long)\n/tmp/gcc_fuzz_gh75q0x6/t.c:22:69: warning: performing an implicit widening conversion to type 'long' of a multiplication performed in type 'int' [bugprone-implicit-widening-of-multiplication-result]\n    return (uint64_t)(s->data + s->bytes[0] * 2 + s->bytes[1] / 2 - s->bytes[2] * 3 + s->bytes[3]);\n                                                                    ^\n/tmp/gcc_fuzz_gh75q0x6/t.c:22:69: note: make conversion explicit to silence this warning\n    return (uint64_t)(s->data + s->bytes[0] * 2 + s->bytes[1] / 2 - s->bytes[2] * 3 + s->bytes[3]);\n                                                                    ^~~~~~~~~~~~~~~\n                                                                    (long)(       )\n/tmp/gcc_fuzz_gh75q0x6/t.c:22:69: note: perform multiplication in a wider type\n    return (uint64_t)(s->data + s->bytes[0] * 2 + s->bytes[1] / 2 - s->bytes[2] * 3 + s->bytes[3]);\n                                                                    ^~~~~~~~~~~\n                                                                    (long)\n/tmp/gcc_fuzz_gh75q0x6/t.c:35:49: warning: performing an implicit widening conversion to type 'int64_t' (aka 'long') of a multiplication performed in type 'int' [bugprone-implicit-widening-of-multiplication-result]\n        arrayOfStructs[i] = createComplexStruct(10 * i, initialArray);\n                                                ^\n/tmp/gcc_fuzz_gh75q0x6/t.c:35:49: note: make conversion explicit to silence this warning\n        arrayOfStructs[i] = createComplexStruct(10 * i, initialArray);\n                                                ^~~~~~\n                                                (int64_t)( )\n/tmp/gcc_fuzz_gh75q0x6/t.c:35:49: note: perform multiplication in a wider type\n        arrayOfStructs[i] = createComplexStruct(10 * i, initialArray);\n                                                ^~\n                                                (int64_t)\n\n451 warnings generated.\nSuppressed 448 warnings (448 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "gcc /tmp/gcc_fuzz_gh75q0x6/t.c -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -o /tmp/gcc_fuzz_gh75q0x6/t.c.asan.out",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 1,
+    "sanitizer_stderr": "=================================================================\n==75894==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffe61e0b6e0 at pc 0x5bcd71e8c612 bp 0x7ffe61e0b580 sp 0x7ffe61e0b570\nREAD of size 1 at 0x7ffe61e0b6e0 thread T0\n    #0 0x5bcd71e8c611 in createComplexStruct /tmp/gcc_fuzz_gh75q0x6/t.c:13\n    #1 0x5bcd71e8c813 in testFunctionWithPointer /tmp/gcc_fuzz_gh75q0x6/t.c:40\n    #2 0x5bcd71e8d032 in runTestsWithPointer /tmp/gcc_fuzz_gh75q0x6/t.c:51\n    #3 0x5bcd71e8d3d7 in main /tmp/gcc_fuzz_gh75q0x6/t.c:75\n    #4 0x753312429d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58\n    #5 0x753312429e3f in __libc_start_main_impl ../csu/libc-start.c:392\n    #6 0x5bcd71e8c2a4 in _start (/tmp/gcc_fuzz_gh75q0x6/t.c.asan.out+0x32a4)\n\nAddress 0x7ffe61e0b6e0 is located in stack of thread T0 at offset 80 in frame\n    #0 0x5bcd71e8ccf6 in runTestsWithPointer /tmp/gcc_fuzz_gh75q0x6/t.c:47\n\n  This frame has 2 object(s):\n    [48, 80) 'arr' (line 49) <== Memory access at offset 80 overflows this variable\n    [112, 160) 'vals' (line 48)\nHINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork\n      (longjmp and C++ exceptions *are* supported)\nSUMMARY: AddressSanitizer: stack-buffer-overflow /tmp/gcc_fuzz_gh75q0x6/t.c:13 in createComplexStruct\nShadow bytes around the buggy address:\n  0x10004c3b9680: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n  0x10004c3b9690: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n  0x10004c3b96a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n  0x10004c3b96b0: 00 00 00 00 00 00 00 00 00 00 f1 f1 f1 f1 00 00\n  0x10004c3b96c0: f3 f3 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n=>0x10004c3b96d0: 00 00 f1 f1 f1 f1 f1 f1 00 00 00 00[f2]f2 f2 f2\n  0x10004c3b96e0: 00 00 00 00 00 00 f3 f3 f3 f3 00 00 00 00 00 00\n  0x10004c3b96f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n  0x10004c3b9700: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n  0x10004c3b9710: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n  0x10004c3b9720: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\nShadow byte legend (one shadow byte represents 8 application bytes):\n  Addressable:           00\n  Partially addressable: 01 02 03 04 05 06 07 \n  Heap left redzone:       fa\n  Freed heap region:       fd\n  Stack left redzone:      f1\n  Stack mid redzone:       f2\n  Stack right redzone:     f3\n  Stack after return:      f5\n  Stack use after scope:   f8\n  Global redzone:          f9\n  Global init order:       f6\n  Poisoned by user:        f7\n  Container overflow:      fc\n  Array cookie:            ac\n  Intra object redzone:    bb\n  ASan internal:           fe\n  Left alloca redzone:     ca\n  Right alloca redzone:    cb\n  Shadow gap:              cc\n==75894==ABORTING",
+    "sanitizer_passed": false,
+    "ub_detected": true
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "sanitizer",
+    "finding_details": "Rejected by ASan/UBSan gate (UB/crash/runtime error)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

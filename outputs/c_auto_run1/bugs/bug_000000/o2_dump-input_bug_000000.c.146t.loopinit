@@ -1,0 +1,397 @@
+
+;; Function testFunction (testFunction, funcdef_no=42, decl_uid=3234, cgraph_uid=43, symbol_order=42)
+
+;; 3 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 5 4
+;;
+;; Loop 2
+;;  header 3, latch 5
+;;  depth 1, outer 0
+;;  nodes: 3 5
+;; 2 succs { 3 }
+;; 3 succs { 5 4 }
+;; 5 succs { 3 }
+;; 4 succs { 1 }
+__attribute__((access ("^1[ ]", )))
+void testFunction (int32_t x, uint8_t * y)
+{
+  const unsigned char SR.29;
+  const unsigned char SR.28;
+  const unsigned char SR.27;
+  const unsigned char SR.26;
+  int SR.25;
+  int s$data;
+  const unsigned char s$buffer$3;
+  const unsigned char s$buffer$2;
+  const unsigned char s$buffer$1;
+  const unsigned char s$buffer$0;
+  struct MyStruct D.3352;
+  struct MyStruct s;
+  int i;
+  const int s$data;
+  uint32_t h;
+  int i;
+  struct MyStruct s;
+  unsigned int _17;
+  sizetype _18;
+  const uint8_t * _19;
+  unsigned char _20;
+  unsigned int _25;
+  unsigned int _30;
+  unsigned int _36;
+  unsigned int _42;
+  unsigned int _45;
+  unsigned int _48;
+
+  <bb 2> [local count: 214748368]:
+  MEM <char[4]> [(struct  *)&s + 4B] = {};
+
+  <bb 3> [local count: 858993457]:
+  # i_44 = PHI <i_21(5), 0(2)>
+  _18 = (sizetype) i_44;
+  _19 = &y + _18;
+  _20 = *_19;
+  s.buffer[i_44] = _20;
+  i_21 = i_44 + 1;
+  if (i_21 != 4)
+    goto <bb 5>; [75.00%]
+  else
+    goto <bb 4>; [25.00%]
+
+  <bb 5> [local count: 644245086]:
+  goto <bb 3>; [100.00%]
+
+  <bb 4> [local count: 214748368]:
+  SR.26_32 = MEM <const uint8_t> [(struct  *)&s + 4B];
+  SR.27_12 = MEM <const uint8_t> [(struct  *)&s + 5B];
+  SR.28_6 = MEM <const uint8_t> [(struct  *)&s + 6B];
+  SR.29_9 = MEM <const uint8_t> [(struct  *)&s + 7B];
+  s ={v} {CLOBBER};
+  __printf_chk (1, "%d\n", x_2(D));
+  h_5 = (uint32_t) x_2(D);
+  _30 = (unsigned int) SR.26_32;
+  _36 = (unsigned int) SR.27_12;
+  _17 = _30 + _36;
+  _42 = (unsigned int) SR.28_6;
+  _25 = _17 + _42;
+  _48 = (unsigned int) SR.29_9;
+  _45 = _25 + _48;
+  h_49 = h_5 + _45;
+  __printf_chk (1, "%u\n", h_49);
+  s ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function createStruct (createStruct, funcdef_no=39, decl_uid=3212, cgraph_uid=40, symbol_order=39)
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 5 4
+;;
+;; Loop 1
+;;  header 3, latch 5
+;;  depth 1, outer 0
+;;  nodes: 3 5
+;; 2 succs { 3 }
+;; 3 succs { 5 4 }
+;; 5 succs { 3 }
+;; 4 succs { 1 }
+__attribute__((access ("^1[ ]", )))
+struct MyStruct createStruct (int32_t val, const uint8_t * arr)
+{
+  int s$data;
+  int i;
+  struct MyStruct s;
+  struct MyStruct D.3281;
+  sizetype _1;
+  const uint8_t * _2;
+  unsigned char _3;
+
+  <bb 2> [local count: 214748368]:
+  MEM <char[4]> [(struct  *)&s + 4B] = {};
+
+  <bb 3> [local count: 858993457]:
+  # i_18 = PHI <i_13(5), 0(2)>
+  _1 = (sizetype) i_18;
+  _2 = arr_11(D) + _1;
+  _3 = *_2;
+  s.buffer[i_18] = _3;
+  i_13 = i_18 + 1;
+  if (i_13 != 4)
+    goto <bb 5>; [75.00%]
+  else
+    goto <bb 4>; [25.00%]
+
+  <bb 5> [local count: 644245086]:
+  goto <bb 3>; [100.00%]
+
+  <bb 4> [local count: 214748368]:
+  s.data = val_8(D);
+  D.3281 = s;
+  s ={v} {CLOBBER};
+  return D.3281;
+
+}
+
+
+
+;; Function hashStruct (hashStruct, funcdef_no=41, decl_uid=3224, cgraph_uid=42, symbol_order=41)
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+uint32_t hashStruct (const struct MyStruct * s)
+{
+  int i;
+  uint32_t h;
+  int _1;
+  unsigned char _13;
+  unsigned int _14;
+  unsigned char _19;
+  unsigned int _20;
+  unsigned char _25;
+  unsigned int _26;
+  unsigned char _31;
+  unsigned int _32;
+
+  <bb 2> [local count: 214748368]:
+  _1 = s_7(D)->data;
+  h_8 = (uint32_t) _1;
+  _13 = s_7(D)->buffer[0];
+  _14 = (unsigned int) _13;
+  h_15 = h_8 + _14;
+  _19 = s_7(D)->buffer[1];
+  _20 = (unsigned int) _19;
+  h_21 = h_15 + _20;
+  _25 = s_7(D)->buffer[2];
+  _26 = (unsigned int) _25;
+  h_27 = h_21 + _26;
+  _31 = s_7(D)->buffer[3];
+  _32 = (unsigned int) _31;
+  h_33 = h_27 + _32;
+  return h_33;
+
+}
+
+
+
+;; Function runTests (runTests, funcdef_no=43, decl_uid=3238, cgraph_uid=44, symbol_order=43)
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5
+;;
+;; Loop 1
+;;  header 3, latch 4
+;;  depth 1, outer 0
+;;  nodes: 3 4
+;; 2 succs { 3 }
+;; 3 succs { 4 5 }
+;; 4 succs { 3 }
+;; 5 succs { 1 }
+void runTests (void (*TestFunc) (int32_t, uint8_t *) func)
+{
+  int i;
+  uint8_t arr[4][4];
+  int32_t vals[4];
+  uint8_t[4] * _1;
+  int pretmp_3;
+  sizetype _5;
+  sizetype _23;
+  int prephitmp_24;
+
+  <bb 2> [local count: 214748368]:
+  vals[1] = -10;
+  vals[2] = -2147483648;
+  vals[3] = 2147483647;
+  arr[0] = "\x00";
+  arr[1] = "\x01\x02\x03\x04";
+  arr[2] = "\x05\x06\x07\b";
+  arr[3] = "\t\n\v\f";
+
+  <bb 3> [local count: 858993457]:
+  # i_21 = PHI <i_19(4), 0(2)>
+  # prephitmp_24 = PHI <pretmp_3(4), 10(2)>
+  _23 = (sizetype) i_21;
+  _5 = _23 * 4;
+  _1 = &arr + _5;
+  func_17(D) (prephitmp_24, _1);
+  i_19 = i_21 + 1;
+  if (i_19 != 4)
+    goto <bb 4>; [80.00%]
+  else
+    goto <bb 5>; [20.00%]
+
+  <bb 4> [local count: 687194763]:
+  pretmp_3 = vals[i_19];
+  goto <bb 3>; [100.00%]
+
+  <bb 5> [local count: 214748368]:
+  vals ={v} {CLOBBER};
+  arr ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function complexFunction (complexFunction, funcdef_no=44, decl_uid=3247, cgraph_uid=45, symbol_order=44)
+
+;; 4 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7 8
+;;
+;; Loop 1
+;;  header 3, latch 7
+;;  depth 1, outer 0
+;;  nodes: 3 7 6 4 5
+;;
+;; Loop 3
+;;  header 4, latch 5
+;;  depth 2, outer 1
+;;  nodes: 4 5
+;; 2 succs { 3 }
+;; 3 succs { 4 }
+;; 4 succs { 5 6 }
+;; 5 succs { 4 }
+;; 6 succs { 7 8 }
+;; 7 succs { 3 }
+;; 8 succs { 1 }
+void complexFunction ()
+{
+  const unsigned char SR.79;
+  const unsigned char SR.78;
+  const unsigned char SR.77;
+  const unsigned char SR.76;
+  int SR.75;
+  int s$data;
+  const unsigned char s$buffer$3;
+  const unsigned char s$buffer$2;
+  const unsigned char s$buffer$1;
+  const unsigned char s$buffer$0;
+  int i;
+  struct MyStruct s;
+  struct MyStruct D.3417;
+  const int s$data;
+  uint32_t h;
+  int i;
+  struct MyStruct s;
+  int i;
+  uint8_t arr[4][4];
+  int32_t vals[4];
+  uint8_t[4] * _1;
+  sizetype _4;
+  unsigned int _18;
+  unsigned char pretmp_23;
+  int pretmp_37;
+  sizetype _40;
+  unsigned char prephitmp_42;
+  unsigned char pretmp_44;
+  unsigned int _45;
+  unsigned int _47;
+  unsigned int _48;
+  unsigned char prephitmp_50;
+  unsigned int _51;
+  int prephitmp_54;
+  sizetype _55;
+  sizetype _56;
+  unsigned int _57;
+  sizetype _59;
+  uint8_t[4][4] * _60;
+  uint8_t[4] * _62;
+  unsigned int _63;
+
+  <bb 2> [local count: 53687093]:
+  vals[1] = -10;
+  vals[2] = -2147483648;
+  vals[3] = 2147483647;
+  arr[0] = "\x00";
+  arr[1] = "\x01\x02\x03\x04";
+  arr[2] = "\x05\x06\x07\b";
+  arr[3] = "\t\n\v\f";
+
+  <bb 3> [local count: 214748368]:
+  # i_32 = PHI <i_20(7), 0(2)>
+  # prephitmp_54 = PHI <pretmp_37(7), 10(2)>
+  # prephitmp_50 = PHI <pretmp_44(7), 0(2)>
+  _4 = (sizetype) i_32;
+  _40 = _4 * 4;
+  _1 = &arr + _40;
+  MEM <char[4]> [(struct  *)&s + 4B] = {};
+
+  <bb 4> [local count: 858993457]:
+  # i_26 = PHI <i_36(5), 0(3)>
+  # prephitmp_42 = PHI <pretmp_23(5), prephitmp_50(3)>
+  s.buffer[i_26] = prephitmp_42;
+  i_36 = i_26 + 1;
+  if (i_36 != 4)
+    goto <bb 5>; [75.00%]
+  else
+    goto <bb 6>; [25.00%]
+
+  <bb 5> [local count: 644245086]:
+  _56 = (sizetype) i_36;
+  _62 = _1 + _56;
+  pretmp_23 = MEM[(const uint8_t *)_62];
+  goto <bb 4>; [100.00%]
+
+  <bb 6> [local count: 214748368]:
+  SR.76_3 = MEM <const uint8_t> [(struct  *)&s + 4B];
+  SR.77_22 = MEM <const uint8_t> [(struct  *)&s + 5B];
+  SR.78_25 = MEM <const uint8_t> [(struct  *)&s + 6B];
+  SR.79_15 = MEM <const uint8_t> [(struct  *)&s + 7B];
+  s ={v} {CLOBBER};
+  __printf_chk (1, "%d\n", prephitmp_54);
+  h_21 = (uint32_t) prephitmp_54;
+  _45 = (unsigned int) SR.76_3;
+  _51 = (unsigned int) SR.77_22;
+  _18 = _45 + _51;
+  _57 = (unsigned int) SR.78_25;
+  _47 = _18 + _57;
+  _63 = (unsigned int) SR.79_15;
+  _48 = _47 + _63;
+  h_64 = h_21 + _48;
+  __printf_chk (1, "%u\n", h_64);
+  s ={v} {CLOBBER};
+  i_20 = i_32 + 1;
+  if (i_20 != 4)
+    goto <bb 7>; [80.00%]
+  else
+    goto <bb 8>; [20.00%]
+
+  <bb 7> [local count: 171798694]:
+  pretmp_37 = vals[i_20];
+  _55 = (sizetype) i_20;
+  _59 = _55 * 4;
+  _60 = &arr + _59;
+  pretmp_44 = MEM[(const uint8_t *)_60];
+  goto <bb 3>; [100.00%]
+
+  <bb 8> [local count: 53687093]:
+  vals ={v} {CLOBBER};
+  arr ={v} {CLOBBER};
+  return;
+
+}
+
+

@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "000599",
+    "target": "c",
+    "source_file": "000599.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "error: too many errors emitted, stopping now [clang-diagnostic-error]\n/tmp/gcc_fuzz_4rfvk96e/t.c:7:5: error: unknown type name 'uint8_t' [clang-diagnostic-error]\n    uint8_t bytes[4];\n    ^\n/tmp/gcc_fuzz_4rfvk96e/t.c:13:38: error: unknown type name 'uint8_t' [clang-diagnostic-error]\nMyStruct createStruct(int val, const uint8_t arr[]) {\n                                     ^\n/tmp/gcc_fuzz_4rfvk96e/t.c:18:1: error: unknown type name 'uint32_t' [clang-diagnostic-error]\nuint32_t hashStruct(const MyStruct *s) {\n^\n/tmp/gcc_fuzz_4rfvk96e/t.c:19:5: error: use of undeclared identifier 'uint32_t' [clang-diagnostic-error]\n    uint32_t h = (uint32_t)s->data;\n    ^\n/tmp/gcc_fuzz_4rfvk96e/t.c:19:13: error: expected ';' after expression [clang-diagnostic-error]\n    uint32_t h = (uint32_t)s->data;\n            ^\n            ;\n/tmp/gcc_fuzz_4rfvk96e/t.c:19:14: error: use of undeclared identifier 'h' [clang-diagnostic-error]\n    uint32_t h = (uint32_t)s->data;\n             ^\n/tmp/gcc_fuzz_4rfvk96e/t.c:19:19: error: use of undeclared identifier 'uint32_t' [clang-diagnostic-error]\n    uint32_t h = (uint32_t)s->data;\n                  ^\n/tmp/gcc_fuzz_4rfvk96e/t.c:21:9: error: use of undeclared identifier 'h' [clang-diagnostic-error]\n        h += s->bytes[i];\n        ^\n/tmp/gcc_fuzz_4rfvk96e/t.c:23:12: error: use of undeclared identifier 'h' [clang-diagnostic-error]\n    return h;\n           ^\n/tmp/gcc_fuzz_4rfvk96e/t.c:30:31: warning: type specifier missing, defaults to 'int' [clang-diagnostic-implicit-int]\ntypedef void (*TestFunc)(int, uint8_t[4]);\n                              ^\n/tmp/gcc_fuzz_4rfvk96e/t.c:34:5: error: use of undeclared identifier 'uint8_t' [clang-diagnostic-error]\n    uint8_t arr[][4] = {{0}, {1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};\n    ^\n/tmp/gcc_fuzz_4rfvk96e/t.c:34:12: error: expected ';' after expression [clang-diagnostic-error]\n    uint8_t arr[][4] = {{0}, {1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};\n           ^\n           ;\n/tmp/gcc_fuzz_4rfvk96e/t.c:34:13: error: use of undeclared identifier 'arr' [clang-diagnostic-error]\n    uint8_t arr[][4] = {{0}, {1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};\n            ^\n/tmp/gcc_fuzz_4rfvk96e/t.c:34:17: error: expected expression [clang-diagnostic-error]\n    uint8_t arr[][4] = {{0}, {1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};\n                ^\n/tmp/gcc_fuzz_4rfvk96e/t.c:34:24: error: expected expression [clang-diagnostic-error]\n    uint8_t arr[][4] = {{0}, {1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};\n                       ^\n/tmp/gcc_fuzz_4rfvk96e/t.c:36:23: error: use of undeclared identifier 'arr' [clang-diagnostic-error]\n        func(vals[i], arr[i]);\n                      ^\n/tmp/gcc_fuzz_4rfvk96e/t.c:40:26: error: unknown type name 'uint8_t' [clang-diagnostic-error]\nvoid testFunction(int x, uint8_t y[4]) {\n                         ^\n/tmp/gcc_fuzz_4rfvk96e/t.c:50:5: error: use of undeclared identifier 'uint8_t' [clang-diagnostic-error]\n    uint8_t initialArray[] = {1, 2, 3, 4};\n    ^\n/tmp/gcc_fuzz_4rfvk96e/t.c:50:12: error: expected ';' after expression [clang-diagnostic-error]\n    uint8_t initialArray[] = {1, 2, 3, 4};\n           ^\n           ;\n/tmp/gcc_fuzz_4rfvk96e/t.c:50:13: error: use of undeclared identifier 'initialArray'; did you mean 'initializeArray'? [clang-diagnostic-error]\n    uint8_t initialArray[] = {1, 2, 3, 4};\n            ^~~~~~~~~~~~\n            initializeArray\n/tmp/gcc_fuzz_4rfvk96e/t.c:49:6: note: 'initializeArray' declared here\nvoid initializeArray() {\n     ^\n\n432 warnings and 20 errors generated.\nError while processing /tmp/gcc_fuzz_4rfvk96e/t.c.\nSuppressed 431 warnings (431 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

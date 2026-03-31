@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "004744",
+    "target": "c",
+    "source_file": "004744.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "/tmp/gcc_fuzz_7sfy6o4p/t.c:32:73: error: The left operand of '*' is a garbage value [clang-analyzer-core.UndefinedBinaryOperatorResult,-warnings-as-errors]\n            totalHash += ((uint32_t)(array[i].data) + array[i].bytes[0] * 2 + array[i].bytes[1] / 2 + array[i].bytes[2] * 3 - array[i].bytes[3]);\n                                                                        ^\n/tmp/gcc_fuzz_7sfy6o4p/t.c:51:26: note: Calling 'calculateHash'\n    uint32_t totalHash = calculateHash(array, ARRAY_SIZE);\n                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n/tmp/gcc_fuzz_7sfy6o4p/t.c:30:5: note: Loop condition is true.  Entering loop body\n    for (int i = 0; i < size; ++i) {\n    ^\n/tmp/gcc_fuzz_7sfy6o4p/t.c:31:24: note: Left side of '&&' is false\n        if (i % 7 != 0 && i % 13 != 0) { // Ensure we don't skip specific indices to avoid undefined behavior\n                       ^\n/tmp/gcc_fuzz_7sfy6o4p/t.c:30:5: note: Loop condition is true.  Entering loop body\n    for (int i = 0; i < size; ++i) {\n    ^\n/tmp/gcc_fuzz_7sfy6o4p/t.c:31:13: note: Left side of '&&' is true\n        if (i % 7 != 0 && i % 13 != 0) { // Ensure we don't skip specific indices to avoid undefined behavior\n            ^\n/tmp/gcc_fuzz_7sfy6o4p/t.c:31:9: note: Taking true branch\n        if (i % 7 != 0 && i % 13 != 0) { // Ensure we don't skip specific indices to avoid undefined behavior\n        ^\n/tmp/gcc_fuzz_7sfy6o4p/t.c:32:73: note: The left operand of '*' is a garbage value\n            totalHash += ((uint32_t)(array[i].data) + array[i].bytes[0] * 2 + array[i].bytes[1] / 2 + array[i].bytes[2] * 3 - array[i].bytes[3]);\n                                                      ~~~~~~~~~~~~~~~~~ ^\n\n450 warnings generated.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\n1 warning treated as error"
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "000016",
+    "target": "c",
+    "source_file": "000016.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "/tmp/gcc_fuzz_ug4rbcro/t.c:19:55: warning: 2 adjacent parameters of 'initNestedStruct' of convertible types are easily swapped by mistake [bugprone-easily-swappable-parameters]\nstatic inline void initNestedStruct(NestedStruct *ns, double val, int32_t a, const uint8_t arr[4]) {\n                                                      ^~~~~~~~~~~~~~~~~~~~~\n/tmp/gcc_fuzz_ug4rbcro/t.c:19:62: note: the first parameter in the range is 'val'\nstatic inline void initNestedStruct(NestedStruct *ns, double val, int32_t a, const uint8_t arr[4]) {\n                                                             ^~~\n/tmp/gcc_fuzz_ug4rbcro/t.c:19:75: note: the last parameter in the range is 'a'\nstatic inline void initNestedStruct(NestedStruct *ns, double val, int32_t a, const uint8_t arr[4]) {\n                                                                          ^\n/tmp/gcc_fuzz_ug4rbcro/t.c:19:55: note: \nstatic inline void initNestedStruct(NestedStruct *ns, double val, int32_t a, const uint8_t arr[4]) {\n                                                      ^\n/tmp/gcc_fuzz_ug4rbcro/t.c:19:67: note: 'double' and 'int32_t' may be implicitly converted: 'double' -> 'int32_t' (as 'int'), 'int32_t' (as 'int') -> 'double'\nstatic inline void initNestedStruct(NestedStruct *ns, double val, int32_t a, const uint8_t arr[4]) {\n                                                                  ^\n/tmp/gcc_fuzz_ug4rbcro/t.c:21:5: warning: implicit declaration of function 'initStruct' is invalid in C99 [clang-diagnostic-implicit-function-declaration]\n    initStruct(&ns->d, a, arr);\n    ^\n/tmp/gcc_fuzz_ug4rbcro/t.c:25:20: error: static declaration of 'initStruct' follows non-static declaration [clang-diagnostic-error]\nstatic inline void initStruct(MyStruct1 *s, int32_t val, const uint8_t arr[4]) {\n                   ^\n/tmp/gcc_fuzz_ug4rbcro/t.c:21:5: note: previous implicit declaration is here\n    initStruct(&ns->d, a, arr);\n    ^\n/tmp/gcc_fuzz_ug4rbcro/t.c:64:25: error: use of undeclared identifier 'printStruct' [clang-diagnostic-error]\n    TestFunc funcs[] = {printStruct, (TestFunc)hashStruct};\n                        ^\n/tmp/gcc_fuzz_ug4rbcro/t.c:65:31: error: invalid application of 'sizeof' to an incomplete type 'TestFunc[]' (aka 'void (*[])(const MyStruct1 *)') [clang-diagnostic-error]\n    for (int i = 0; i < sizeof(funcs) / sizeof(funcs[0]); ++i) {\n                              ^~~~~~~\n\n451 warnings and 3 errors generated.\nError while processing /tmp/gcc_fuzz_ug4rbcro/t.c.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

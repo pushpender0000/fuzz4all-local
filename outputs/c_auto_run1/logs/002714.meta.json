@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "002714",
+    "target": "c",
+    "source_file": "002714.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 2,
+    "cppcheck_output": "/tmp/gcc_fuzz_u9_s29rb/t.c:1:5: error: No pair for character ('). Can't process file. File is either invalid or unicode, which is currently not supported. [syntaxError]\nHere's a more complex C program designed to stress the GCC compiler, focusing on structs, typedefs, macros, inline functions, and function pointers. The program also includes deliberate complexity to ensure it adheres to hard requirements while increasing complexity.\n    ^",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "/tmp/gcc_fuzz_u9_s29rb/t.c:1:1: error: unknown type name 'Here' [clang-diagnostic-error]\nHere's a more complex C program designed to stress the GCC compiler, focusing on structs, typedefs, macros, inline functions, and function pointers. The program also includes deliberate complexity to ensure it adheres to hard requirements while increasing complexity.\n^\n/tmp/gcc_fuzz_u9_s29rb/t.c:1:5: error: expected identifier or '(' [clang-diagnostic-error]\nHere's a more complex C program designed to stress the GCC compiler, focusing on structs, typedefs, macros, inline functions, and function pointers. The program also includes deliberate complexity to ensure it adheres to hard requirements while increasing complexity.\n    ^\n/tmp/gcc_fuzz_u9_s29rb/t.c:1:5: warning: missing terminating ' character [clang-diagnostic-invalid-pp-token]\n/tmp/gcc_fuzz_u9_s29rb/t.c:64:20: warning: implicit declaration of function 'hashFunc' is invalid in C99 [clang-diagnostic-implicit-function-declaration]\n    printf(\"%u\\n\", hashFunc(&s));\n                   ^\n/tmp/gcc_fuzz_u9_s29rb/t.c:94:22: warning: implicit declaration of function 'hashFunc' is invalid in C99 [clang-diagnostic-implicit-function-declaration]\n        totalHash += hashFunc(&arrayOfStructs[i]);\n                     ^\n/tmp/gcc_fuzz_u9_s29rb/t.c:110:20: warning: implicit declaration of function 'hashFunc' is invalid in C99 [clang-diagnostic-implicit-function-declaration]\n    printf(\"%u\\n\", hashFunc(&s));\n                   ^\n/tmp/gcc_fuzz_u9_s29rb/t.c:139:12: error: expected '}' [clang-diagnostic-error]\n    uint8_t\n           ^\n/tmp/gcc_fuzz_u9_s29rb/t.c:132:12: note: to match this '{'\nint main() {\n           ^\n/tmp/gcc_fuzz_u9_s29rb/t.c:139:12: error: expected identifier or '(' [clang-diagnostic-error]\n    uint8_t\n           ^\n/usr/include/stdio.h:333:20: error: unknown type name 'size_t' [clang-diagnostic-error]\n                    int __modes, size_t __n) __THROW;\n                                 ^\n/usr/include/stdio.h:378:44: error: unknown type name 'size_t' [clang-diagnostic-error]\nextern int snprintf (char *__restrict __s, size_t __maxlen,\n                                           ^\n/usr/include/stdio.h:382:45: error: unknown type name 'size_t' [clang-diagnostic-error]\nextern int vsnprintf (char *__restrict __s, size_t __maxlen,\n                                            ^\n/usr/include/stdio.h:675:8: error: unknown type name 'size_t' [clang-diagnostic-error]\nextern size_t fread (void *__restrict __ptr, size_t __size,\n       ^\n/usr/include/stdio.h:675:46: error: unknown type name 'size_t' [clang-diagnostic-error]\nextern size_t fread (void *__restrict __ptr, size_t __size,\n                                             ^\n/usr/include/stdio.h:676:8: error: unknown type name 'size_t' [clang-diagnostic-error]\n                     size_t __n, FILE *__restrict __stream) __wur;\n                     ^\n/usr/include/stdio.h:681:8: error: unknown type name 'size_t' [clang-diagnostic-error]\nextern size_t fwrite (const void *__restrict __ptr, size_t __size,\n       ^\n/usr/include/stdio.h:681:53: error: unknown type name 'size_t' [clang-diagnostic-error]\nextern size_t fwrite (const void *__restrict __ptr, size_t __size,\n                                                    ^\n/usr/include/stdio.h:682:9: error: unknown type name 'size_t' [clang-diagnostic-error]\n                      size_t __n, FILE *__restrict __s);\n                      ^\n/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:95:3: error: unknown type name 'size_t' [clang-diagnostic-error]\n  size_t __pad5;\n  ^\n/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:98:66: error: reference to overloaded function could not be resolved; did you mean to call it? [clang-diagnostic-error]\n  char _unused2[15 * sizeof (int) - 4 * sizeof (void *) - sizeof (size_t)];\n                                                                 ^~~~~~~~\n/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:98:67: error: use of undeclared identifier 'size_t'; did you mean 'sizeof'? [clang-diagnostic-error]\n  char _unused2[15 * sizeof (int) - 4 * sizeof (void *) - sizeof (size_t)];\n                                                                  ^\n\n445 warnings and 16 errors generated.\nError while processing /tmp/gcc_fuzz_u9_s29rb/t.c.\nSuppressed 441 warnings (441 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

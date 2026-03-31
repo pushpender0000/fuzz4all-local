@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "000768",
+    "target": "c",
+    "source_file": "000768.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 2,
+    "cppcheck_output": "/tmp/gcc_fuzz_itw_p180/t.c:39:27: error: Code 'C++ cast <...' is invalid C code. Use --std or --language to configure the language. [syntaxError]\n        uint8_t arr[4] = {static_cast<uint8_t>(i), static_cast<uint8_t>(i+1), static_cast<uint8_t>(i+2), static_cast<uint8_t>(i+3)};\n                          ^",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "/tmp/gcc_fuzz_itw_p180/t.c:39:27: error: use of undeclared identifier 'static_cast' [clang-diagnostic-error]\n        uint8_t arr[4] = {static_cast<uint8_t>(i), static_cast<uint8_t>(i+1), static_cast<uint8_t>(i+2), static_cast<uint8_t>(i+3)};\n                          ^\n/tmp/gcc_fuzz_itw_p180/t.c:39:39: error: unexpected type name 'uint8_t': expected expression [clang-diagnostic-error]\n        uint8_t arr[4] = {static_cast<uint8_t>(i), static_cast<uint8_t>(i+1), static_cast<uint8_t>(i+2), static_cast<uint8_t>(i+3)};\n                                      ^\n/tmp/gcc_fuzz_itw_p180/t.c:39:52: error: use of undeclared identifier 'static_cast' [clang-diagnostic-error]\n        uint8_t arr[4] = {static_cast<uint8_t>(i), static_cast<uint8_t>(i+1), static_cast<uint8_t>(i+2), static_cast<uint8_t>(i+3)};\n                                                   ^\n/tmp/gcc_fuzz_itw_p180/t.c:39:64: error: unexpected type name 'uint8_t': expected expression [clang-diagnostic-error]\n        uint8_t arr[4] = {static_cast<uint8_t>(i), static_cast<uint8_t>(i+1), static_cast<uint8_t>(i+2), static_cast<uint8_t>(i+3)};\n                                                               ^\n/tmp/gcc_fuzz_itw_p180/t.c:39:79: error: use of undeclared identifier 'static_cast' [clang-diagnostic-error]\n        uint8_t arr[4] = {static_cast<uint8_t>(i), static_cast<uint8_t>(i+1), static_cast<uint8_t>(i+2), static_cast<uint8_t>(i+3)};\n                                                                              ^\n/tmp/gcc_fuzz_itw_p180/t.c:39:91: error: unexpected type name 'uint8_t': expected expression [clang-diagnostic-error]\n        uint8_t arr[4] = {static_cast<uint8_t>(i), static_cast<uint8_t>(i+1), static_cast<uint8_t>(i+2), static_cast<uint8_t>(i+3)};\n                                                                                          ^\n/tmp/gcc_fuzz_itw_p180/t.c:39:106: error: use of undeclared identifier 'static_cast' [clang-diagnostic-error]\n        uint8_t arr[4] = {static_cast<uint8_t>(i), static_cast<uint8_t>(i+1), static_cast<uint8_t>(i+2), static_cast<uint8_t>(i+3)};\n                                                                                                         ^\n/tmp/gcc_fuzz_itw_p180/t.c:39:118: error: unexpected type name 'uint8_t': expected expression [clang-diagnostic-error]\n        uint8_t arr[4] = {static_cast<uint8_t>(i), static_cast<uint8_t>(i+1), static_cast<uint8_t>(i+2), static_cast<uint8_t>(i+3)};\n                                                                                                                     ^\n/tmp/gcc_fuzz_itw_p180/t.c:75:9: warning: if with identical then and else branches [bugprone-branch-clone]\n        if (i == ARRAY_SIZE / 2) {\n        ^\n/tmp/gcc_fuzz_itw_p180/t.c:77:11: note: else branch starts here\n        } else {\n          ^\n\n450 warnings and 8 errors generated.\nError while processing /tmp/gcc_fuzz_itw_p180/t.c.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

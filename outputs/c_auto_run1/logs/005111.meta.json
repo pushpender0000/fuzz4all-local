@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "005111",
+    "target": "c",
+    "source_file": "005111.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": true,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 0,
+    "clang_tidy_output": "/tmp/gcc_fuzz_uf12h6y5/t.c:24:36: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define HASH_STRUCT(s) ((uint64_t)(s.data) + (s.bytes[0] * 2) + (s.bytes[1] / 2) + (s.bytes[2] * 3) - s.bytes[3])\n                                   ^\n                                   ()\n/tmp/gcc_fuzz_uf12h6y5/t.c:24:47: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define HASH_STRUCT(s) ((uint64_t)(s.data) + (s.bytes[0] * 2) + (s.bytes[1] / 2) + (s.bytes[2] * 3) - s.bytes[3])\n                                              ^\n                                              ()\n/tmp/gcc_fuzz_uf12h6y5/t.c:24:66: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define HASH_STRUCT(s) ((uint64_t)(s.data) + (s.bytes[0] * 2) + (s.bytes[1] / 2) + (s.bytes[2] * 3) - s.bytes[3])\n                                                                 ^\n                                                                 ()\n/tmp/gcc_fuzz_uf12h6y5/t.c:24:85: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define HASH_STRUCT(s) ((uint64_t)(s.data) + (s.bytes[0] * 2) + (s.bytes[1] / 2) + (s.bytes[2] * 3) - s.bytes[3])\n                                                                                    ^\n                                                                                    ()\n/tmp/gcc_fuzz_uf12h6y5/t.c:24:103: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define HASH_STRUCT(s) ((uint64_t)(s.data) + (s.bytes[0] * 2) + (s.bytes[1] / 2) + (s.bytes[2] * 3) - s.bytes[3])\n                                                                                                      ^\n                                                                                                      ()\n/tmp/gcc_fuzz_uf12h6y5/t.c:33:33: warning: performing an implicit widening conversion to type 'unsigned long' of a multiplication performed in type 'int' [bugprone-implicit-widening-of-multiplication-result]\n    printf(\"%lu\\n\", HASH_STRUCT(s));\n                                ^\n/tmp/gcc_fuzz_uf12h6y5/t.c:33:33: note: make conversion explicit to silence this warning\n/tmp/gcc_fuzz_uf12h6y5/t.c:24:85: note: expanded from macro 'HASH_STRUCT'\n#define HASH_STRUCT(s) ((uint64_t)(s.data) + (s.bytes[0] * 2) + (s.bytes[1] / 2) + (s.bytes[2] * 3) - s.bytes[3])\n                                                                                    ^~~~~~~~~~~~~~\n/tmp/gcc_fuzz_uf12h6y5/t.c:33:33: note: perform multiplication in a wider type\n    printf(\"%lu\\n\", HASH_STRUCT(s));\n                                ^\n                                (long)\n/tmp/gcc_fuzz_uf12h6y5/t.c:24:85: note: expanded from macro 'HASH_STRUCT'\n#define HASH_STRUCT(s) ((uint64_t)(s.data) + (s.bytes[0] * 2) + (s.bytes[1] / 2) + (s.bytes[2] * 3) - s.bytes[3])\n                                                                                    ^~~~~~~~~~\n\n456 warnings generated.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "gcc /tmp/gcc_fuzz_uf12h6y5/t.c -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -o /tmp/gcc_fuzz_uf12h6y5/t.c.asan.out",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "10\n18\n20\n46\n30\n74\n40\n102",
+    "sanitizer_passed": true,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "gcc /tmp/gcc_fuzz_uf12h6y5/t.c -std=c11 -O0 -w -pipe -o /tmp/gcc_fuzz_uf12h6y5/o0.out",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "gcc /tmp/gcc_fuzz_uf12h6y5/t.c -std=c11 -O2 -w -pipe -o /tmp/gcc_fuzz_uf12h6y5/o2.out",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "10\n18\n20\n46\n30\n74\n40\n102",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "10\n18\n20\n46\n30\n74\n40\n102",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": true
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "N/A",
+    "finding_details": ""
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

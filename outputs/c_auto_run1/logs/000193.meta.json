@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "000193",
+    "target": "c",
+    "source_file": "000193.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": true,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 0,
+    "clang_tidy_output": "/tmp/gcc_fuzz_7q244opa/t.c:17:31: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define COMPUTE_VALUE(x, y) ((y % 3 == 0) ? (arr->data[y] * 3) : ((y % 3 == 1) ? (arr->data[y] / 3) : (arr->data[y] + 3)))\n                              ^\n                              ()\n/tmp/gcc_fuzz_7q244opa/t.c:17:68: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]\n#define COMPUTE_VALUE(x, y) ((y % 3 == 0) ? (arr->data[y] * 3) : ((y % 3 == 1) ? (arr->data[y] / 3) : (arr->data[y] + 3)))\n                                                                   ^\n                                                                   ()\n\n433 warnings generated.\nSuppressed 431 warnings (431 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "gcc /tmp/gcc_fuzz_7q244opa/t.c -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -o /tmp/gcc_fuzz_7q244opa/t.c.asan.out",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 1,
+    "sanitizer_stderr": "AddressSanitizer:DEADLYSIGNAL\n=================================================================\n==4096472==ERROR: AddressSanitizer: SEGV on unknown address 0x1000bbb38e1b (pc 0x59704ee6d31d bp 0x7ffe2ace7140 sp 0x7ffe2ace7140 T0)\n==4096472==The signal is caused by a READ memory access.\n    #0 0x59704ee6d31d in sumArray /tmp/gcc_fuzz_7q244opa/t.c:22\n    #1 0x59704ee6d4d7 in printSum /tmp/gcc_fuzz_7q244opa/t.c:28\n    #2 0x59704ee6d5c1 in main /tmp/gcc_fuzz_7q244opa/t.c:40\n    #3 0x79151c629d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58\n    #4 0x79151c629e3f in __libc_start_main_impl ../csu/libc-start.c:392\n    #5 0x59704ee6d1c4 in _start (/tmp/gcc_fuzz_7q244opa/t.c.asan.out+0x11c4)\n\nAddressSanitizer can not provide additional info.\nSUMMARY: AddressSanitizer: SEGV /tmp/gcc_fuzz_7q244opa/t.c:22 in sumArray\n==4096472==ABORTING",
+    "sanitizer_passed": false,
+    "ub_detected": true
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "sanitizer",
+    "finding_details": "Rejected by ASan/UBSan gate (UB/crash/runtime error)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "000772",
+    "target": "c",
+    "source_file": "000772.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": true,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 0,
+    "clang_tidy_output": "/tmp/gcc_fuzz_bm91fxjt/t.c:22:18: warning: performing an implicit widening conversion to type 'unsigned long' of a multiplication performed in type 'int' [bugprone-implicit-widening-of-multiplication-result]\n            h += s->bytes[i] * 3;\n                 ^\n/tmp/gcc_fuzz_bm91fxjt/t.c:22:18: note: make conversion explicit to silence this warning\n            h += s->bytes[i] * 3;\n                 ^~~~~~~~~~~~~~~\n                 (unsigned long)( )\n/tmp/gcc_fuzz_bm91fxjt/t.c:22:18: note: perform multiplication in a wider type\n            h += s->bytes[i] * 3;\n                 ^~~~~~~~~~~\n                 (long)\n\n450 warnings generated.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "gcc /tmp/gcc_fuzz_bm91fxjt/t.c -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -o /tmp/gcc_fuzz_bm91fxjt/t.c.asan.out",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "10\n53\n-10\n118\n300\n513\n-300\n18446744073709551359\n500\n628\n-500\n18446744073709551329\n700\n743\n-700\n18446744073709551044\nTotal Hash: 6260\nAfter complex function call:\n210\n220\n230\n240\n-150\n260\n280\n290\n-100\n310\n320\n330\n250\n360\n370\n380\n390\n0\n420\n430\n440\n50\n460\n470\n490\nUpdated Total Hash: 6260\nComplex Calculation Result: 18446744073709551166",
+    "sanitizer_passed": true,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "gcc /tmp/gcc_fuzz_bm91fxjt/t.c -std=c11 -O0 -w -pipe -o /tmp/gcc_fuzz_bm91fxjt/o0.out",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "gcc /tmp/gcc_fuzz_bm91fxjt/t.c -std=c11 -O2 -w -pipe -o /tmp/gcc_fuzz_bm91fxjt/o2.out",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "10\n53\n-10\n118\n300\n513\n-300\n18446744073709551359\n500\n628\n-500\n18446744073709551329\n700\n743\n-700\n18446744073709551044\nTotal Hash: 6260\nAfter complex function call:\n210\n220\n230\n240\n-150\n260\n280\n290\n-100\n310\n320\n330\n250\n360\n370\n380\n390\n0\n420\n430\n440\n50\n460\n470\n490\nUpdated Total Hash: 6260\nComplex Calculation Result: 18446744073709551166",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "10\n53\n-10\n118\n300\n513\n-300\n18446744073709551359\n500\n628\n-500\n18446744073709551329\n700\n743\n-700\n18446744073709551044\nTotal Hash: 6260\nAfter complex function call:\n210\n220\n230\n240\n-150\n260\n280\n290\n-100\n310\n320\n330\n250\n360\n370\n380\n390\n0\n420\n430\n440\n50\n460\n470\n490\nUpdated Total Hash: 6260\nComplex Calculation Result: 18446744073709551166",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": true
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "N/A",
+    "finding_details": ""
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

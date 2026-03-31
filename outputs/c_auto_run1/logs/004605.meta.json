@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "004605",
+    "target": "c",
+    "source_file": "004605.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "error: too many errors emitted, stopping now [clang-diagnostic-error]\n/tmp/gcc_fuzz_csn_au_h/t.c:10:5: error: unknown type name 'uint8_t' [clang-diagnostic-error]\n    uint8_t bytes[4];\n    ^\n/tmp/gcc_fuzz_csn_au_h/t.c:13:45: error: unknown type name 'uint8_t' [clang-diagnostic-error]\nMyStruct createComplexStruct(int val, const uint8_t arr[]) {\n                                            ^\n/tmp/gcc_fuzz_csn_au_h/t.c:22:72: error: unknown type name 'uint8_t' [clang-diagnostic-error]\nstatic inline void complexFunctionInline(MyStruct array[], int offset, uint8_t newBytes[4]) {\n                                                                       ^\n/tmp/gcc_fuzz_csn_au_h/t.c:23:33: error: use of undeclared identifier 'ARRAY_SIZE' [clang-diagnostic-error]\n    if (offset >= 0 && offset < ARRAY_SIZE) {\n                                ^\n/tmp/gcc_fuzz_csn_au_h/t.c:34:5: error: use of undeclared identifier 'uint8_t' [clang-diagnostic-error]\n    uint8_t initialArray[] = {1, 2, 3, 4};\n    ^\n/tmp/gcc_fuzz_csn_au_h/t.c:34:12: error: expected ';' after expression [clang-diagnostic-error]\n    uint8_t initialArray[] = {1, 2, 3, 4};\n           ^\n           ;\n/tmp/gcc_fuzz_csn_au_h/t.c:34:13: error: use of undeclared identifier 'initialArray' [clang-diagnostic-error]\n    uint8_t initialArray[] = {1, 2, 3, 4};\n            ^\n/tmp/gcc_fuzz_csn_au_h/t.c:34:26: error: expected expression [clang-diagnostic-error]\n    uint8_t initialArray[] = {1, 2, 3, 4};\n                         ^\n/tmp/gcc_fuzz_csn_au_h/t.c:34:30: error: expected expression [clang-diagnostic-error]\n    uint8_t initialArray[] = {1, 2, 3, 4};\n                             ^\n/tmp/gcc_fuzz_csn_au_h/t.c:39:57: error: use of undeclared identifier 'initialArray' [clang-diagnostic-error]\n        arrayOfStructs[i] = createComplexStruct(10 * i, initialArray);\n                                                        ^\n/tmp/gcc_fuzz_csn_au_h/t.c:43:1: error: unknown type name 'uint32_t' [clang-diagnostic-error]\nuint32_t calculateTotalHash() {\n^\n/tmp/gcc_fuzz_csn_au_h/t.c:44:5: error: use of undeclared identifier 'uint32_t' [clang-diagnostic-error]\n    uint32_t totalHash = 0;\n    ^\n/tmp/gcc_fuzz_csn_au_h/t.c:44:13: error: expected ';' after expression [clang-diagnostic-error]\n    uint32_t totalHash = 0;\n            ^\n            ;\n/tmp/gcc_fuzz_csn_au_h/t.c:44:14: error: use of undeclared identifier 'totalHash' [clang-diagnostic-error]\n    uint32_t totalHash = 0;\n             ^\n/tmp/gcc_fuzz_csn_au_h/t.c:49:9: error: use of undeclared identifier 'totalHash' [clang-diagnostic-error]\n        totalHash += HASH(&arrayOfStructs[i]);\n        ^\n/tmp/gcc_fuzz_csn_au_h/t.c:51:12: error: use of undeclared identifier 'totalHash' [clang-diagnostic-error]\n    return totalHash;\n           ^\n/tmp/gcc_fuzz_csn_au_h/t.c:54:39: error: unknown type name 'uint8_t' [clang-diagnostic-error]\nvoid testFunctionWithPointer(int val, uint8_t newBytes[4]) {\n                                      ^\n/tmp/gcc_fuzz_csn_au_h/t.c:60:34: warning: type specifier missing, defaults to 'int' [clang-diagnostic-implicit-int]\ntypedef void (*TestFuncPtr)(int, uint8_t[4]);\n                                 ^\n/tmp/gcc_fuzz_csn_au_h/t.c:64:5: error: use of undeclared identifier 'uint8_t' [clang-diagnostic-error]\n    uint8_t arr[][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};\n    ^\n/tmp/gcc_fuzz_csn_au_h/t.c:64:12: error: expected ';' after expression [clang-diagnostic-error]\n    uint8_t arr[][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};\n           ^\n           ;\n\n432 warnings and 20 errors generated.\nError while processing /tmp/gcc_fuzz_csn_au_h/t.c.\nSuppressed 431 warnings (431 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

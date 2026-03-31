@@ -1,0 +1,24 @@
+
+;; Function complexMacroTest (complexMacroTest, funcdef_no=49, decl_uid=3257, cgraph_uid=46, symbol_order=45)
+
+void complexMacroTest ()
+{
+  <bb 2> [local count: 53687093]:
+  complexFunction (); [tail call]
+  return;
+
+}
+
+
+
+;; Function runComplexTests (runComplexTests, funcdef_no=51, decl_uid=3268, cgraph_uid=47, symbol_order=46)
+
+void runComplexTests ()
+{
+  <bb 2> [local count: 53687093]:
+  complexFunction (); [tail call]
+  return;
+
+}
+
+

@@ -1,0 +1,86 @@
+#include <iostream>
+#include <vector>
+#include <type_traits>
+
+template<typename T, typename U>
+constexpr auto multiplyAndAdd(const std::vector<std::vector<T>>& vec1, const std::vector<std::vector<U>>& vec2) {
+    static_assert(std::is_arithmetic_v<T> && std::is_arithmetic_v<U>, "Types must be arithmetic");
+    int total = 0;
+    for (const auto& subVec1 : vec1) {
+        for (int val1 : subVec1) {
+            if constexpr(std::is_same_v<decltype(val1), T> && std::is_same_v<decltype(val1), U>) {
+                total += static_cast<T>(val1 * 2);
+            } else {
+                std::cout << "Error: Incorrect type used in calculation." << std::endl;
+                return -1; // Indicate error with a negative result
+            }
+        }
+    }
+    for (const auto& subVec2 : vec2) {
+        for (int val2 : subVec2) {
+            if constexpr(std::is_same_v<decltype(val2), T> && std::is_same_v<decltype(val2), U>) {
+                total += static_cast<U>(val2 * 3);
+            } else {
+                std::cout << "Error: Incorrect type used in calculation." << std::endl;
+                return -1; // Indicate error with a negative result
+            }
+        }
+    }
+    return total;
+}
+
+template<typename T, typename U>
+auto nestedLambda(const std::vector<std::vector<T>>& vec1, const std::vector<std::vector<U>>& vec2) {
+    auto lambda = [](const std::vector<T>& subVec1, const std::vector<U>& subVec2) -> int {
+        int nestedTotal = 0;
+        for (int val1 : subVec1) {
+            if constexpr(std::is_arithmetic_v<T> && std::is_arithmetic_v<U>) {
+                nestedTotal += static_cast<int>(val1 * 2);
+            } else {
+                std::cout << "Error: Incorrect type used in lambda calculation." << std::endl;
+                return -1; // Indicate error with a negative result
+            }
+        }
+        for (int val2 : subVec2) {
+            if constexpr(std::is_arithmetic_v<T> && std::is_arithmetic_v<U>) {
+                nestedTotal += static_cast<int>(val2 * 3);
+            } else {
+                std::cout << "Error: Incorrect type used in lambda calculation." << std::endl;
+                return -1; // Indicate error with a negative result
+            }
+        }
+        return nestedTotal;
+    };
+
+    int total = 0;
+    for (const auto& subVec1 : vec1) {
+        if constexpr(std::is_arithmetic_v<T> && std::is_arithmetic_v<U>) {
+            total += lambda(subVec1, vec2[vec1.size() - 1]);
+        } else {
+            std::cout << "Error: Incorrect type used in main calculation." << std::endl;
+            return -1; // Indicate error with a negative result
+        }
+    }
+    for (const auto& subVec2 : vec2) {
+        if constexpr(std::is_arithmetic_v<T> && std::is_arithmetic_v<U>) {
+            total += lambda(vec1[vec2.size() - 1], subVec2);
+        } else {
+            std::cout << "Error: Incorrect type used in main calculation." << std::endl;
+            return -1; // Indicate error with a negative result
+        }
+    }
+    return total;
+}
+
+int main() {
+    constexpr int size = 5;
+    std::vector<std::vector<int>> nestedVector1(size, std::vector<int>(size, 1));
+    std::vector<std::vector<double>> nestedVector2(size, std::vector<double>(size, 2.0));
+
+    auto result = nestedLambda(nestedVector1, nestedVector2);
+    if (result >= 0) {
+        std::cout << result << std::endl;
+    } else {
+        std::cout << "Error: Calculation failed." << std::endl;
+    }
+}

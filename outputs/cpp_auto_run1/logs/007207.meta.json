@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "007207",
+    "target": "cpp",
+    "source_file": "007207.cpp"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 2,
+    "cppcheck_output": "/tmp/gpp_fuzz_p11qke5n/t.cpp:23:15: style: Class 'ArrayWrapper' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]\n    constexpr ArrayWrapper(const T (&arr)[N]) : data_(arr) {}\n              ^",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "/tmp/gpp_fuzz_p11qke5n/t.cpp:23:49: error: no matching constructor for initialization of 'std::vector<int>' [clang-diagnostic-error]\n    constexpr ArrayWrapper(const T (&arr)[N]) : data_(arr) {}\n                                                ^     ~~~\n/tmp/gpp_fuzz_p11qke5n/t.cpp:32:18: note: in instantiation of member function 'ArrayWrapper<int, 3>::ArrayWrapper' requested here\n    ArrayWrapper aw(arr1);\n                 ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:497:7: note: candidate constructor not viable: no known conversion from 'const int[3]' to 'const std::vector<int>::allocator_type' (aka 'const std::allocator<int>') for 1st argument\n      vector(const allocator_type& __a) _GLIBCXX_NOEXCEPT\n      ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:510:7: note: candidate constructor not viable: no known conversion from 'const int[3]' to 'std::vector::size_type' (aka 'unsigned long') for 1st argument\n      vector(size_type __n, const allocator_type& __a = allocator_type())\n      ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:553:7: note: candidate constructor not viable: no known conversion from 'const int[3]' to 'const std::vector<int>' for 1st argument\n      vector(const vector& __x)\n      ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:572:7: note: candidate constructor not viable: no known conversion from 'const int[3]' to 'std::vector<int>' for 1st argument\n      vector(vector&&) noexcept = default;\n      ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:625:7: note: candidate constructor not viable: no known conversion from 'const int[3]' to 'initializer_list<std::vector<int>::value_type>' (aka 'initializer_list<int>') for 1st argument\n      vector(initializer_list<value_type> __l,\n      ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:487:7: note: candidate constructor not viable: requires 0 arguments, but 1 was provided\n      vector() = default;\n      ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:575:7: note: candidate constructor not viable: requires 2 arguments, but 1 was provided\n      vector(const vector& __x, const allocator_type& __a)\n      ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:607:7: note: candidate constructor not viable: requires 2 arguments, but 1 was provided\n      vector(vector&& __rv, const allocator_type& __m)\n      ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:522:7: note: candidate constructor not viable: requires at least 2 arguments, but 1 was provided\n      vector(size_type __n, const value_type& __value,\n      ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:585:7: note: candidate constructor not viable: requires 3 arguments, but 1 was provided\n      vector(vector&& __rv, const allocator_type& __m, true_type) noexcept\n      ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:589:7: note: candidate constructor not viable: requires 3 arguments, but 1 was provided\n      vector(vector&& __rv, const allocator_type& __m, false_type)\n      ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:653:2: note: candidate constructor template not viable: requires at least 2 arguments, but 1 was provided\n        vector(_InputIterator __first, _InputIterator __last,\n        ^\n\n14469 warnings and 1 error generated.\nError while processing /tmp/gpp_fuzz_p11qke5n/t.cpp.\nSuppressed 14469 warnings (14469 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/g++",
+    "compiler_version": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c++20",
+    "timeout_sec": 15
+  }
+}

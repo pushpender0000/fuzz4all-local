@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "003430",
+    "target": "c",
+    "source_file": "003430.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 2,
+    "cppcheck_output": "/tmp/gcc_fuzz_cn41b0sh/t.c:39:5: warning: %zu in format string (no. 1) requires 'size_t' but the argument type is 'signed int'. [invalidPrintfArgType_uint]\n    printf(\"Resulting data at offset %zu: %d\\n\", ARRAY_SIZE / 2, arrayOfStructs[ARRAY_SIZE / 2].data);\n    ^",
+    "clang_tidy_rc": 0,
+    "clang_tidy_output": "/tmp/gcc_fuzz_cn41b0sh/t.c:11:40: warning: 2 adjacent parameters of 'complexFunction' of convertible types are easily swapped by mistake [bugprone-easily-swappable-parameters]\nvoid complexFunction(MyStruct array[], size_t size, int32_t offset) {\n                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~\n/tmp/gcc_fuzz_cn41b0sh/t.c:11:47: note: the first parameter in the range is 'size'\nvoid complexFunction(MyStruct array[], size_t size, int32_t offset) {\n                                              ^~~~\n/tmp/gcc_fuzz_cn41b0sh/t.c:11:61: note: the last parameter in the range is 'offset'\nvoid complexFunction(MyStruct array[], size_t size, int32_t offset) {\n                                                            ^~~~~~\n/tmp/gcc_fuzz_cn41b0sh/t.c:11:40: note: \nvoid complexFunction(MyStruct array[], size_t size, int32_t offset) {\n                                       ^\n/tmp/gcc_fuzz_cn41b0sh/t.c:11:53: note: 'size_t' and 'int32_t' may be implicitly converted: 'size_t' (as 'unsigned long') -> 'int32_t' (as 'int'), 'int32_t' (as 'int') -> 'size_t' (as 'unsigned long')\nvoid complexFunction(MyStruct array[], size_t size, int32_t offset) {\n                                                    ^\n/tmp/gcc_fuzz_cn41b0sh/t.c:39:50: warning: format specifies type 'size_t' (aka 'unsigned long') but the argument has type 'int' [clang-diagnostic-format]\n    printf(\"Resulting data at offset %zu: %d\\n\", ARRAY_SIZE / 2, arrayOfStructs[ARRAY_SIZE / 2].data);\n                                     ~~~         ^\n                                     %d\n/tmp/gcc_fuzz_cn41b0sh/t.c:4:20: note: expanded from macro 'ARRAY_SIZE'\n#define ARRAY_SIZE 100\n                   ^\n\n451 warnings generated.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

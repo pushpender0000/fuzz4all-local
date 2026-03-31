@@ -1,0 +1,108 @@
+#include <stdio.h>
+#include <stdint.h>
+
+#define ARRAY_SIZE 30
+
+typedef struct {
+    int64_t data;
+    uint8_t bytes[2];
+} MyStruct;
+
+MyStruct createStruct(int64_t val, const uint8_t arr[]) {
+    MyStruct s = {val, {arr[0], arr[1]}};
+    return s;
+}
+
+uint32_t hashStruct(const MyStruct *s) {
+    uint32_t h = (uint32_t)(s->data >> 32);
+    for (int i = 0; i < 2; ++i) {
+        if (i % 2 == 0) {
+            h += s->bytes[i] * 3;
+        } else {
+            h -= s->bytes[i] / 4;
+        }
+    }
+    return h;
+}
+
+void printStruct(const MyStruct *s) {
+    printf("%ld\n", s->data);
+}
+
+typedef void (*TestFunc)(int64_t, uint8_t[2]);
+
+void runTests(TestFunc func) {
+    int64_t vals[] = {100000, -100000, 300000, -300000};
+    uint8_t arr[][2] = {{10, 11}, {12, 13}, {14, 15}, {16, 17}};
+    for (int i = 0; i < sizeof(vals) / sizeof(vals[0]); ++i) {
+        func(vals[i], arr[i]);
+    }
+}
+
+void testFunction(int64_t x, uint8_t y[2]) {
+    MyStruct s = createStruct(x, y);
+    printStruct(&s);
+    printf("%u\n", hashStruct(&s));
+}
+
+MyStruct arrayOfStructs[ARRAY_SIZE];
+
+void initializeArray() {
+    uint8_t initialArray[] = {20, 21};
+    for (int i = 0; i < ARRAY_SIZE; ++i) {
+        if (i == 5 || i == 10 || i == 15) {
+            continue;
+        }
+        arrayOfStructs[i] = createStruct(10 * i, initialArray);
+    }
+}
+
+void printArray() {
+    for (int i = 0; i < ARRAY_SIZE; ++i) {
+        if (i == 7 || i == 12 || i == 18) {
+            break;
+        }
+        printStruct(&arrayOfStructs[i]);
+    }
+}
+
+uint32_t calculateTotalHash() {
+    uint32_t totalHash = 0;
+    for (int i = 0; i < ARRAY_SIZE; ++i) {
+        if (i % 3 == 0) {
+            continue;
+        }
+        totalHash += hashStruct(&arrayOfStructs[i]);
+    }
+    return totalHash;
+}
+
+void complexFunction(int64_t offset, uint8_t newBytes[2]) {
+    if (offset >= 0 && offset < ARRAY_SIZE) {
+        arrayOfStructs[offset] = createStruct(100 + 10 * offset, newBytes);
+    } else {
+        printf("Offset out of bounds\n");
+    }
+}
+
+void testFunctionPointer() {
+    TestFunc funcPtr = testFunction;
+    runTests(funcPtr);
+}
+
+int main() {
+    initializeArray();
+    runTests(testFunction);
+    uint32_t totalHash = calculateTotalHash();
+    printf("Total Hash: %u\n", totalHash);
+
+    // Additional test with a function pointer and complex manipulation
+    uint8_t newBytes[] = {25, 26};
+    complexFunction(ARRAY_SIZE / 2, newBytes);
+    printf("After complex function call:\n");
+    printArray();
+    totalHash = calculateTotalHash();
+    printf("Updated Total Hash: %u\n", totalHash);
+
+    return 0;
+}

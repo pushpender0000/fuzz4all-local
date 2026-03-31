@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "000298",
+    "target": "c",
+    "source_file": "000298.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "/tmp/gcc_fuzz_mtqlj1ei/t.c:34:42: error: use of undeclared identifier 'INITIAL_VALUE' [clang-diagnostic-error]\n        arrayOfStructs[i] = createStruct(INITIAL_VALUE * i, initialArray);\n                                         ^\n/tmp/gcc_fuzz_mtqlj1ei/t.c:55:32: error: use of undeclared identifier 'INITIAL_VALUE' [clang-diagnostic-error]\n    int32_t vals[] = {10, -10, INITIAL_VALUE, -INITIAL_VALUE};\n                               ^\n/tmp/gcc_fuzz_mtqlj1ei/t.c:55:48: error: use of undeclared identifier 'INITIAL_VALUE' [clang-diagnostic-error]\n    int32_t vals[] = {10, -10, INITIAL_VALUE, -INITIAL_VALUE};\n                                               ^\n/tmp/gcc_fuzz_mtqlj1ei/t.c:57:31: error: invalid application of 'sizeof' to an incomplete type 'int32_t[]' (aka 'int[]') [clang-diagnostic-error]\n    for (int i = 0; i < sizeof(vals) / sizeof(vals[0]); ++i) {\n                              ^~~~~~\n/tmp/gcc_fuzz_mtqlj1ei/t.c:69:20: error: use of undeclared identifier 'MAX_ITER' [clang-diagnostic-error]\n    int32_t values[MAX_ITER];\n                   ^\n/tmp/gcc_fuzz_mtqlj1ei/t.c:70:20: error: use of undeclared identifier 'MAX_ITER' [clang-diagnostic-error]\n    uint8_t hashes[MAX_ITER][4];\n                   ^\n/tmp/gcc_fuzz_mtqlj1ei/t.c:74:25: error: use of undeclared identifier 'MAX_ITER' [clang-diagnostic-error]\n    for (int i = 0; i < MAX_ITER; ++i) {\n                        ^\n/tmp/gcc_fuzz_mtqlj1ei/t.c:75:25: error: use of undeclared identifier 'INITIAL_VALUE' [clang-diagnostic-error]\n        td->values[i] = INITIAL_VALUE * i;\n                        ^\n/tmp/gcc_fuzz_mtqlj1ei/t.c:83:25: error: use of undeclared identifier 'MAX_ITER' [clang-diagnostic-error]\n    for (int i = 0; i < MAX_ITER; ++i) {\n                        ^\n/tmp/gcc_fuzz_mtqlj1ei/t.c:90:25: error: use of undeclared identifier 'MAX_ITER' [clang-diagnostic-error]\n    for (int i = 0; i < MAX_ITER; ++i) {\n                        ^\n/tmp/gcc_fuzz_mtqlj1ei/t.c:98:25: error: use of undeclared identifier 'MAX_ITER' [clang-diagnostic-error]\n    for (int i = 0; i < MAX_ITER; ++i) {\n                        ^\n\n449 warnings and 11 errors generated.\nError while processing /tmp/gcc_fuzz_mtqlj1ei/t.c.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

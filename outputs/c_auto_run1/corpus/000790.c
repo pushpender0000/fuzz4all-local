@@ -1,0 +1,104 @@
+#include <stdio.h>
+#include <stdint.h>
+
+#define ARRAY_SIZE 30
+
+typedef struct {
+    int16_t data;
+    uint8_t bytes[4];
+} MyStruct;
+
+MyStruct createStruct(int16_t val, const uint8_t arr[]) {
+    if (val == 0) return (MyStruct){.data = 0, .bytes = {0}}; // Edge case for zero initialization
+    MyStruct s = {val, {arr[0], arr[1], arr[2], arr[3]}};
+    return s;
+}
+
+uint32_t hashStruct(const MyStruct *s) {
+    uint32_t h = (uint32_t)s->data;
+    for (int i = 0; i < 4; ++i) {
+        if (i % 2 == 0) {
+            h += s->bytes[i] * ((i + 1) * 2); // More complex multiplication and addition
+        } else {
+            h += s->bytes[i] / ((i + 1) * 2); // Division with increasing divisor
+        }
+    }
+    return h;
+}
+
+void printStruct(const MyStruct *s) {
+    printf("%d\n", s->data);
+}
+
+typedef void (*TestFunc)(int16_t, uint8_t[4]);
+
+void runTests(TestFunc func) {
+    int16_t vals[] = {10, -10, 300, -300};
+    uint8_t arr[][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+    for (int i = 0; i < sizeof(vals) / sizeof(vals[0]); ++i) {
+        func(vals[i], arr[i]);
+    }
+}
+
+void testFunction(int16_t x, uint8_t y[4]) {
+    MyStruct s = createStruct(x, y);
+    printStruct(&s);
+    printf("%u\n", hashStruct(&s));
+}
+
+MyStruct arrayOfStructs[ARRAY_SIZE];
+
+void initializeArray() {
+    uint8_t initialArray[] = {1, 2, 3, 4};
+    for (int i = 0; i < ARRAY_SIZE; ++i) {
+        if (i == 5 || i == 10 || i == 15 || i == 20 || i == 25) {
+            continue; // Skipping specific indices to test edge cases
+        }
+        arrayOfStructs[i] = createStruct(10 * i, initialArray);
+    }
+}
+
+void printArray() {
+    for (int i = 0; i < ARRAY_SIZE; ++i) {
+        if (i == 7 || i == 12 || i == 17 || i == 22 || i == 27) {
+            break; // Breaking at specific indices to test edge cases
+        }
+        printStruct(&arrayOfStructs[i]);
+    }
+}
+
+uint32_t calculateTotalHash() {
+    uint32_t totalHash = 0;
+    for (int i = 0; i < ARRAY_SIZE; ++i) {
+        if (i % 3 == 0) {
+            continue; // Skipping every third index to test edge cases
+        }
+        totalHash += hashStruct(&arrayOfStructs[i]);
+    }
+    return totalHash;
+}
+
+void complexFunction(int16_t offset, uint8_t newBytes[4]) {
+    if (offset >= 0 && offset < ARRAY_SIZE) {
+        arrayOfStructs[offset] = createStruct(100 + 10 * offset, newBytes);
+    } else {
+        printf("Offset out of bounds\n");
+    }
+}
+
+int main() {
+    initializeArray();
+    runTests(testFunction);
+    uint32_t totalHash = calculateTotalHash();
+    printf("Total Hash: %u\n", totalHash);
+
+    // Additional test with a function pointer and complex manipulation
+    uint8_t newBytes[] = {9, 10, 11, 12};
+    complexFunction(ARRAY_SIZE / 2, newBytes);
+    printf("After complex function call:\n");
+    printArray();
+    totalHash = calculateTotalHash();
+    printf("Updated Total Hash: %u\n", totalHash);
+
+    return 0;
+}

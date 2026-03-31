@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "000164",
+    "target": "cpp",
+    "source_file": "000164.cpp"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "error: too many errors emitted, stopping now [clang-diagnostic-error]\n/tmp/gpp_fuzz_6tiuh94r/t.cpp:33:16: error: no matching function for call to 'add' [clang-diagnostic-error]\n    auto sum = add(a, b);\n               ^~~\n/tmp/gpp_fuzz_6tiuh94r/t.cpp:12:16: note: candidate template ignored: deduced conflicting types for parameter 'T' ('int' vs. 'float')\nconstexpr auto add(T a, T b) -> T {\n               ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:129:11: error: base specifier must name a class [clang-diagnostic-error]\n        : public _Tp_alloc_type, public _Vector_impl_data\n          ~~~~~~~^~~~~~~~~~~~~~\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:340:20: note: in instantiation of member class 'std::_Vector_base<void, std::allocator<void>>::_Vector_impl' requested here\n      _Vector_impl _M_impl;\n                   ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:389:30: note: in instantiation of template class 'std::_Vector_base<void, std::allocator<void>>' requested here\n    class vector : protected _Vector_base<_Tp, _Alloc>\n                             ^\n/tmp/gpp_fuzz_6tiuh94r/t.cpp:40:30: note: in instantiation of template class 'std::vector<void>' requested here\n    auto transformedVector = transformVector(nestedVector[1], multiplyBySum);\n                             ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:522:45: error: cannot form a reference to 'void' [clang-diagnostic-error]\n      vector(size_type __n, const value_type& __value,\n                                            ^\n/tmp/gpp_fuzz_6tiuh94r/t.cpp:40:30: note: in instantiation of template class 'std::vector<void>' requested here\n    auto transformedVector = transformVector(nestedVector[1], multiplyBySum);\n                             ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:749:45: error: cannot form a reference to 'void' [clang-diagnostic-error]\n      assign(size_type __n, const value_type& __val)\n                                            ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:957:52: error: cannot form a reference to 'void' [clang-diagnostic-error]\n      resize(size_type __new_size, const value_type& __x)\n                                                   ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:1187:33: error: cannot form a reference to 'void' [clang-diagnostic-error]\n      push_back(const value_type& __x)\n                                ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:1203:27: error: cannot form a reference to 'void' [clang-diagnostic-error]\n      push_back(value_type&& __x)\n                          ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:1263:57: error: cannot form a reference to 'void' [clang-diagnostic-error]\n      insert(const_iterator __position, const value_type& __x);\n                                                        ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:1293:51: error: cannot form a reference to 'void' [clang-diagnostic-error]\n      insert(const_iterator __position, value_type&& __x)\n                                                  ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:1335:72: error: cannot form a reference to 'void' [clang-diagnostic-error]\n      insert(const_iterator __position, size_type __n, const value_type& __x)\n                                                                       ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:1593:57: error: cannot form a reference to 'void' [clang-diagnostic-error]\n      _M_fill_initialize(size_type __n, const value_type& __value)\n                                                        ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:1645:53: error: cannot form a reference to 'void' [clang-diagnostic-error]\n      _M_fill_assign(size_type __n, const value_type& __val);\n                                                    ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:1684:69: error: cannot form a reference to 'void' [clang-diagnostic-error]\n      _M_fill_insert(iterator __pos, size_type __n, const value_type& __x);\n                                                                    ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:1741:59: error: cannot form a reference to 'void' [clang-diagnostic-error]\n      _M_insert_rval(const_iterator __position, value_type&& __v);\n                                                          ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:1750:59: error: cannot form a reference to 'void' [clang-diagnostic-error]\n      _M_emplace_aux(const_iterator __position, value_type&& __v)\n                                                          ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/alloc_traits.h:47:47: error: type 'int' cannot be used prior to '::' because it has no members [clang-diagnostic-error]\ntemplate<typename _Alloc, typename = typename _Alloc::value_type>\n                                              ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:88:35: note: in instantiation of default argument for '__alloc_traits<int>' required here\n      typedef typename __gnu_cxx::__alloc_traits<_Tp_alloc_type>::pointer\n                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:389:30: note: in instantiation of template class 'std::_Vector_base<void, std::allocator<void>>' requested here\n    class vector : protected _Vector_base<_Tp, _Alloc>\n                             ^\n/tmp/gpp_fuzz_6tiuh94r/t.cpp:40:30: note: in instantiation of template class 'std::vector<void>' requested here\n    auto transformedVector = transformVector(nestedVector[1], multiplyBySum);\n                             ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/alloc_traits.h:62:23: error: cannot form a reference to 'void' [clang-diagnostic-error]\n    typedef value_type&                             reference;\n                      ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:86:35: note: in instantiation of template class '__gnu_cxx::__alloc_traits<std::allocator<void>, void>' requested here\n      typedef typename __gnu_cxx::__alloc_traits<_Alloc>::template\n                                  ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:389:30: note: in instantiation of template class 'std::_Vector_base<void, std::allocator<void>>' requested here\n    class vector : protected _Vector_base<_Tp, _Alloc>\n                             ^\n/tmp/gpp_fuzz_6tiuh94r/t.cpp:40:30: note: in instantiation of template class 'std::vector<void>' requested here\n    auto transformedVector = transformVector(nestedVector[1], multiplyBySum);\n                             ^\n/usr/lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/alloc_traits.h:63:29: error: cannot form a reference to 'void' [clang-diagnostic-error]\n    typedef const value_type&                       const_reference;\n                            ^\n\n18734 warnings and 20 errors generated.\nError while processing /tmp/gpp_fuzz_6tiuh94r/t.cpp.\nSuppressed 18734 warnings (18734 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/g++",
+    "compiler_version": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c++20",
+    "timeout_sec": 15
+  }
+}

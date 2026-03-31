@@ -1,0 +1,54 @@
+{
+  "input_identity": {
+    "id": "000782",
+    "target": "c",
+    "source_file": "000782.c"
+  },
+  "static_ub_scan": {
+    "static_scan_passed": false,
+    "cppcheck_rc": 0,
+    "cppcheck_output": "",
+    "clang_tidy_rc": 1,
+    "clang_tidy_output": "/tmp/gcc_fuzz_sbayvo32/t.c:82:6: error: redefinition of 'initializeArray' [clang-diagnostic-error]\nvoid initializeArray() {\n     ^\n/tmp/gcc_fuzz_sbayvo32/t.c:35:6: note: previous definition is here\nvoid initializeArray() {\n     ^\n/tmp/gcc_fuzz_sbayvo32/t.c:92:6: error: redefinition of 'printArray' [clang-diagnostic-error]\nvoid printArray() {\n     ^\n/tmp/gcc_fuzz_sbayvo32/t.c:45:6: note: previous definition is here\nvoid printArray() {\n     ^\n/tmp/gcc_fuzz_sbayvo32/t.c:101:10: error: redefinition of 'calculateTotalHash' [clang-diagnostic-error]\nuint32_t calculateTotalHash() {\n         ^\n/tmp/gcc_fuzz_sbayvo32/t.c:54:10: note: previous definition is here\nuint32_t calculateTotalHash() {\n         ^\n/tmp/gcc_fuzz_sbayvo32/t.c:112:6: error: redefinition of 'complexFunction' [clang-diagnostic-error]\nvoid complexFunction(int64_t offset, uint8_t newBytes[4]) {\n     ^\n/tmp/gcc_fuzz_sbayvo32/t.c:65:6: note: previous definition is here\nvoid complexFunction(int64_t offset, uint8_t newBytes[4]) {\n     ^\n/tmp/gcc_fuzz_sbayvo32/t.c:129:6: error: redefinition of 'testFunctionPointer' [clang-diagnostic-error]\nvoid testFunctionPointer() {\n     ^\n/tmp/gcc_fuzz_sbayvo32/t.c:120:6: note: previous definition is here\nvoid testFunctionPointer() {\n     ^\n/tmp/gcc_fuzz_sbayvo32/t.c:138:1: error: 'main' must return 'int' [clang-diagnostic-error]\nvoid main() {\n^~~~\nint\n\n449 warnings and 6 errors generated.\nError while processing /tmp/gcc_fuzz_sbayvo32/t.c.\nSuppressed 449 warnings (449 in non-user code).\nUse -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.\nFound compiler error(s)."
+  },
+  "sanitizer_gate": {
+    "sanitizer_compile_cmd": "",
+    "sanitizer_compile_rc": 0,
+    "sanitizer_run_rc": 0,
+    "sanitizer_stderr": "",
+    "sanitizer_passed": false,
+    "ub_detected": false
+  },
+  "normal_compilation": {
+    "compile_O0_cmd": "",
+    "compile_O0_rc": 0,
+    "compile_O0_stderr": "",
+    "compile_O2_cmd": "",
+    "compile_O2_rc": 0,
+    "compile_O2_stderr": ""
+  },
+  "execution_check": {
+    "exec_enabled": true,
+    "run_O0_rc": 0,
+    "run_O0_stdout": "",
+    "run_O0_stderr": "",
+    "run_O0_timed_out": false,
+    "run_O2_rc": 0,
+    "run_O2_stdout": "",
+    "run_O2_stderr": "",
+    "run_O2_timed_out": false,
+    "outputs_match": false
+  },
+  "finding": {
+    "finding_kind": "NONE",
+    "finding_stage": "static_scan",
+    "finding_details": "Rejected by static UB scan (cppcheck/clang-tidy)."
+  },
+  "environment": {
+    "os": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "compiler_path": "/usr/bin/gcc",
+    "compiler_version": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "std": "c11",
+    "timeout_sec": 15
+  }
+}

@@ -1,0 +1,26 @@
+The target is the C++ language's template system, which allows for creating generic code constructs that can operate on any data type provided by the user. Templates are fundamental to C++'s ability to handle polymorphism without sacrificing performance or type safety. They enable the creation of functions and types (classes) that can work with a variety of different data types, providing abstraction and flexibility in programming.
+
+### Core Concept:
+Templates are blueprints for generating classes or functions. They allow you to define generic entities whose behavior can be customized by specific types at compile-time. This customization is achieved through the use of template parameters, which can be types (type templates), constants (constant templates), or even other templates (template templates).
+
+### Types/Constraints:
+- **Type Templates**: Allow the definition of a class or function that operates on any type. Example: `template<typename T> class Box { ... };`
+- **Constant Templates**: For parameters that are compile-time constants, such as integer or constexpr values. Example: `template<int N> struct Fibonacci { ... };`
+- **Template Template Parameters**: Allow templates to be parameterized by other templates. Example: `template<template<typename> class ContainerType> class Wrapper { ... };`
+- **Constraints (since C++20)**: Enforce conditions on template parameters, ensuring that the types used with a template meet certain requirements. Example: `template<typename T> concept Integral = std::is_integral_v<T>;`
+
+### Key APIs:
+- **Function Templates**: Define functions that can operate on any type. Example: `template<typename T> T add(T a, T b) { return a + b; }`
+- **Class Templates**: Define classes that can be instantiated for any type. Example: `template<typename T> class Stack { ... };`
+- **Template Specialization**: Provide specific implementations of templates tailored to particular types or values. Example: `template<> class Stack<int> { ... };`
+
+### Tricky Edge Cases:
+- **Substitution Failure Is Not An Error (SFINAE)**: Utilize SFINAE in combination with concepts to handle cases where template parameters do not satisfy the required constraints, allowing for more flexible error handling. Example: `template<typename T> requires std::is_integral_v<T> void process(const T&);`
+- **Dependent Names**: Handle names that depend on template parameters and may be resolved differently in different contexts within a template. Example: `template<typename Container> void printFirst(const Container& c) { if (!c.empty()) std::cout << *c.begin(); }`
+
+### Typical Usage Patterns:
+- **Generic Algorithms**: Implement algorithms that can work with any sequence of elements, such as sorting or searching. Example: `template<typename ForwardIt> void quicksort(ForwardIt first, ForwardIt last) { ... }`
+- **Type Erasure**: Use templates to create containers or interfaces that do not care about the specific type of data they contain, abstracting away concrete types for polymorphic behavior. Example: `template<typename T> struct Container { ... };`
+- **Metaprogramming**: Utilize template metaprogramming for compile-time computations and optimizations, which can be particularly useful for performance-critical applications where runtime checks are undesirable or inefficient. Example: `template<unsigned n> struct factorial { static constexpr unsigned value = n * factorial<n - 1>::value; };`
+
+Templates in C++ provide a powerful mechanism for writing generic code that operates on any type, facilitating abstraction and flexibility while maintaining performance and type safety. Understanding how to define, specialize, and use templates effectively is crucial for leveraging the full potential of the language.

@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+
+typedef struct {
+    int32_t data;
+    uint8_t bytes[4];
+} MyStruct;
+
+#define ARRAY_SIZE 500 // Increased size to add more complexity
+MyStruct arrayOfStructs[ARRAY_SIZE];
+
+// Macro for creating a structure instance
+#define CREATESTRUCT(val, arr) ((MyStruct){val, {arr[0], arr[1], arr[2], arr[3]}})
+
+// Function to initialize the array of structures with specific conditions
+void initializeArray() {
+    uint8_t initialArray[] = {1, 2, 3, 4};
+    for (int i = 0; i < ARRAY_SIZE; ++i) {
+        if ((i & 1) == 0 && i != 0) { // Introduce more complex initialization conditions
+            arrayOfStructs[i] = CREATESTRUCT(10 * i, initialArray);
+        } else {
+            arrayOfStructs[i] = CREATESTRUCT(-10 * i, initialArray); // Introduce negative values for complexity
+        }
+    }
+}
+
+// Macro to compute the total hash of the data field in the structures
+#define TOTAL_HASH(arr) ({ \
+    uint32_t totalHash = 0; \
+    for (int i = 0; i < ARRAY_SIZE; ++i) { \
+        if ((i & 15) == 0 && i != 0) { continue; } \
+        totalHash += ((uint32_t)(&arr[i])->data + (&arr[i])->bytes[0] * 2 + (&arr[i])->bytes[1] / 2 + (&arr[i])->bytes[2] * 3 - (&arr[i])->bytes[3]); \
+    } \
+    totalHash; \
+})
+
+// Function to print the data field of a structure
+void printStructData(const MyStruct *s) {
+    printf("%d\n", s->data);
+}
+
+// Function pointer type definition
+typedef void (*TestFunc)(int32_t, uint8_t[4]);
+
+// Test function that uses the function pointer
+void testFunctionWithPointer(int32_t x, uint8_t y[4]) {
+    MyStruct s = CREATESTRUCT(x, y);
+    printStructData(&s);
+}
+
+// Function to run tests with a function pointer and complex manipulation
+void runTestsWithPointer(TestFunc func) {
+    int32_t vals[] = {10, -10, 300, -300};
+    uint8_t arr[][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+    for (int i = 0; i < sizeof(vals) / sizeof(vals[0]); ++i) {
+        func(vals[i], arr[i]);
+    }
+}
+
+// Main function to initialize the array and run tests with a function pointer
+int main() {
+    initializeArray(); // Increased size of array for more stress testing
+    runTestsWithPointer(testFunctionWithPointer);
+    uint32_t totalHash = TOTAL_HASH(arrayOfStructs);
+    printf("Total Hash: %u\n", totalHash);
+    return 0;
+}

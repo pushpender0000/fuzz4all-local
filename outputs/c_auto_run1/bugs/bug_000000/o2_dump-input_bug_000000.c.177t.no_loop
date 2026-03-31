@@ -1,0 +1,54 @@
+
+;; Function printStruct (printStruct, funcdef_no=40, decl_uid=3221, cgraph_uid=41, symbol_order=40)
+
+void printStruct (const struct MyStruct * s)
+{
+  int _1;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = s_3(D)->data;
+  __printf_chk (1, "%d\n", _1);
+  return;
+
+}
+
+
+
+;; Function complexMacroTest (complexMacroTest, funcdef_no=49, decl_uid=3257, cgraph_uid=46, symbol_order=45)
+
+void complexMacroTest ()
+{
+  <bb 2> [local count: 53687093]:
+  complexFunction (); [tail call]
+  return;
+
+}
+
+
+
+;; Function runComplexTests (runComplexTests, funcdef_no=51, decl_uid=3268, cgraph_uid=47, symbol_order=46)
+
+void runComplexTests ()
+{
+  <bb 2> [local count: 53687093]:
+  complexFunction (); [tail call]
+  return;
+
+}
+
+
+
+;; Function main (main, funcdef_no=47, decl_uid=3278, cgraph_uid=48, symbol_order=47) (executed once)
+
+int main ()
+{
+  <bb 2> [local count: 1073741824]:
+  runTests (testFunction);
+  complexFunction ();
+  complexFunction ();
+  complexFunction ();
+  return 0;
+
+}
+
+
